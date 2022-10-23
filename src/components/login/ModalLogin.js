@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import Signup from './SignUp';
 import Signin from './SignIn';
-import '../../stylesheets/stylesModalSignUp.css';
+import '../../stylesheets/stylesModalLogin.css';
 
 
 export const ModalLogin = ({ closeModal }) => {

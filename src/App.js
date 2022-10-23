@@ -7,14 +7,16 @@ import { Menu } from "./components/Menu";
 import Map from './images/mapa.jpeg';
 import './stylesheets/stylesMenu.css';
 import './stylesheets/stylesModal.css';
-import './stylesheets/stylesModalSignUp.css';
+import './stylesheets/stylesSignUp.css';
+
 /*react-router-dom: Ruteo de Paths*/
 /* import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom"; */
+} from "react-router-dom";  */
+
 import { ModalLogin } from './components/login/ModalLogin';
 
 function App() {

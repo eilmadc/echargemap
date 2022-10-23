@@ -1,0 +1,60 @@
+.modal-login {
+    display: flex-block;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32vw;
+    height: 65vh;
+    min-width: 40rem;
+    min-height: 25rem;
+    background-color: white;
+    border-radius: 15px;
+    z-index: 200;
+  }
+  
+  /* Barra superior del modal*/
+  .modal-login-header {
+    height: 3.5rem;
+    border-radius: 10px;
+    background-color: white;
+    position: relative;
+    align-content: center;
+  }
+  
+  /* Header de la x para cerrar el modal */
+  .modal-login-header h2 {
+    color: #207868;
+    position: absolute;
+    align-items: flex-start;
+    top: 0;
+    right: 0.7rem;
+    margin: 0.7rem;
+    padding: 0.4rem;
+    cursor: pointer;
+  }
+  
+  /*Body del login */
+  .modal-login-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-content: center;
+    background-color: white;
+  }
+  
+  .tabs-login-nav {
+  
+    background-color: #bae6e1;
+    color: white;
+    font-size: 40px;
+    width: auto;
+    margin: 0px auto;
+    border-radius: 15px;
+    border-top: 3px solid #bae6e1;
+  }
+  
+  .tabs-login-body {
+    height: 100%;
+  }

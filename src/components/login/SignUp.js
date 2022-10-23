@@ -5,6 +5,14 @@ import React from 'react';
 import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 import SignIn from '../login/SignIn.js';
 
+/*react-router-dom: Ruteo de Paths*/
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom"; 
+
 /* REGEX */
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,30}$/;
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{4,19}$/;
@@ -139,7 +147,7 @@ const Signup = () => {
                 <section className="section-signup">
                     <h1> Success! </h1>
                     <p>
-                         <a href="#">Sign In</a> 
+                         <a href="#">Sign In</a>
                     </p>
                 </section>
             ) : (
@@ -371,7 +379,6 @@ const Signup = () => {
                                 Must have min 3 characters.
                                 <br />
                             </p>
-
                         </div>
 
                         {/*  CONFIRMACION DE EMAIL */}
