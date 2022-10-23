@@ -1,0 +1,128 @@
+/*Section del FORMULARIO */
+.section-signin {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 0;
+    margin-bottom: 4rem;
+  }
+  
+  /*FORMULARIO*/
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /*LINKS en FORMULARIO*/
+  a,
+  a:visited {
+    color: #8dd7cf;
+    font-size: large;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    padding: 1rem;
+    border-radius: 5rem;
+  }
+  
+  label {
+    color: #4b5c6b;
+    margin-top: 0.5rem;
+  }
+  
+  /*INPUTS */
+  .input-signin {
+    color: #207868;
+    border: 2px solid #207868;
+    margin: 0.3rem;
+  }
+  
+  /* BOTON de REGISTRO */
+  .btn-signin {
+    font-size: 2rem;
+    padding: 0.5rem;
+    background-color: #8dd7cf;
+    color: #4b5c6b;
+    border-color: #4b5c6b;
+    border: 3px solid;
+    border-radius: 2rem;
+    margin-top: 3.5rem;
+  }
+  
+  /* BOTON de REGISTRO */
+  .btn-signin:hover {
+    background-color: #bd8fd1;
+    border-color: #6752f0;
+    color: #6752f0;
+  }
+  
+  /* BOTON de REGISTRO */
+  .btn-signin:disabled {
+    background-color: #fffffe;
+    color: #6752f0;
+    border-color: #6752f0;
+  }
+  
+  /*Instrucciones en Inputs del formulario */
+  .instructions-signin {
+    font-size: 0.85rem;
+    font-family: "Roboto", sans-serif;
+    border-radius: 0.5rem;
+    background: #4b5c6b;
+    color: #fff;
+    padding: 0.25rem;
+    position: absolute;
+    right: center;
+  }
+  
+  .instructions > svg {
+    margin-right: 0.25rem;
+  }
+  
+  .offscreen {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  /* Iconos ocultos */
+  .hide {
+    display: contents;
+    color: transparent;
+  }
+  
+  .valid {
+    color: #8dd7cf;
+    margin-left: 0.25rem;
+  }
+  
+  .invalid {
+    color: #bd8fd1;
+    margin-left: 0.35rem;
+  }
+  
+  .errorMessage {
+    background-color: #4b5c6b;
+    color: #f7c325;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .line {
+    display: inline-block;
+  }
+  

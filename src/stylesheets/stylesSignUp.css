@@ -7,8 +7,7 @@
   justify-content: flex-start;
   padding: 1rem;
   background-color: #fff;
-  border-radius: 0;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 /*FORMULARIO*/
@@ -46,7 +45,7 @@ label {
 
 /*INPUTS */
 .input-signup {
-  font-family: "Roboto", sans-serif;
+  width: 11rem;
   color: #207868;
   border: 2px solid #207868;
   margin: 0.3rem;
@@ -54,7 +53,7 @@ label {
 
 /* BOTON de REGISTRO */
 .btn-signup {
-  font-family: "Roboto", sans-serif;
+  align-self: flex-center;
   font-size: 2rem;
   padding: 0.5rem;
   background-color: #8dd7cf;
@@ -62,7 +61,7 @@ label {
   border-color: #4b5c6b;
   border: 3px solid;
   border-radius: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
 }
 
 /* BOTON de REGISTRO */

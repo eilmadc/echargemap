@@ -7,7 +7,7 @@ import { Menu } from "./components/Menu";
 import Map from './images/mapa.jpeg';
 import './stylesheets/stylesMenu.css';
 import './stylesheets/stylesModal.css';
-import './stylesheets/stylesSignUp.css';
+
 
 /*react-router-dom: Ruteo de Paths*/
 /* import {

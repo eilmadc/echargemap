@@ -4,6 +4,7 @@ import React from 'react';
 
 import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 import SignIn from '../login/SignIn.js';
+import '../../stylesheets/stylesSignUp.css';
 
 /*react-router-dom: Ruteo de Paths*/
 import {
@@ -192,7 +193,7 @@ const Signup = () => {
                                onChange={(e) => setUserName(e.target.value)} 
                                 /*  onChange={(e) => setSuccess(true)} */
                                 required
-                                aria-invalid={validUserName ? "true" : "true"}
+                                aria-invalid={validUserName ? "false" : "true"}
                                 aria-describedby="usernameinfo"
                                 onFocus={() => setUserNameFocus(true)}
                                 onBlur={() => setUserNameFocus(false)}

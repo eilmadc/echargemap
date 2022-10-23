@@ -27,7 +27,7 @@ export const ModalLogin = ({ closeModal }) => {
                         <TabPanel className="tabs-login-body">
                              <Signup />
                         </TabPanel>
-                        <TabPanel>
+                        <TabPanel className="tabs-login-body">
                             <Signin />
                         </TabPanel>
                     </Tabs>
