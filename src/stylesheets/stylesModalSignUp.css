@@ -4,9 +4,9 @@
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 42vw;
+  width: 32vw;
   height: 65vh;
-  min-width: 20rem;
+  min-width: 40rem;
   min-height: 25rem;
   background-color: white;
   border-radius: 15px;
@@ -145,8 +145,11 @@ label {
   left: -9999px;
 }
 
+
+/* Iconos ocultos */
 .hide {
-  display: none;
+  display:contents;
+  color: transparent;
 }
 
 .valid {
@@ -160,7 +163,7 @@ label {
 }
 
 .errorMessage {
-  background-color: lightpink;
+  background-color: #4b5c6b;
   color: #f7c325;
   font-weight: bold;
   padding: 0.5rem;

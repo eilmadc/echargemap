@@ -123,6 +123,7 @@ const Signup = () => {
             /*  Si todo ha sido validado correctamente
                 validamos el formulario */
             setSuccess(true);
+            console.log(success);
 
         } catch (e) {
             this.setState({ e });
@@ -133,12 +134,12 @@ const Signup = () => {
     /* FIN USE EFFECTS */
     return (
         <>
-            { success  ? (
+            { success ? (
 
-                <section>
+                <section className="section-signup">
                     <h1> Success! </h1>
                     <p>
-                         <a href={<SignIn />}>Sign In</a> 
+                         <a href="#">Sign In</a> 
                     </p>
                 </section>
             ) : (
@@ -180,10 +181,10 @@ const Signup = () => {
                                 id="username"
                                 ref={userRef}
                                 autocomplete="off"
-                                onChange={(e) => setUserName(e.target.value)}
-                                // onChange={(e) => setSuccess(true)} 
+                               onChange={(e) => setUserName(e.target.value)} 
+                                /*  onChange={(e) => setSuccess(true)} */
                                 required
-                                aria-invalid={validUserName ? "false" : "true"}
+                                aria-invalid={validUserName ? "true" : "true"}
                                 aria-describedby="usernameinfo"
                                 onFocus={() => setUserNameFocus(true)}
                                 onBlur={() => setUserNameFocus(false)}
@@ -456,7 +457,6 @@ const Signup = () => {
 
                         <button
                             className="btn-signup"
-                            type="button"
                             disabled={!validUserName || !validPassword || !validName || !validLastName || !validMail || !validLocation ? true : false}
                         >
                             Sign Up
