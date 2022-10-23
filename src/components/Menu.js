@@ -5,6 +5,7 @@ import * as React from 'react';
 }*/
 
 export const Menu = ({ isMenuOpen }) => {
+
     return (
       <div className={`app-menu ${isMenuOpen ? 'menu-open' : ''}`} >
         <h2>Example</h2>

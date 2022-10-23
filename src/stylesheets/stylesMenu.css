@@ -1,19 +1,16 @@
-
+@import 'constants.css';
 
 .app-menu {
-  color: white;
+  color: var(--grey);
   height: 100vh;
-  width: 20rem;
-  background-color: #292929;
+  width: 40rem;
+  background-color: var(--light);
   z-index: 200;
-
   transform: translateX(-100%);
   transition: 0.3s;
-
   position: fixed;
   left: 0;
   top: 0;
-
   display: flex;
   justify-content: center;
 }

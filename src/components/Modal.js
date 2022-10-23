@@ -1,10 +1,20 @@
-import * as React from 'react';
+import React from 'react';
 
-export const Modal = ({ closeModal }) => {
+function Modal({ closeModal }, props) {
+    const isLogin = () => {
+        console.log(props.paco);
+        debugger;
+        if (props.paco === 'login') {
+             return 'login' 
+            } else {
+                 return '' 
+            };
+    };
+
     return (
-        <div className='modal'>
+        <div className={`modal ${isLogin()}`.trimEnd()}>
             <div className='modal-header'>
-                <h2 onClick={() => {closeModal(false);}}>
+                <h2 onClick={() => { closeModal(false); }}>
                     X
                 </h2>
             </div>
@@ -14,3 +24,5 @@ export const Modal = ({ closeModal }) => {
         </div>
     );
 }
+
+export default Modal;
