@@ -1,3 +1,5 @@
+@import 'constants.css';
+
 .modal {
     position: fixed;
     top: 50%;
@@ -7,7 +9,7 @@
     height: 50vh;
     min-width: 20rem;
     min-height: 25rem;
-    background-color: rgb(228, 228, 228);
+    background-color: var(--light);
     border-radius: 10px;
     z-index: 200;
   
@@ -18,12 +20,12 @@
   .modal .modal-header {
     height: 2.5rem;
     border-radius: 10px 10px 0 0;
-    background-color: rgb(29, 29, 29);
+    background-color: var(--dark);
     position: relative;
   }
   
   .modal .modal-header h2 {
-    color: white;
+    color: var(--light);
     position: absolute;
     top: 0;
     right: 0;

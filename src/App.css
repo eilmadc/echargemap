@@ -1,71 +1,93 @@
-html,
-body {
-  margin: 0;
-  width: 100%;
-  background: rgb(233, 233, 233);
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import './stylesheets/constants.css';
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  /* Pqe el padding no modifiqui la mida total de la caixa */
+
+  font-family: 'Poppins', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6,
-button {
-  font-family: Roboto;
+h4 {
+  font-family: 'Inter', bold;
 }
 
-
-.app {
-  width: 100vw;
-  height: 100vh;
+h1 {
+  font-size: 36px;
+  margin-left: 7.5em;
 }
 
-.app .header {
-  height: 5rem;
+html,
+.body {
   width: 100%;
-  background-color: #292929;
-  padding: 1rem;
-  box-sizing: border-box;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+
 }
 
-.header .menu-btn {
-  font-size: 1.75rem;
+.App {
+  height: 100vh;
+  padding-top: 1px;
+  background-color: var(--grey);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.nav {
+  width: 180vh;
+  height: 6vh;
+  margin: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.menu-icon:hover {
   cursor: pointer;
 }
 
-.header .nav {
-  padding: 3%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+/*.buttons {
+  margin-bottom: 1em;
+}*/
 
 .buttons {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .buttons-nav {
-  display: inline-flex;
-  flex: auto;
+  justify-content: space-between;
+  margin: 0.5em;
+  padding: 0.5em 2em;
+  border-radius: 30px;
+  border-color: white;
+  border-width: 0px;
+  border-style: none;
+  
 }
 
-.app .body {
-  height: calc(100% - 5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.app .body button {
-  padding: 1rem;
-  font-size: 1.5rem;
-  border-radius: 10px;
+.buttons-nav:hover {
   cursor: pointer;
+  color: var(--violetHover);
 }
+
+.mode {
+  padding: 0px 0.2px;
+}
+
