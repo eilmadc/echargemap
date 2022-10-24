@@ -1,18 +1,9 @@
 import { useRef, useState, useEffect } from "react";
-
 import React from 'react';
 
-import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
-import SignIn from '../login/SignIn.js';
-import '../../stylesheets/stylesSignUp.css';
+import '../../stylesheets/stylesSignUp.css'; 
 
-/*react-router-dom: Ruteo de Paths*/
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom"; 
+import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 
 /* REGEX */
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,30}$/;
@@ -132,8 +123,7 @@ const Signup = () => {
             /*  Si todo ha sido validado correctamente
                 validamos el formulario */
             setSuccess(true);
-            console.log(success);
-
+            
         } catch (e) {
             this.setState({ e });
             console.log("Error: " + e.message);

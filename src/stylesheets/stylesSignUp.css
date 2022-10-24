@@ -126,3 +126,8 @@ label {
 .line {
   display: inline-block;
 }
+
+.line-reset {
+  display: inline-block;
+  color:#6752f0;
+}
