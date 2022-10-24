@@ -153,7 +153,7 @@ const Signup = () => {
                     </p>
 
                     {/*FORMULARIO DE REGISTRO */}
-                    <h1> Join us now!</h1>
+                    <h2> Join us now!</h2>
 
                     <form onSubmit={handleSubmit}>
 

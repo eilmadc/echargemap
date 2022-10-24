@@ -7,6 +7,7 @@ import { ReactDimmer } from 'react-dimmer';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
+import { ModalLogin } from './components/login/ModalLogin';
 import { Menu } from "./components/Menu";
 import Map from './images/mapa.jpeg';
 import MapDark from './images/mapaDark.png';
@@ -22,7 +23,7 @@ import ReactSwitch from 'react-switch';
   Link
 } from "react-router-dom";  */
 
-import { ModalLogin } from './components/login/ModalLogin';
+
 
 function App() {
 
@@ -66,7 +67,7 @@ function App() {
             <GiHamburgerMenu className='menu-icon' id={mode} size={50} onClick={handleMenu} />
             <h1 id={mode}>EChargeMap</h1>
             <div className='buttons'>
-              <button className='login buttons-nav' id={mode} onClick={handleClick}>Entrar </button>
+              <button className='login buttons-nav' id={mode} onClick={handleClickLogin}>Entrar </button>
               <button className='language buttons-nav' id={mode} onClick={handleClick}>Idioma </button>
               <button className='share buttons-nav' id={mode} onClick={handleClick}>Compartir </button>
                 <ReactSwitch

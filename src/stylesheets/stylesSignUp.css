@@ -1,17 +1,17 @@
 /*Section del FORMULARIO */
 .section-signup {
-  width: 600px;
+  width: 300px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 /*FORMULARIO*/
-form {
+form-signup {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -45,7 +45,7 @@ label {
 
 /*INPUTS */
 .input-signup {
-  width: 11rem;
+  width: 15rem;
   color: #207868;
   border: 2px solid #207868;
   margin: 0.3rem;

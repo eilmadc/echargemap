@@ -4,7 +4,7 @@
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 32vw;
+    width: 33vw;
     height: 65vh;
     min-width: 40rem;
     min-height: 25rem;
@@ -48,11 +48,11 @@
   
     background-color: #bae6e1;
     color: white;
-    font-size: 40px;
-    width:16rem;
-    margin: 20px auto;
+    font-size: 1.5rem;
+    width:18rem;
+    margin: 5px auto;
     border-radius: 15px;
-    border-top: 3px solid #bae6e1;
+    border-top: 2px solid #bae6e1;
   }
   
   .tabs-login-body {
