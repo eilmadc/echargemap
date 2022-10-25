@@ -72,7 +72,8 @@ label {
 
 /*INPUTS */
 .input-signup {
-  width: 20rem;
+  width: 30rem;
+  padding-right: 3em;
   color: var(--dark);
   margin: 0.3rem;
   border: 1px solid rgba(216, 216, 216, 0.933);
@@ -96,13 +97,12 @@ label {
 /* BOTON de REGISTRO */
 .btn-signup {
   align-self: flex-center;
-  width: 100%;
   font-size: 1.5rem;
   font-weight: 600;
   background-color: var(--lightGreen);
   color: var(--dark);
   border-color: var(--lightGreen);
-  border: 3px solid;
+  border-style: NONE;
   border-radius: 5rem;
   margin-top: 2.5rem;
   padding: 1rem;
@@ -112,26 +112,26 @@ label {
 /* BOTON de REGISTRO */
 .btn-signup:hover {
   background-color: var(--lightGreenHover);
-  border-color: var(--lightGreenHover);
+  
 }
 
 /* BOTON de REGISTRO */
 .btn-signup:disabled {
-  background-color: var(--lightGreen);
-  border-color: var(--lightGreen);
+  background-color: var(--light);
+  border: 1.5px solid;
+  border-color: var(--violet);
   color: var(--dark);
   cursor: not-allowed;
 }
 
 /*Instrucciones en Inputs del formulario */
 .instructions-signup {
+  width: 20vh;
   font-size: 0.85rem;
   border-radius: 0.5rem;
   background: #4b5c6b;
   color: #fff;
-  padding: 0.25rem;
-  position: absolute;
-  right: center;
+  padding: 0.3rem;
 }
 
 .instructions>svg {
@@ -151,13 +151,31 @@ label {
 
 .valid {
   color: var(--lightGreen);
-  margin-left: 0.25rem;
+ PADDING-left: 0.35rem;
 }
 
 .invalid {
   color: var(--violet);
   margin-left: 0.35rem;
 }
+
+.validInvalidIcons {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+p[id="usernameinfo"],
+p[id="passwordinfo"],
+p[id="confirminfo"],
+p[id="nameinfo"],
+p[id="lastnameinfo"],
+p[id="mailinfo"],
+p[id="locationinfo"] {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .errorMessage {
   background-color: #4b5c6b;
@@ -175,5 +193,5 @@ label {
 
 .line-reset {
   display: inline-block;
-  color: var(--blue);
+  color: var(--dark);
 }

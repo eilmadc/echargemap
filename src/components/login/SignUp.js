@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
 
-import '../../stylesheets/stylesSignUp.css'; 
+import '../../stylesheets/stylesSignUp.css';
 
 import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 
@@ -119,11 +119,11 @@ const Signup = () => {
                 setErrorMessage("Invalid entry");
                 return;
             }
-            
+
             /*  Si todo ha sido validado correctamente
                 validamos el formulario */
             setSuccess(true);
-            
+
         } catch (e) {
             this.setState({ e });
             console.log("Error: " + e.message);
@@ -133,12 +133,12 @@ const Signup = () => {
     /* FIN USE EFFECTS */
     return (
         <>
-            { success ? (
+            {success ? (
 
                 <section className="section-signup">
                     <h1> Success! </h1>
                     <p>
-                         <a href="#">Sign In</a>
+                        <a href="#">Sign In</a>
                     </p>
                 </section>
             ) : (
@@ -162,14 +162,14 @@ const Signup = () => {
                             htmlFor="username">
                             Nombre de usuario
                         </label>
-                        <div>
+                        <div className='validInvalidIcons'>
                             <input
                                 className="input-signup"
                                 type="text"
                                 id="username"
                                 ref={userRef}
                                 autocomplete="off"
-                               onChange={(e) => setUserName(e.target.value)} 
+                                onChange={(e) => setUserName(e.target.value)}
                                 /*  onChange={(e) => setSuccess(true)} */
                                 required
                                 aria-invalid={validUserName ? "false" : "true"}
@@ -177,6 +177,7 @@ const Signup = () => {
                                 onFocus={() => setUserNameFocus(true)}
                                 onBlur={() => setUserNameFocus(false)}
                             />
+
                             {/* Iconos de validación de regex en username */}
                             <span
                                 className={validUserName ? "valid" : "hide"}
@@ -188,20 +189,21 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de información del campo del usuairo*/}
-                            <p
-                                id="usernameinfo"
-                                className={userNameFocus && userName && !validUserName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                5 to 20 characters <br />
-                                Must begin with a letter <br />
-                                Characters allowed: 0-9, a - z,  A - Z  and "_"<br />
-                                Example: My_username2
-                            </p>
-
-
                         </div>
+                        {/* Mensaje de información del campo del usuairo*/}
+                        <p
+                            id="usernameinfo"
+                            className={userNameFocus && userName && !validUserName ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            5 to 20 characters <br />
+                            Must begin with a letter <br />
+                            Characters allowed: 0-9, a - z,  A - Z  and "_"<br />
+                            Example: My_username2
+                        </p>
+
+
+
 
                         {/*  PASSWORD INPUT */}
                         <label
@@ -209,8 +211,8 @@ const Signup = () => {
                             Contraseña
 
                         </label>
-                        <div>
-                            
+                        <div className='validInvalidIcons'>
+
                             <input
                                 className="input-signup"
                                 type="password"
@@ -233,23 +235,24 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de informacion del campo de password*/}
-                            <p
-                                id="passwordinfo"
-                                className={passwordFocus && password && !validPassword ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                8 to 12 characters <br />
-                                Must include 0-9, a-z, A-Z, <br />
-                                and special characters as:
-                                <span aria-label='at symbol'>@</span>
-                                <span aria-label='exclamation mark'>!</span>
-                                <span aria-label='hashtag'>#</span>
-                                <span aria-label='dollar'>$</span>
-                                <span aria-label='percent'>%</span>
-                                <br />
-                            </p>
                         </div>
+                        {/* Mensaje de informacion del campo de password*/}
+                        <p
+                            id="passwordinfo"
+                            className={passwordFocus && password && !validPassword ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            8 to 12 characters <br />
+                            Must include 0-9, a-z, A-Z, <br />
+                            and special characters as:
+                            <span aria-label='at symbol'>@</span>
+                            <span aria-label='exclamation mark'>!</span>
+                            <span aria-label='hashtag'>#</span>
+                            <span aria-label='dollar'>$</span>
+                            <span aria-label='percent'>%</span>
+                            <br />
+                        </p>
+
 
 
                         {/*  CONFIRMACION DE PASSWORD INPUT */}
@@ -257,8 +260,8 @@ const Signup = () => {
                             htmlFor="confirm_password">
                             Confirmar contraseña
                         </label>
-                        <div>
-                            
+                        <div className='validInvalidIcons'>
+
                             <input
                                 className="input-signup"
                                 type="password"
@@ -281,16 +284,17 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de informacion del campo de confirmacion de la password*/}
-                            <p
-                                id="confirminfo"
-                                className={matchPasswordFocus && !validName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must match the confirm password with password.
-                                <br />
-                            </p>
                         </div>
+                        {/* Mensaje de informacion del campo de confirmacion de la password*/}
+                        <p
+                            id="confirminfo"
+                            className={matchPasswordFocus && !validName ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            Must match the confirm password with password.
+                            <br />
+                        </p>
+
 
                         {/*  CONFIRMACION DE NAME */}
                         <label
@@ -298,8 +302,8 @@ const Signup = () => {
                             Nombre
                         </label>
 
-                        <div>
-                            
+                        <div className='validInvalidIcons'>
+
                             <input
                                 className="input-signup"
                                 type="text"
@@ -322,16 +326,17 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de informacion del campo Name*/}
-                            <p
-                                id="nameinfo"
-                                className={nameFocus && !validName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 3 characters.
-                                <br />
-                            </p>
                         </div>
+                        {/* Mensaje de informacion del campo Name*/}
+                        <p
+                            id="nameinfo"
+                            className={nameFocus && !validName ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            Must have min 3 characters.
+                            <br />
+                        </p>
+
 
 
                         {/*  CONFIRMACION DE Apellido*/}
@@ -340,7 +345,7 @@ const Signup = () => {
                             Apellidos
                         </label>
 
-                        <div>
+                        <div className='validInvalidIcons'>
 
                             <input
                                 className="input-signup"
@@ -364,16 +369,17 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de informacion del campo LastName*/}
-                            <p
-                                id="lastnameinfo"
-                                className={lastnameFocus && !validLastName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 3 characters.
-                                <br />
-                            </p>
                         </div>
+                        {/* Mensaje de informacion del campo LastName*/}
+                        <p
+                            id="lastnameinfo"
+                            className={lastnameFocus && !validLastName ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            Must have min 3 characters.
+                            <br />
+                        </p>
+
 
                         {/*  CONFIRMACION DE EMAIL */}
                         <label
@@ -381,8 +387,8 @@ const Signup = () => {
                             Correo electrónico
                         </label>
 
-                        <div>
-                            
+                        <div className='validInvalidIcons'>
+
                             <input
                                 className="input-signup"
                                 type="email"
@@ -405,16 +411,17 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de informacion del campo mail*/}
-                            <p
-                                id="mailinfo"
-                                className={mailFocus && !validMail ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 5 characters.
-                                <br />
-                            </p>
                         </div>
+                        {/* Mensaje de informacion del campo mail*/}
+                        <p
+                            id="mailinfo"
+                            className={mailFocus && !validMail ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            Must have min 5 characters.
+                            <br />
+                        </p>
+
 
 
                         {/*  CONFIRMACION DE LOCATION */}
@@ -422,8 +429,8 @@ const Signup = () => {
                             htmlFor="location">
                             Ubicación
                         </label>
-                        <div>
-                            
+                        <div className='validInvalidIcons'>
+
                             <input
                                 className="input-signup"
                                 type="text"
@@ -446,16 +453,17 @@ const Signup = () => {
                             >
                                 <FaTimes />
                             </span>
-                            {/* Mensaje de informacion del campo location*/}
-                            <p
-                                id="locationinfo"
-                                className={locationFocus && !validLocation ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 5 characters.
-                                <br />
-                            </p>
                         </div>
+                        {/* Mensaje de informacion del campo location*/}
+                        <p
+                            id="locationinfo"
+                            className={locationFocus && !validLocation ? "instructions-signup" : "offscreen"}
+                        >
+                            <FaInfoCircle />
+                            Must have min 5 characters.
+                            <br />
+                        </p>
+
 
 
                         <button
@@ -466,10 +474,10 @@ const Signup = () => {
                         </button>
                     </form>
                     <p>
-                        Already have an account?<br />
+                        Ya tienes una cuenta?<br />
                         <span className="line">
                             { }
-                          <a href="#">Sign In</a>
+                            <a href="#">Accede</a>
                         </span>
                     </p>
 
