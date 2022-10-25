@@ -4,8 +4,8 @@ import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import Signup from './SignUp';
 import Signin from './SignIn';
 import '../../stylesheets/stylesModalLogin.css';
-import LogoDarkGreen from 'C:/Users/monii/Documents/GitHub/echargemap/src/images/logo_darkGreen.png';
-import LogoLightGreen from 'C:/Users/monii/Documents/GitHub/echargemap/src/images/logo_lightGreen.png';
+import LogoDarkGreen from '../../images/logo_darkGreen.png';
+import LogoLightGreen from '../../images/logo_lightGreen.png';
 
 
 export const ModalLogin = ({ closeModal, mode }) => {
