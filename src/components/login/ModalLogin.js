@@ -4,31 +4,34 @@ import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import Signup from './SignUp';
 import Signin from './SignIn';
 import '../../stylesheets/stylesModalLogin.css';
+import LogoDarkGreen from 'C:/Users/monii/Documents/GitHub/echargemap/src/images/logo_darkGreen.png';
+import LogoLightGreen from 'C:/Users/monii/Documents/GitHub/echargemap/src/images/logo_lightGreen.png';
 
 
-export const ModalLogin = ({ closeModal }) => {
+export const ModalLogin = ({ closeModal, mode }) => {
     return (
-        <div className='modal-login'>
+        <div className='modal-login' id={mode}>
             <div className='modal-login-header'>
-                <h2 onClick={() => { closeModal(false); }}>
+                <button className='fa-cross' onClick={() => { closeModal(false); }}>
                     X
-                </h2>
+                </button>
             </div>
             <div className='modal-login-body'>
                 <div className='logo-login'>
-                    <h2>Aqui va el Logo</h2>
+                    <img src={LogoDarkGreen} className='logo' alt='logo' />
+                    <h3 classname='echargemap'>eChargeMap</h3>
                 </div>
                 <div className='tabs-login'>
                     <Tabs>
                         <TabList className="tabs-login-nav">
-                            <Tab>Sign Up</Tab>
-                            <Tab>Sign In</Tab>
+                            <Tab>Entrar</Tab>
+                            <Tab>Registro</Tab>
                         </TabList>
                         <TabPanel className="tabs-login-body">
-                             <Signup />
+                             <Signin />
                         </TabPanel>
                         <TabPanel className="tabs-login-body">
-                            <Signin />
+                            <Signup />
                         </TabPanel>
                     </Tabs>
                 </div>

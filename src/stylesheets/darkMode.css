@@ -9,12 +9,14 @@
 }
 
 #darkMode h1 {
-    color: var(--lightGreenHover);
+    color: var(--lightGreen);
 } 
 
 .buttons #darkMode {
-    background-color: var(--light);
-    color: var(--blue);
+    background-color: var(--grey);
+    border: 1px solid var(--lightGreenHover);
+    border-color: #dddddd;
+    color: var(--light);
     font-size: 1.5rem;
     font-family: inherit;
     font-weight: 600;
@@ -22,4 +24,8 @@
 
 #darkMode Menu {
     background-color: var(--grey);
+}
+
+#darkMode .modal-login {
+    background-color: black;
 }

@@ -1,60 +1,107 @@
+@import 'constants.css';
+
 .modal-login {
-    display: flex-block;
-    position: fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 33vw;
-    height: 65vh;
-    min-width: 40rem;
-    min-height: 25rem;
-    background-color: white;
-    border-radius: 15px;
-    z-index: 200;
-  }
-  
-  /* Barra superior del modal*/
-  .modal-login-header {
-    height: 3.5rem;
-    border-radius: 10px;
-    background-color: white;
-    position: relative;
-    align-content: center;
-  }
-  
-  /* Header de la x para cerrar el modal */
-  .modal-login-header h2 {
-    color: #207868;
-    position: absolute;
-    align-items: flex-start;
-    top: 0;
-    right: 0.7rem;
-    margin: 0.7rem;
-    padding: 0.4rem;
-    cursor: pointer;
-  }
-  
-  /*Body del login */
-  .modal-login-body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    place-content: center;
-    background-color: white;
-  }
-  
-  .tabs-login-nav {
-  
-    background-color: #bae6e1;
-    color: white;
-    font-size: 1.5rem;
-    width:18rem;
-    margin: 5px auto;
-    border-radius: 15px;
-    border-top: 2px solid #bae6e1;
-  }
-  
-  .tabs-login-body {
-    height: 100%;
-  }
+  display: flex-block;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 33vw;
+  height: 65vh;
+  min-width: 40rem;
+  min-height: 25rem;
+  background-color: var(--light);
+  border-radius: 15px 15px;
+  z-index: 200;
+}
+
+/* Barra superior del modal*/
+.modal-login-header {
+  height: 3.5rem;
+  border-radius: 5px;
+  background-color: var(--light);
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+h2 {
+  color: var(--dark);
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: var(--dark);
+  font-size: 16px;
+}
+
+.modal-login-header button {
+  position: relative;
+  border-radius: 50%;
+  padding: 0.5em;
+  width: 35px;
+  height: 35px;
+  background-color: var(--violet);
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Header de la x para cerrar el modal */
+.modal-login-header h2 {
+  color: #207868;
+  position: absolute;
+  align-items: flex-start;
+  top: 0;
+  right: 0.7rem;
+  margin: 0.7rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+/*Body del login */
+.modal-login-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  place-content: center;
+  background-color: var(--light);
+}
+
+.tabs-login-nav {
+  background-color: var(--lightGreen);
+  color: var(--grey);
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 80%;
+  margin: 5px auto;
+  padding-right: 40px;
+  border-radius: 15px;
+  border-top: 2px solid #bae6e1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tabs-login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+}
+
+.logo {
+  height: 50px;
+  width: 47px;
+}
+
+.logo-login {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 1.5em;
+}
+

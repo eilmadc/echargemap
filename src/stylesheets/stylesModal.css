@@ -19,12 +19,13 @@
   
   .modal .modal-header {
     height: 2.5rem;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px ;
     background-color: var(--dark);
     position: relative;
   }
   
-  .modal .modal-header h2 {
+  .modal,
+  .modal-header{
     color: var(--light);
     position: absolute;
     top: 0;

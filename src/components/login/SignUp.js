@@ -153,27 +153,16 @@ const Signup = () => {
                     </p>
 
                     {/*FORMULARIO DE REGISTRO */}
-                    <h2> Join us now!</h2>
+                    <h2>¡Únete a nosotros!</h2>
 
                     <form onSubmit={handleSubmit}>
 
                         {/*  USERNAME INPUT */}
                         <label
                             htmlFor="username">
-                            Username:
+                            Nombre de usuario
                         </label>
                         <div>
-                            {/* Iconos de validación de regex en username */}
-                            <span
-                                className={validUserName ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validUserName || !userName ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
                             <input
                                 className="input-signup"
                                 type="text"
@@ -188,6 +177,17 @@ const Signup = () => {
                                 onFocus={() => setUserNameFocus(true)}
                                 onBlur={() => setUserNameFocus(false)}
                             />
+                            {/* Iconos de validación de regex en username */}
+                            <span
+                                className={validUserName ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validUserName || !userName ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de información del campo del usuairo*/}
                             <p
                                 id="usernameinfo"
@@ -206,21 +206,11 @@ const Signup = () => {
                         {/*  PASSWORD INPUT */}
                         <label
                             htmlFor="password">
-                            Password:
+                            Contraseña
 
                         </label>
                         <div>
-                            {/* Iconos de validacion de regex en password */}
-                            <span
-                                className={validPassword ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validPassword || !password ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
+                            
                             <input
                                 className="input-signup"
                                 type="password"
@@ -232,6 +222,17 @@ const Signup = () => {
                                 onFocus={() => setPasswordFocus(true)}
                                 onBlur={() => setPasswordFocus(false)}
                             />
+                            {/* Iconos de validacion de regex en password */}
+                            <span
+                                className={validPassword ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validPassword || !password ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de informacion del campo de password*/}
                             <p
                                 id="passwordinfo"
@@ -254,20 +255,10 @@ const Signup = () => {
                         {/*  CONFIRMACION DE PASSWORD INPUT */}
                         <label
                             htmlFor="confirm_password">
-                            Confirm Password:
+                            Confirmar contraseña
                         </label>
                         <div>
-                            {/* Iconos de validacion de coincidencia de password con la confirmacion de password*/}
-                            <span
-                                className={validMatchPassword && matchPassword ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validMatchPassword || !matchPassword ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
+                            
                             <input
                                 className="input-signup"
                                 type="password"
@@ -279,6 +270,17 @@ const Signup = () => {
                                 onFocus={() => setMatchPasswordFocus(true)}
                                 onBlur={() => setMatchPasswordFocus(false)}
                             />
+                            {/* Iconos de validacion de coincidencia de password con la confirmacion de password*/}
+                            <span
+                                className={validMatchPassword && matchPassword ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validMatchPassword || !matchPassword ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de informacion del campo de confirmacion de la password*/}
                             <p
                                 id="confirminfo"
@@ -293,21 +295,11 @@ const Signup = () => {
                         {/*  CONFIRMACION DE NAME */}
                         <label
                             htmlFor="name">
-                            Name:
+                            Nombre
                         </label>
 
                         <div>
-                            {/* Iconos de validacion de nombre*/}
-                            <span
-                                className={validName && name ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validName || !name ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
+                            
                             <input
                                 className="input-signup"
                                 type="text"
@@ -319,6 +311,17 @@ const Signup = () => {
                                 onFocus={() => setNameFocus(true)}
                                 onBlur={() => setNameFocus(false)}
                             />
+                            {/* Iconos de validacion de nombre*/}
+                            <span
+                                className={validName && name ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validName || !name ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de informacion del campo Name*/}
                             <p
                                 id="nameinfo"
@@ -334,21 +337,10 @@ const Signup = () => {
                         {/*  CONFIRMACION DE Apellido*/}
                         <label
                             htmlFor="lastname">
-                            Last name:
+                            Apellidos
                         </label>
 
                         <div>
-                            {/* Iconos de validacion de Apellido*/}
-                            <span
-                                className={validLastName && lastname ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validLastName || !lastname ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
 
                             <input
                                 className="input-signup"
@@ -361,6 +353,17 @@ const Signup = () => {
                                 onFocus={() => setLastNameFocus(true)}
                                 onBlur={() => setLastNameFocus(false)}
                             />
+                            {/* Iconos de validacion de Apellido*/}
+                            <span
+                                className={validLastName && lastname ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validLastName || !lastname ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de informacion del campo LastName*/}
                             <p
                                 id="lastnameinfo"
@@ -375,21 +378,11 @@ const Signup = () => {
                         {/*  CONFIRMACION DE EMAIL */}
                         <label
                             htmlFor="email">
-                            Email:
+                            Correo electrónico
                         </label>
 
                         <div>
-                            {/* Iconos de validacion de email*/}
-                            <span
-                                className={validMail && mail ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validMail || !mail ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
+                            
                             <input
                                 className="input-signup"
                                 type="email"
@@ -401,6 +394,17 @@ const Signup = () => {
                                 onFocus={() => setMailFocus(true)}
                                 onBlur={() => setMailFocus(false)}
                             />
+                            {/* Iconos de validacion de email*/}
+                            <span
+                                className={validMail && mail ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validMail || !mail ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de informacion del campo mail*/}
                             <p
                                 id="mailinfo"
@@ -416,20 +420,10 @@ const Signup = () => {
                         {/*  CONFIRMACION DE LOCATION */}
                         <label
                             htmlFor="location">
-                            Location:
+                            Ubicación
                         </label>
                         <div>
-                            {/* Iconos de validacion de location*/}
-                            <span
-                                className={validLocation && location ? "valid" : "hide"}
-                            >
-                                <FaCheck />
-                            </span>
-                            <span
-                                className={validLocation || !location ? "hide" : "invalid"}
-                            >
-                                <FaTimes />
-                            </span>
+                            
                             <input
                                 className="input-signup"
                                 type="text"
@@ -441,6 +435,17 @@ const Signup = () => {
                                 onFocus={() => setLocationFocus(true)}
                                 onBlur={() => setLocationFocus(false)}
                             />
+                            {/* Iconos de validacion de location*/}
+                            <span
+                                className={validLocation && location ? "valid" : "hide"}
+                            >
+                                <FaCheck />
+                            </span>
+                            <span
+                                className={validLocation || !location ? "hide" : "invalid"}
+                            >
+                                <FaTimes />
+                            </span>
                             {/* Mensaje de informacion del campo location*/}
                             <p
                                 id="locationinfo"
@@ -457,11 +462,11 @@ const Signup = () => {
                             className="btn-signup"
                             disabled={!validUserName || !validPassword || !validName || !validLastName || !validMail || !validLocation ? true : false}
                         >
-                            Sign Up
+                            Crea tu cuenta
                         </button>
                     </form>
                     <p>
-                        Already signed up?<br />
+                        Already have an account?<br />
                         <span className="line">
                             { }
                           <a href="#">Sign In</a>

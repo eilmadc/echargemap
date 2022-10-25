@@ -1,87 +1,131 @@
 /*Section del FORMULARIO */
 .section-signup {
-  width: 300px;
+  width: 400px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   padding: 0.5rem;
-  background-color: #fff;
   margin-bottom: 2rem;
 }
 
 /*FORMULARIO*/
-form-signup {
+form {
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-evenly;
   flex-grow: 1;
   padding-bottom: 1rem;
-  font-family: "Roboto", sans-serif;
+  /*font-family: "Roboto", sans-serif;*/
+}
+
+p {
+  color: var(--blue);
+  font-size: 14px;
+  display: inline-flex;
+  align-content: stretch;
+  align-items: stretch;
+  flex-direction: column
 }
 
 /*LINKS en FORMULARIO*/
-a,
-a:visited {
-  color: #8dd7cf;
-  font-size: large;
+a {
+  color: var(--blue);
+  font-weight: 350;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: space-evenly;
 }
+
+a:hover {
+  font-style: italic;
+}
+
+a:visited {
+  color: var(--blueHover);
+}
+
+
 
 input[type="text"],
 input[type="password"],
 input[type="email"],
 textarea {
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   padding: 1rem;
   border-radius: 5rem;
+  width: 100%;
 }
 
 label {
-  color: #4b5c6b;
-  margin-top: 0.5rem;
+  display: block;
+  color: var(--blue);
+  margin-left: 1.5rem;
+  font-weight: 350;
+  font-size: 13px;
+  
+  
 }
 
 /*INPUTS */
 .input-signup {
-  width: 15rem;
-  color: #207868;
-  border: 2px solid #207868;
+  width: 20rem;
+  color: var(--dark);
   margin: 0.3rem;
+  border: 1px solid rgba(216, 216, 216, 0.933);
+  transition: .3s border-color;
+}
+
+.input-signup:hover {
+  border: 1px solid #aaa;
+}
+
+.input-signup:required:focus:valid {
+  color: var(--darkGreen);
+  border: 1.5px solid var(--darkGreen);
+}
+
+.input-signup:required:focus:invalid {
+  color: var(--violet);
+  border: 1.5px solid var(--violet);
 }
 
 /* BOTON de REGISTRO */
 .btn-signup {
   align-self: flex-center;
-  font-size: 2rem;
-  padding: 0.5rem;
-  background-color: #8dd7cf;
-  color: #4b5c6b;
-  border-color: #4b5c6b;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: var(--lightGreen);
+  color: var(--dark);
+  border-color: var(--lightGreen);
   border: 3px solid;
-  border-radius: 2rem;
+  border-radius: 5rem;
   margin-top: 2.5rem;
+  padding: 1rem;
+  cursor: pointer;
 }
 
 /* BOTON de REGISTRO */
 .btn-signup:hover {
-  background-color: #bd8fd1;
-  border-color: #6752f0;
-  color: #6752f0;
+  background-color: var(--lightGreenHover);
+  border-color: var(--lightGreenHover);
 }
 
 /* BOTON de REGISTRO */
 .btn-signup:disabled {
-  background-color: #fffffe;
-  color: #6752f0;
-  border-color: #6752f0;
+  background-color: var(--lightGreen);
+  border-color: var(--lightGreen);
+  color: var(--dark);
+  cursor: not-allowed;
 }
 
 /*Instrucciones en Inputs del formulario */
 .instructions-signup {
   font-size: 0.85rem;
-  font-family: "Roboto", sans-serif;
   border-radius: 0.5rem;
   background: #4b5c6b;
   color: #fff;
@@ -90,7 +134,7 @@ label {
   right: center;
 }
 
-.instructions > svg {
+.instructions>svg {
   margin-right: 0.25rem;
 }
 
@@ -106,12 +150,12 @@ label {
 }
 
 .valid {
-  color: #8dd7cf;
+  color: var(--lightGreen);
   margin-left: 0.25rem;
 }
 
 .invalid {
-  color: #bd8fd1;
+  color: var(--violet);
   margin-left: 0.35rem;
 }
 
@@ -125,9 +169,11 @@ label {
 
 .line {
   display: inline-block;
+  
+  font-weight: 350;
 }
 
 .line-reset {
   display: inline-block;
-  color:#6752f0;
+  color: var(--blue);
 }

@@ -56,12 +56,13 @@ const Signin = () => {
                         </p>
 
                         {/*FORMULARIO DE ENTRADA-LOGIN */}
-                        <h2>Welcome Back</h2>
-                        <form onSubmit={handleSubmit}>
+                        <h2>¡Bienvenida/o de nuevo!</h2>
+                        <form className='form-signin' onSubmit={handleSubmit}>
                             <label
                                 htmlFor="username">
-                                Username:
+                                Nombre de usuario
                             </label>
+                            
                             <input
                                 className="input-signin"
                                 type="text"
@@ -73,10 +74,13 @@ const Signin = () => {
                                 /*  onChange={(e) => setSuccess(true)} */
                                 required
                             />
+                            <span>
+                                <br />
+                            </span>
 
                             <label
                                 htmlFor="password">
-                                Password:
+                                Contraseña
                             </label>
                             <input
                                 className="input-signin"
@@ -87,23 +91,26 @@ const Signin = () => {
                                 /*  onChange={(e) => setSuccess(true)} */
                                 required
                             />
-<p>
-                            I don't remember and i want to reset my password <br />
-                            <span className="line-reset">
+                            <span>
+                                <br />
+                            </span>
+                            <p className='line-reset'> 
+                            Has olvidado tu clave de acceso? 
+                            <span className='line'>
                                 {/* {<Signup />} */}
-                                <a href="#">Reset Password</a>
+                                <a href="#"> Restablecer contraseña</a>
                             </span>
                         </p>
                             <button
                                 className="btn-signin" >
-                                Login
+                                Inicia sesión
                             </button>
                         </form>
-                        <p>
-                            I haven't an account. I want create one <br />
+                        <p className='line-signup'>
+                            No tienes una cuenta? <br />
                             <span className="line">
                                 {/* {<Signup />} */}
-                                <a href="#">Sign Up</a>
+                                <a href="#"> Regístrate</a>
                             </span>
                         </p>
                     </section>
