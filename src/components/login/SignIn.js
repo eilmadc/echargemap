@@ -1,10 +1,17 @@
-import { useRef, useState, useEffect } from "react";
-import React from 'react';
-
 import '../../stylesheets/stylesSignIn.css';
+
+import { useRef, useState, useEffect, useContext } from "react";
+import React from 'react';
+import AuthContext from "../../context/AuthServer";
+
+/* AXIOS */
+import axios from "../../api/axios";
+const SIGNIN_URL = '/auth';
 
 
 const Signin = () => {
+
+    const { setAuth } = useContext(AuthContext);
 
     const userRef = useRef();
     const errorRef = useRef();
@@ -28,12 +35,45 @@ const Signin = () => {
         e.preventDefault();
 
         try {
+            //backend------
+            const response = await axios.post(
+                SIGNIN_URL,
+                JSON.stringify({ userName: userName, password: password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+
+            console.log(JSON.stringify(response?.data));
+
+            const accessToken = response?.data?.accessToken;
+
+            const roles = response?.data?.roles;
+
+            setAuth({userName, password, roles, accessToken});
+
+            //end backend
             setUserName('');
             setPassword('');
+
             /*  Si todo ha sido validado correctamente
                 validamos el formulario */
             setSuccess(true);
         } catch (e) {
+
+            /* CONTROL DE ERRORES DE RESPUESTA DEL SERVIDOR*/
+
+            if (!e?.response) {
+                setErrorMessage('Sin Respuesta del Servidor.');
+            } else if (e.response?.status === 400) {
+                setErrorMessage('400: No existen Usuario ni Password');
+            } else if (e.response?.status === 401) {
+                setErrorMessage('401: Sin Autorizacion');
+            } else {
+                setErrorMessage('El Login ha fallado');
+            }
+
             errorRef.current.focus();
         }
     }
@@ -62,7 +102,7 @@ const Signin = () => {
                                 htmlFor="username">
                                 Nombre de usuario
                             </label>
-                            
+
                             <input
                                 className="input-signin"
                                 type="text"
@@ -94,13 +134,13 @@ const Signin = () => {
                             <span>
                                 <br />
                             </span>
-                            <p className='line-reset'> 
-                            Has olvidado tu clave de acceso? 
-                            <span className='line'>
-                                {/* {<Signup />} */}
-                                <a href="#"> Restablecer contraseña</a>
-                            </span>
-                        </p>
+                            <p className='line-reset'>
+                                Has olvidado tu clave de acceso?
+                                <span className='line'>
+                                    {/* {<Signup />} */}
+                                    <a href="#"> Restablecer contraseña</a>
+                                </span>
+                            </p>
                             <button
                                 className="btn-signin" >
                                 Inicia sesión

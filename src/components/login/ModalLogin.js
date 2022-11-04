@@ -19,7 +19,7 @@ export const ModalLogin = ({ closeModal, mode }) => {
             <div className='modal-login-body'>
                 <div className='logo-login'>
                     <img src={LogoDarkGreen} className='logo' alt='logo' />
-                    <h3 classname='echargemap'>eChargeMap</h3>
+                    <h3 className='echargemap'>eChargeMap</h3>
                 </div>
                 <div className='tabs-login'>
                     <Tabs>
