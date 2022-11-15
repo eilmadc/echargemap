@@ -4,7 +4,7 @@ import React from 'react';
 import '../../stylesheets/stylesSignIn.css';
 
 
-const Signin = () => {
+const Signin = ({ id }) => {
 
     const userRef = useRef();
     const errorRef = useRef();
@@ -56,19 +56,18 @@ const Signin = () => {
                         </p>
 
                         {/*FORMULARIO DE ENTRADA-LOGIN */}
-                        <h2>¡Bienvenida/o de nuevo!</h2>
+                        <h2 id={id}>¡Bienvenida/o de nuevo!</h2>
                         <form className='form-signin' onSubmit={handleSubmit}>
-                            <label
+                            <label id={id}
                                 htmlFor="username">
                                 Nombre de usuario
                             </label>
-                            
-                            <input
-                                className="input-signin"
+
+                            <input id={id}
+                                className="input-signin username"
                                 type="text"
-                                id="username"
                                 ref={userRef}
-                                autocomplete="off"
+                                autoComplete="off"
                                 onChange={(e) => setUserName(e.target.value)}
                                 value={userName}
                                 /*  onChange={(e) => setSuccess(true)} */
@@ -78,14 +77,13 @@ const Signin = () => {
                                 <br />
                             </span>
 
-                            <label
+                            <label id={id}
                                 htmlFor="password">
                                 Contraseña
                             </label>
-                            <input
-                                className="input-signin"
+                            <input id={id}
+                                className="input-signin password"
                                 type="password"
-                                id="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 value={password}
                                 /*  onChange={(e) => setSuccess(true)} */
@@ -94,23 +92,23 @@ const Signin = () => {
                             <span>
                                 <br />
                             </span>
-                            <p className='line-reset'> 
-                            Has olvidado tu clave de acceso? 
-                            <span className='line'>
-                                {/* {<Signup />} */}
-                                <a href="#"> Restablecer contraseña</a>
-                            </span>
-                        </p>
+                            <p className='line-reset' id={id}>
+                                Has olvidado tu clave de acceso?
+                                <span className='line'>
+                                    {/* {<Signup />} */}
+                                    <a href="#" id={id}> Restablecer contraseña</a>
+                                </span>
+                            </p>
                             <button
                                 className="btn-signin" >
                                 Inicia sesión
                             </button>
                         </form>
-                        <p className='line-signup'>
+                        <p className='line-signup' id={id}>
                             No tienes una cuenta? <br />
                             <span className="line">
                                 {/* {<Signup />} */}
-                                <a href="#"> Regístrate</a>
+                                <a href="#" id={id}> Regístrate</a>
                             </span>
                         </p>
                     </section>

@@ -1,14 +1,18 @@
 :root { 
   --light: #F0F0F1;
+  --lightGray: #d8d8d9;
   --dark: #515162;
+  --grey: #4B5C6B;
+  --darkPageBackground: #202124;
+  --footerLightBackground: #f6f3ef;
+  --footerDarkBackground: #515F69;
   --darkGreen: #207868;
   --lightGreen: #8DD7CF;
   --lightGreenHover: #BBE7E2;
   --blue: #6558F5;
   --blueHover: #a39bf9;
-  --grey: #4B5C6B;
-  --yellow: #F7C325;
   --violet: #BD8FD1;
   --violetHover: #d7bce3;
+  --yellow: #F7C325;
 }
 

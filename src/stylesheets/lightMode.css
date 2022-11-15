@@ -1,24 +1,55 @@
 @import 'constants.css';
 
-#lightMode {
+#lightMode .nav {
     background-color: var(--light);
 }
-
-
 
 #lightMode .menu-icon {
     color: var(--grey);
 }
 
-#lightMode h1  {
+#lightMode h1 {
     color: var(--darkGreen);
 }
 
 .buttons #lightMode {
     background-color: var(--light);
     color: var(--blue);
-    font-size: 1.5rem;
+    font-size: 14px;
     font-family: inherit;
     font-weight: 600;
     border: 1px solid var(--blueHover);
+}
+
+.btn-logout #lightMode {
+    color: var(--blue);
+}
+
+/* MODAL LOGIN */
+
+#lightMode .modallogin {
+    background-color: var(--light);
+}
+
+.tabs-login#lightMode .tabs-login-nav {
+    border-top: 2px solid var(--lightGreen);
+}
+
+input#lightMode {
+    background-color: (--lightGray);
+}
+
+/*ABOUT*/
+
+#lightMode.about-container {
+    background-color: white;
+}
+
+#lightMode .what-text,
+#lightMode .who-text {
+    color: var(--grey);
+}
+
+.footer#lightMode {
+    background-color: var(--footerLightBackground);
 }

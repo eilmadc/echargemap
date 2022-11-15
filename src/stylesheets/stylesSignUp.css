@@ -31,7 +31,7 @@ p {
 }
 
 /*LINKS en FORMULARIO*/
-a {
+.line {
   color: var(--blue);
   font-weight: 350;
   text-decoration: none;
@@ -39,11 +39,11 @@ a {
   justify-content: space-evenly;
 }
 
-a:hover {
+.line:hover {
   font-style: italic;
 }
 
-a:visited {
+.line:visited {
   color: var(--blueHover);
 }
 
@@ -53,8 +53,8 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 textarea {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
   padding: 1rem;
   border-radius: 5rem;
   width: 100%;
@@ -97,7 +97,7 @@ label {
 /* BOTON de REGISTRO */
 .btn-signup {
   align-self: flex-center;
-  font-size: 1.5rem;
+  font-size: 14px;
   font-weight: 600;
   background-color: var(--lightGreen);
   color: var(--dark);
@@ -118,7 +118,7 @@ label {
 /* BOTON de REGISTRO */
 .btn-signup:disabled {
   background-color: var(--light);
-  border: 1.5px solid;
+  border: 3px solid;
   border-color: var(--violet);
   color: var(--dark);
   cursor: not-allowed;

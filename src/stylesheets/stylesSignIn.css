@@ -26,34 +26,33 @@ form {
 
 p {
   color: var(--dark);
-  font-size: 14px;
+  font-size: 12px;
   display: inline-flex;
   justify-content: space-evenly;
 }
 
 /*LINKS en FORMULARIO*/
-a {
+.line {
   color: var(--blue);
   text-decoration: none;
   display: inline-flex;
   justify-content: space-evenly;
 }
 
-a:hover {
+.line:hover {
   font-style: italic;
 }
 
-a:visited {
+.line:visited {
   color: var(--blueHover);
   font-size: large;
 }
 
 
 
-input[id='username'],
-input[id='password'] {
-  /*font-family: "Roboto", sans-serif;*/
-  font-size: 16px;
+input.username,
+input.password {
+  font-size: 12px;
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 5rem;
@@ -67,9 +66,7 @@ label {
   color: var(--dark);
   margin-left: 1.5rem;
   font-weight: 450;
-  font-size: 13px;
-  
-  
+  font-size: 12px;
 }
 
 /*INPUTS */
@@ -87,7 +84,7 @@ label {
   border: 1px solid #aaa;
 }
 
-.input-signin:required:focus:valid {
+/*.input-signin:required:focus:valid {
   color: var(--darkGreen);
   border: 1.5px solid var(--darkGreen);
 }
@@ -95,14 +92,14 @@ label {
 .input-signin:required:focus:invalid {
   color: var(--violet);
   border: 1.5px solid var(--violet);
-}
+}*/
 
 
 
 /* BOTON de REGISTRO */
 .btn-signin {
   align-self: flex-center;
-  font-size: 1.5rem;
+  font-size: 14px;
   font-weight: 600;
   background-color: var(--lightGreen);
   color: var(--dark);

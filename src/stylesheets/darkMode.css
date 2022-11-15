@@ -1,31 +1,154 @@
 @import 'constants.css';
 
-#darkMode {
+
+#darkMode .nav {
     background-color: var(--grey);
 }
 
-#darkMode .menu-icon  {
+
+#darkMode .menu-icon {
     color: var(--light);
 }
 
 #darkMode h1 {
     color: var(--lightGreen);
-} 
+}
+
+/*#darkMode h3 {
+    color: var(--light);
+}*/
 
 .buttons #darkMode {
     background-color: var(--grey);
     border: 1px solid var(--lightGreenHover);
     border-color: #dddddd;
     color: var(--light);
-    font-size: 1.5rem;
+    font-size: 14px;
     font-family: inherit;
-    font-weight: 600;
+    font-weight: 400;
 }
+
+.logout#darkMode {
+    color: var(--blueHover);
+}
+
+.logout:visited #darkMode {
+    color: var(--light);
+}
+
+#darkMode .app-menu {
+    background: var(--grey);
+}
+
+/* MENU */
 
 #darkMode Menu {
     background-color: var(--grey);
 }
 
-#darkMode .modal-login {
-    background-color: black;
+#darkMode>a {
+    color: var(--light);
+}
+
+#darkMode>a::after {
+    background: var(--light);
+}
+
+/* MODAL LOGIN-SIGNUP */
+
+.modal-login #darkMode {
+    background-color: var(--darkPageBackground);
+}
+
+.tabs-login#darkMode .tabs-login-nav {
+    background-color: var(--grey);
+    border-top: 2px solid var(--grey);
+}
+
+.tabs-login#darkMode .tabs-login-nav .react-tabs__tab[aria-selected="false"] {
+    color: var(--light);
+}
+
+.section-signin#darkMode {
+    color: var(--light);
+}
+
+h3#darkMode {
+    color: var(--lightGreen);
+}
+
+form.form-signin  > input#darkMode {
+    background-color: var(--lightGray);
+}
+
+form.form-signup > .validInvalidIcons > input#darkMode {
+    background-color: var(--lightGray);
+}
+
+h2#darkMode,
+label#darkMode,
+p#darkMode {
+    color: var(--lightGray);
+}
+
+a#darkMode {
+    color: var(--blueHover);
+}
+
+/* MODAL CONTACT */
+
+.modal-contact#darkMode {
+    background-color: var(--darkPageBackground);
+}
+
+.modal-contact-header#darkMode {
+    background-color: inherit;
+}
+
+section.contact-header#darkMode:before {
+    background-color: rgba(54,84,99,.7);
+}
+
+.contact-title-1#darkMode,
+.contact-title-2#darkMode { 
+    color: var(--light);
+}
+
+.contact-input#darkMode {
+    background-color: var(--lightGray);
+}
+
+/* ABOUT */
+
+#darkMode .what, 
+#darkMode .who {
+    color: var(--light);
+}
+
+#darkMode .about-container {
+    background-color: var(--darkPageBackground);
+}
+
+#darkMode .back {
+    color: var(--blueHover);
+}   
+
+#darkMode .copyright {
+    color: var(--light);
+}
+
+.profile-card#darkMode {
+    background-color: var(--grey);
+}
+
+.caption#darkMode > h2 {
+    color: var(--lightGreen);
+}
+
+.caption#darkMode > p {
+    color: var(--light);
+}
+
+.footer#darkMode {
+    background-color: var(--footerDarkBackground);
 }

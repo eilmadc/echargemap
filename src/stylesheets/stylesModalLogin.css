@@ -3,14 +3,14 @@
 .modal-login {
   display: flex-block;
   position: fixed;
-  top: 35%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 33vw;
   height: 65vh;
   min-width: 40rem;
   min-height: 25rem;
-  background-color: var(--light);
+  /*background-color: var(--light);*/
   border-radius: 15px 15px;
   z-index: 200;
 }
@@ -18,12 +18,12 @@
 /* Barra superior del modal*/
 .modal-login-header {
   height: 3.5rem;
-  border-radius: 5px;
   background-color: var(--light);
   position: relative;
   display: flex;
   justify-content: flex-end;
 }
+
 
 h2 {
   color: var(--dark);
@@ -40,13 +40,12 @@ h3 {
 .modal-login-header button {
   position: relative;
   border-radius: 50%;
-  padding: 0.5em;
   width: 35px;
   height: 35px;
   background-color: var(--violet);
   border: 2px solid white;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -94,14 +93,15 @@ h3 {
   width: 80%;
 }
 
+
+.logo-login {
+  display: flex;
+  padding-bottom: 2%;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo {
   height: 50px;
   width: 47px;
 }
-
-.logo-login {
-  display: flex;
-  justify-content: flex-start;
-  padding-bottom: 1.5em;
-}
-

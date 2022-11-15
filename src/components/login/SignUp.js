@@ -13,7 +13,7 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 const LOCATION_REGEX = /^[a-zA-Z]{5,30}$/;
 
 /* SIGNUP en ECHARGEMAP */
-const Signup = () => {
+const Signup = ({ id }) => {
     const userRef = useRef();
     const errorRef = useRef();
 
@@ -153,22 +153,21 @@ const Signup = () => {
                     </p>
 
                     {/*FORMULARIO DE REGISTRO */}
-                    <h2>¡Únete a nosotros!</h2>
+                    <h2 id={id}>¡Únete a nosotros!</h2>
 
-                    <form onSubmit={handleSubmit}>
+                    <form className='form-signup' onSubmit={handleSubmit}>
 
                         {/*  USERNAME INPUT */}
-                        <label
+                        <label id={id}
                             htmlFor="username">
                             Nombre de usuario
                         </label>
                         <div className='validInvalidIcons'>
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup username"
                                 type="text"
-                                id="username"
                                 ref={userRef}
-                                autocomplete="off"
+                                autoComplete="off"
                                 onChange={(e) => setUserName(e.target.value)}
                                 /*  onChange={(e) => setSuccess(true)} */
                                 required
@@ -206,17 +205,16 @@ const Signup = () => {
 
 
                         {/*  PASSWORD INPUT */}
-                        <label
+                        <label id={id}
                             htmlFor="password">
                             Contraseña
 
                         </label>
                         <div className='validInvalidIcons'>
 
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup password"
                                 type="password"
-                                id="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 aria-invalid={validPassword ? "false" : "true"}
@@ -256,16 +254,15 @@ const Signup = () => {
 
 
                         {/*  CONFIRMACION DE PASSWORD INPUT */}
-                        <label
+                        <label id={id}
                             htmlFor="confirm_password">
                             Confirmar contraseña
                         </label>
                         <div className='validInvalidIcons'>
 
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup confirm-password"
                                 type="password"
-                                id="confirm_password"
                                 onChange={(e) => setMatchPassword(e.target.value)}
                                 required
                                 aria-invalid={validMatchPassword ? "false" : "true"}
@@ -297,17 +294,16 @@ const Signup = () => {
 
 
                         {/*  CONFIRMACION DE NAME */}
-                        <label
+                        <label id={id}
                             htmlFor="name">
                             Nombre
                         </label>
 
                         <div className='validInvalidIcons'>
 
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup name"
                                 type="text"
-                                id="name"
                                 onChange={(e) => setName(e.target.value)}
                                 required
                                 aria-invalid={validName ? "false" : "true"}
@@ -340,17 +336,16 @@ const Signup = () => {
 
 
                         {/*  CONFIRMACION DE Apellido*/}
-                        <label
+                        <label id={id}
                             htmlFor="lastname">
                             Apellidos
                         </label>
 
                         <div className='validInvalidIcons'>
 
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup lastname"
                                 type="text"
-                                id="lastname"
                                 onChange={(e) => setLastName(e.target.value)}
                                 required
                                 aria-invalid={validLastName ? "false" : "true"}
@@ -382,17 +377,16 @@ const Signup = () => {
 
 
                         {/*  CONFIRMACION DE EMAIL */}
-                        <label
+                        <label id={id}
                             htmlFor="email">
                             Correo electrónico
                         </label>
 
                         <div className='validInvalidIcons'>
 
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup mail"
                                 type="email"
-                                id="mail"
                                 onChange={(e) => setMail(e.target.value)}
                                 required
                                 aria-invalid={validMail ? "false" : "true"}
@@ -425,16 +419,15 @@ const Signup = () => {
 
 
                         {/*  CONFIRMACION DE LOCATION */}
-                        <label
+                        <label id={id}
                             htmlFor="location">
                             Ubicación
                         </label>
                         <div className='validInvalidIcons'>
 
-                            <input
-                                className="input-signup"
+                            <input id={id}
+                                className="input-signup location"
                                 type="text"
-                                id="location"
                                 onChange={(e) => setLocation(e.target.value)}
                                 required
                                 aria-invalid={validLocation ? "false" : "true"}
@@ -473,11 +466,11 @@ const Signup = () => {
                             Crea tu cuenta
                         </button>
                     </form>
-                    <p>
+                    <p id={id}>
                         Ya tienes una cuenta?<br />
                         <span className="line">
                             { }
-                            <a href="#">Accede</a>
+                            <a href="#" id={id}>Accede</a>
                         </span>
                     </p>
 

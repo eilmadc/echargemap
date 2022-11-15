@@ -8,6 +8,11 @@ html {
   /* Pqe el padding no modifiqui la mida total de la caixa */
 
   font-family: 'Poppins', sans-serif;
+  background-color: inherit;
+}
+
+body {
+  font-family: 'Poppins', regular;
 }
 
 *,
@@ -25,22 +30,38 @@ h4 {
 
 h1 {
   font-size: 36px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+p {
+  font-family: 'Poppins', regular;
+}
+
+a {
+  font-family: 'Poppins', regular;
+  text-decoration: none;
+}
+
+button {
+  font-family: 'Poppins', regular;
 }
 
 html,
 .body {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   margin: 0;
 
 }
 
 header {
   width: 100%;
+  padding-right: 10em;
+  padding-left: 10em;
 }
 
-.App {
+/*.App {
   height: 100vh;
   padding-top: 1px;
   background-color: var(--grey);
@@ -48,18 +69,24 @@ header {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}*/
+
+.App {
+  overflow: hidden;
 }
 
 .nav {
   width: 100%;
-  height: 6vh;
+  height: 60px;
+  padding-right: 5%;
+  padding-left: 5%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .menu-icon {
-  margin-right: 30em;
+  margin-left: 10em;
 }
 
 .menu-icon:hover {
@@ -67,21 +94,34 @@ header {
 }
 
 .echargemap {
+  height: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 51em;
   user-select: none;
 }
 
-.logo {
+.echargemap .logo {
   height: 52px;
   width: 50px;
-  margin: 0 1em;
+  margin: 0 auto;
+}
+
+.echargemap:hover .logo {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.echargemap:hover .title {
+  opacity: 0.9;
+  cursor: pointer;
 }
 
 .buttons {
   display: flex;
   align-items: center;
+  padding-left: 10em;
 }
 
 .buttons-nav {
@@ -92,11 +132,25 @@ header {
   border-color: white;
   border-width: 0px;
   border-style: none;
+  position: relative;
+  opacity: 1;
 }
 
 .buttons-nav:hover {
   cursor: pointer;
   color: var(--violetHover);
+  opacity: 0.9;
+}
+
+.btn-logout {
+  color: var(--blue);
+  font-size: 12px;
+  opacity: 1;
+}
+
+.btn-logout:hover {
+  opacity: 0.8;
+  font-style: italic;
 }
 
 .mode {
