@@ -9,7 +9,7 @@ import { ReactDimmer } from 'react-dimmer';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
-import { ModalLogin } from './components/login/ModalLogin';
+import { ModalLogin } from '../src/components/login/ModalLogin';
 import { Menu } from "./components/Menu";
 import Map from './images/mapa.jpeg';
 import MapDark from './images/mapaDark.png';
