@@ -11,7 +11,7 @@ const SIGNIN_URL = '/auth';
 
 const Signin = ({ id }) => {
 
-    const { setAuth } = useContext(AuthContext);
+    const setAuth  = useContext(AuthContext);
 
     const userRef = useRef();
     const errorRef = useRef();
