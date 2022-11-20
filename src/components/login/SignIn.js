@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthServer";
 
 /* AXIOS */
 import axios from "../../api/axios";
-const SIGNIN_URL = '/auth';
+const SIGNIN_URL = '/recibir.php';
 
 
 const Signin = ({ id }) => {
@@ -47,11 +47,11 @@ const Signin = ({ id }) => {
 
             console.log(JSON.stringify(response?.data));
 
-            const accessToken = response?.data?.accessToken;
-
             const roles = response?.data?.roles;
 
-            setAuth({userName, password, roles, accessToken});
+            const method = 'submit';// TODO:Comentar con Alejandro el nombre del metodo.
+
+            setAuth({userName, password, roles, method});
 
             //end backend
             setUserName('');
@@ -65,6 +65,7 @@ const Signin = ({ id }) => {
             /* CONTROL DE ERRORES DE RESPUESTA DEL SERVIDOR*/
 
             if (!e?.response) {
+                console.log(e);
                 setErrorMessage('Sin Respuesta del Servidor.');
             } else if (e.response?.status === 400) {
                 setErrorMessage('400: No existen Usuario ni Password');
