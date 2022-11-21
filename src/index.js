@@ -5,9 +5,6 @@ import App from './App';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { About } from './components/About';
 
-/* Autentificacion al servidor */
-import { AuthServer } from './context/AuthServer';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

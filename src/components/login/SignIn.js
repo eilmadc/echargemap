@@ -1,17 +1,18 @@
 import '../../stylesheets/stylesSignIn.css';
 
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect } from "react";
 import React from 'react';
-import AuthContext from "../../context/AuthServer";
-
+import  AuthContext from "../../context/AuthProvider";
 /* AXIOS */
 import axios from "../../api/axios";
-const SIGNIN_URL = '/recibir.php';
+
+const SIGNIN_URL = '/back.php';
 
 
 const Signin = ({ id }) => {
 
-    const setAuth  = useContext(AuthContext);
+    const {setAuth} = React.useContext(AuthContext);
+    const method = 'submit';// TODO:Comentar con Alex el nombre del metodo.
 
     const userRef = useRef();
     const errorRef = useRef();
@@ -38,7 +39,7 @@ const Signin = ({ id }) => {
             //backend------
             const response = await axios.post(
                 SIGNIN_URL,
-                JSON.stringify({ userName: userName, password: password }),
+                JSON.stringify({ method: method,userName: userName,password: password}),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -48,10 +49,9 @@ const Signin = ({ id }) => {
             console.log(JSON.stringify(response?.data));
 
             const roles = response?.data?.roles;
+            const accessToken = response?.data?.accessToken;
 
-            const method = 'submit';// TODO:Comentar con Alejandro el nombre del metodo.
-
-            setAuth({userName, password, roles, method});
+            setAuth({ userName, password, roles, accessToken });
 
             //end backend
             setUserName('');
@@ -71,7 +71,9 @@ const Signin = ({ id }) => {
                 setErrorMessage('400: No existen Usuario ni Password');
             } else if (e.response?.status === 401) {
                 setErrorMessage('401: Sin Autorizacion');
-            } else {
+            } else if (e.response?.status === 500) {
+                setErrorMessage('500: Error de Servidor');
+            }  else {
                 setErrorMessage('El Login ha fallado');
             }
 
