@@ -2,8 +2,8 @@ import '../../stylesheets/stylesSignIn.css';
 
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
-import AuthContext from "../../context/AuthProvider";
-import {isModalLoginOpen,setModalLogin} from "../../App";
+//import AuthContext from "../../context/AuthProvider";
+import { ModalLogin } from "../login/ModalLogin";
 
 
 /* LIBERIA AXIOS */
@@ -25,8 +25,10 @@ const SIGNIN_URL = '/back.php';
 
 */
 const Signin = ({ id }) => {
-    
-    const { setAuth } = React.useContext(AuthContext);
+
+    const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
+
+    //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
 
     const userRef = useRef();
@@ -37,6 +39,12 @@ const Signin = ({ id }) => {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
+
+
+    //Almacenar en Local Storage si el usuario esta logado en el servidor.
+    useEffect(() => {
+        localStorage.setItem('userLogged', JSON.stringify(userLogged))}, 
+    [userLogged]);
 
     useEffect(() => {
         userRef.current.focus();
@@ -79,14 +87,16 @@ const Signin = ({ id }) => {
             if (response.data.loginuser) {
                 window.alert('Login correcto');
                 console.log(response.data);
+                setUserLogged(true);
 
-            /*  Si todo ha sido validado correctamente
-                validamos success en el html*/
+                /*  Si todo ha sido validado correctamente
+                    validamos success en el html*/
                 setSuccess(true);
             }
             else {
-               alert('El login del usuario y password ha fallado: '+response.data.userName);
-               console.log(response.data);
+                alert('El login del usuario y password ha fallado: ' + response.data.userName);
+                console.log(response.data);
+                setUserLogged(false);
             }
 
         } catch (e) {
@@ -114,8 +124,7 @@ const Signin = ({ id }) => {
         <>
             {
                 success ? (
-                    <section>
-                        
+                    <section >
                         <br></br><br></br>
                         <h2>Login correcto</h2>
                         <br></br><br></br><br></br><br></br><br></br><br></br>
@@ -145,7 +154,6 @@ const Signin = ({ id }) => {
                                 autoComplete="off"
                                 onChange={(e) => setUserName(e.target.value)}
                                 value={userName}
-                                /*  onChange={(e) => setSuccess(true)} */
                                 required
                             />
                             <span>
@@ -161,7 +169,6 @@ const Signin = ({ id }) => {
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 value={password}
-                                /*  onChange={(e) => setSuccess(true)} */
                                 required
                             />
                             <span>
@@ -172,6 +179,7 @@ const Signin = ({ id }) => {
                                 <span className='line'>
                                     {/* {<Signup />} */}
                                     <a href="#" id={id}> Restablecer contraseña</a>
+                                    {/* <NavLink to="#" id={id}> Restablecer contraseña</Navlink> */}
                                 </span>
                             </p>
                             <button
