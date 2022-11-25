@@ -11,6 +11,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
 import { ModalLogin } from '../src/components/login/ModalLogin';
+import { ModalLogout } from '../src/components/login/ModalLogout';
 import { Menu } from "./components/Menu";
 import Map from './images/mapa.jpeg';
 import MapDark from './images/mapaDark.png';
@@ -47,14 +48,15 @@ function App() {
     document.body.className = mode;
   }, [mode]);
 
-  //Almacenar en Local Storage si el usuario esta logado en el servidor.
+/*   //Almacenar en Local Storage si el usuario esta logado en el servidor.
   useEffect(() => {
     localStorage.setItem('userLogged', JSON.stringify(userLogged))
   },
     [setUserLogged]);
-
+ */
   const [isModalOpen, setModal] = useState(false);
   const [isModalLoginOpen, setModalLogin] = useState(false);
+  const [isModalLogoutOpen, setModalLogout] = useState(false);
   const [isModalContactOpen, setModalContact] = useState(false);
   const [isModalSettingsOpen, setModalSettings] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
@@ -67,6 +69,10 @@ function App() {
 
   const handleClickLogin = () => {
     setModalLogin((prevState) => !prevState);
+  };
+
+  const handleClickLogout = () =>{
+    setModalLogout((prevState) => !prevState);
   };
 
   const handleMenu = () => {
@@ -147,14 +153,14 @@ function App() {
               activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)" />
           </div>
           <div className='logout'>
-            <a href="#" className='btn-logout' id={mode}>Cerrar Sesión</a>
+            <button className='btn-logout buttons-nav' id={mode} onClick={handleClickLogout} hidden={userLogged ? false : true}>Cerrar Sesión</button>
           </div>
         </div>
 
         {isModalOpen ? <Modal closeModal={setModal} /> : null}
 
         {isModalLoginOpen ? <ModalLogin id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogin} /> : null}
-
+        {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
 
         <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} />
 

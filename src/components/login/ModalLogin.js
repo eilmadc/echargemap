@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import Signup from './SignUp';
 import Signin from './SignIn';
@@ -10,10 +9,8 @@ import LogoLightGreen from '../../images/logo_lightGreen.png';
 import { AuthProvider } from '../../context/AuthProvider';
 
 
-//const logged = false;
 export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
-    
-    //const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
+
     console.log(userLogged);
     
     return (

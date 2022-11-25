@@ -3,7 +3,7 @@ import '../../stylesheets/stylesSignIn.css';
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
 //import AuthContext from "../../context/AuthProvider";
-import { ModalLogin } from "../login/ModalLogin";
+//import { ModalLogin } from "../login/ModalLogin";
 
 
 /* LIBERIA AXIOS */
