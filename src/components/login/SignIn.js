@@ -2,17 +2,34 @@ import '../../stylesheets/stylesSignIn.css';
 
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
-import  AuthContext from "../../context/AuthProvider";
-/* AXIOS */
+//import AuthContext from "../../context/AuthProvider";
+import { ModalLogin } from "../login/ModalLogin";
+
+
+/* LIBERIA AXIOS */
 import axios from "../../api/axios";
 
 const SIGNIN_URL = '/back.php';
 
+/*  Metodo: Signin - Utilizado para que el usuario sea validado en la base de datos sql del servidor.
+    
+    Viene de ModalLogin: que es el modal abierto con el que cargo los componentes según corresponda.
 
+    Variables:
+        SIGNIN_URL: url del servidor que se añade a la url de base (la url del servidor) que esta en el fichero api/axios.js
+        method:     Metodo al que hace referencia en el servidor, para realizar el login.
+        userName:   Hace referencia al usuario introducido por el usuario
+        password:   Contraseña introducida por el usuario
+
+        response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
+
+*/
 const Signin = ({ id }) => {
 
-    const {setAuth} = React.useContext(AuthContext);
-    const method = 'submit';// TODO:Comentar con Alex el nombre del metodo.
+    const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
+
+    //const { setAuth } = React.useContext(AuthContext);
+    const method = 'loginuser';
 
     const userRef = useRef();
     const errorRef = useRef();
@@ -22,6 +39,12 @@ const Signin = ({ id }) => {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
+
+
+    //Almacenar en Local Storage si el usuario esta logado en el servidor.
+    useEffect(() => {
+        localStorage.setItem('userLogged', JSON.stringify(userLogged))}, 
+    [userLogged]);
 
     useEffect(() => {
         userRef.current.focus();
@@ -36,30 +59,46 @@ const Signin = ({ id }) => {
         e.preventDefault();
 
         try {
-            //backend------
+            //BACKEND----->
             const response = await axios.post(
                 SIGNIN_URL,
-                JSON.stringify({ method: method,userName: userName,password: password}),
+                JSON.stringify({ method: method, userName: userName, password: password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
 
-            console.log(JSON.stringify(response?.data));
+            //const roles = response?.data?.roles;
 
-            const roles = response?.data?.roles;
-            const accessToken = response?.data?.accessToken;
+            //TODO: Ver si utilizaremos el token para mantener la sesion, en vez de enviar userName y password en cada transaccion
+            //const accessToken = response?.data?.accessToken;
+            //setAuth({ userName, password, roles, accessToken });
+            //setAuth({ userName, password });
 
-            setAuth({ userName, password, roles, accessToken });
+            //<----- end backend
 
-            //end backend
-            setUserName('');
-            setPassword('');
+            //setUserName('');
+            //setPassword('');
 
-            /*  Si todo ha sido validado correctamente
-                validamos el formulario */
-            setSuccess(true);
+
+
+            /*Validamos la respuesta del servidor: con el mensaje de response.data*/
+            if (response.data.loginuser) {
+                window.alert('Login correcto');
+                console.log(response.data);
+                setUserLogged(true);
+
+                /*  Si todo ha sido validado correctamente
+                    validamos success en el html*/
+                setSuccess(true);
+            }
+            else {
+                alert('El login del usuario y password ha fallado: ' + response.data.userName);
+                console.log(response.data);
+                setUserLogged(false);
+            }
+
         } catch (e) {
 
             /* CONTROL DE ERRORES DE RESPUESTA DEL SERVIDOR*/
@@ -73,7 +112,7 @@ const Signin = ({ id }) => {
                 setErrorMessage('401: Sin Autorizacion');
             } else if (e.response?.status === 500) {
                 setErrorMessage('500: Error de Servidor');
-            }  else {
+            } else {
                 setErrorMessage('El Login ha fallado');
             }
 
@@ -85,8 +124,10 @@ const Signin = ({ id }) => {
         <>
             {
                 success ? (
-                    <section>
-                        <h1>Sign In</h1>
+                    <section >
+                        <br></br><br></br>
+                        <h2>Login correcto</h2>
+                        <br></br><br></br><br></br><br></br><br></br><br></br>
                     </section>
                 ) : (
                     <section section className="section-signin">
@@ -113,7 +154,6 @@ const Signin = ({ id }) => {
                                 autoComplete="off"
                                 onChange={(e) => setUserName(e.target.value)}
                                 value={userName}
-                                /*  onChange={(e) => setSuccess(true)} */
                                 required
                             />
                             <span>
@@ -129,7 +169,6 @@ const Signin = ({ id }) => {
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 value={password}
-                                /*  onChange={(e) => setSuccess(true)} */
                                 required
                             />
                             <span>
@@ -140,6 +179,7 @@ const Signin = ({ id }) => {
                                 <span className='line'>
                                     {/* {<Signup />} */}
                                     <a href="#" id={id}> Restablecer contraseña</a>
+                                    {/* <NavLink to="#" id={id}> Restablecer contraseña</Navlink> */}
                                 </span>
                             </p>
                             <button

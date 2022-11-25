@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { useState } from 'react';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import Signup from './SignUp';
 import Signin from './SignIn';
@@ -9,7 +9,13 @@ import LogoLightGreen from '../../images/logo_lightGreen.png';
 
 import { AuthProvider } from '../../context/AuthProvider';
 
+
+//const logged = false;
 export const ModalLogin = ({ closeModal, id }) => {
+    
+    const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
+    console.log(userLogged);
+    
     return (
         <div className='modal-login' id={id}>
             <div className='modal-login-header' id={id}>
@@ -25,8 +31,8 @@ export const ModalLogin = ({ closeModal, id }) => {
                 <div className='tabs-login' id={id}>
                     <Tabs>
                         <TabList className="tabs-login-nav">
-                            <Tab>Entrar</Tab>
-                            <Tab>Registro</Tab>
+                            <Tab tabName="signin" disabled={false} >Entrar</Tab>
+                            <Tab tabName="signup" disabled={userLogged ? true : false} >Registro</Tab>
                         </TabList>
                         <TabPanel className="tabs-login-body">
                             <AuthProvider>
@@ -38,7 +44,7 @@ export const ModalLogin = ({ closeModal, id }) => {
                         </TabPanel>
                     </Tabs>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

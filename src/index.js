@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { About } from './components/About';
+import Signin from './components/login/SignIn';
+import Signup from './components/login/SignUp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,6 +18,9 @@ root.render(
       <Routes>
         <Route index element={<App />} />
         <Route path="about" element={<About />} />
+{/*         <Route path="/signin" component={<Signin />} />
+        <Route path="/signup" component={<Signup />} /> */}
+        {/* <Route path="/resetpassword" element={<ResetPassword />} /> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
