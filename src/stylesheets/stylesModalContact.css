@@ -61,7 +61,6 @@
     top: 0;
     left: 0;
     background-color: rgba(173, 175, 174, 0.822);
-    /*background-color: rgba(54,84,99,.7);*/
   }
 
   .contact-title-1 {
@@ -117,7 +116,6 @@
     border-style: solid;
     border: 1px solid rgba(216, 216, 216, 0.933);
     transition: .3s border-color;
-    /*background-color: inherit;*/
   }
 
   .contact-input[placeholder] {

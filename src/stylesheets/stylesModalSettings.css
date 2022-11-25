@@ -1,0 +1,197 @@
+@import 'constants.css';
+
+.modal-settings {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 80%;
+    min-width: 20rem;
+    min-height: 25rem;
+    background-color: var(--light);
+    border-radius: 10px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-settings-header {
+    height: 3.5rem;
+    border-radius: 5px;
+    background-color: var(--light);
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-settings-header button {
+    position: relative;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-color: var(--violet);
+    border: 2px solid white;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.modal-settings-container {
+    height: 80%;
+    display: flex;
+}
+
+section.subpages-container {
+    width: 30%;
+    display: flex;
+}
+
+.subpages-list, 
+.setting-header {
+    display: block;
+}
+
+.subpages-list {
+    margin: 10% 0 0 15%;
+}
+
+.subpages-list > .list-option {
+  padding: 15px 0;
+  margin: 20px 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+section.settings-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-header {
+    height: fit-content;
+    width: 100%;
+    /*margin: 4.3% 0 0 0;*/
+    display: block;
+}
+
+h2.settingtitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 auto;
+    padding: 0 0 6.5% 2%;
+}
+
+h3.desc {
+    font-size: 16px;
+    font-weight: normal;
+    padding-left: 2%;
+}
+
+.setting-body {
+    width: 100%;
+    display: flex;
+}
+
+.setting-nombre-apellidos {
+    width: 100%;
+    padding: 5% 0 5% 0;
+}
+
+form.nombre-apellidos {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%
+}
+
+.nombre-usuario,
+.ubicacion,
+.correo {
+    width: 100%;
+}
+
+
+.nombre-input,
+.apellidos-input,
+.usuario-input,
+.ubicacion-input,
+.correo-input {
+    outline: none;
+    border-style: solid;
+    border: 1px solid rgba(216, 216, 216, 0.933);
+    transition: .3s border-color;
+}
+
+.nombre-input:focus,
+.apellidos-input:focus,
+.usuario-input:focus,
+.ubicacion-input:focus,
+.correo-input:focus {
+    border: 1.5px solid var(--dark);
+}
+
+.focus-input:hover {
+    border: 1px solid var(--dark);
+}
+
+.wrap-nombre,
+.wrap-apellidos {
+    width: 49%;
+}
+
+.nombre-apellidos,
+.nombre-usuario,
+.ubicacion,
+.correo {
+    padding-top: 5%;
+}
+
+.save-button-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
+
+button.save-button {
+    padding: 0 20px;
+    min-width: 160px;
+    height: 40px;
+    background-color: var(--lightGreen);
+    border-radius: 25px;
+    border: none;
+    font-family: 'Poppins', regular;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+    transition: all .4s;
+}
+
+button.save-button:hover {
+    cursor: pointer;
+    background-color: var(--lightGreenHover);
+}
+
+button.discard-button {
+    padding: 0 20px;
+    min-width: 160px;
+    height: 40px;
+    background-color: var(--violet);
+    border-radius: 25px;
+    border: none;
+    font-family: 'Poppins', regular;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.2;
+    transition: all .4s;
+}
+
+button.discard-button:hover {
+    cursor: pointer;
+    background-color: var(--violetHover);
+}

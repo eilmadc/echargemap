@@ -5,6 +5,7 @@ import './stylesheets/darkMode.css';
 import './stylesheets/lightMode.css';
 import './stylesheets/About.css';
 import './stylesheets/stylesModalContact.css';
+import './stylesheets/stylesModalSettings.css';
 import { ReactDimmer } from 'react-dimmer';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ import LogoDarkGreen from './images/logo_darkGreen.png';
 import LogoLightGreen from './images/logo_lightGreen.png';
 import { About } from './components/About';
 import { ModalContact } from './components/ModalContact';
+import { ModalSettings } from './components/ModalSettings';
 
 /*react-router-dom: Ruteo de Paths*/
 /* import {
@@ -47,6 +49,7 @@ function App() {
   const [isModalOpen, setModal] = useState(false);
   const [isModalLoginOpen, setModalLogin] = useState(false);
   const [isModalContactOpen, setModalContact] = useState(false);
+  const [isModalSettingsOpen, setModalSettings] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
 
   const [paginaActiva, setPaginaActiva] = useState('paginaInicio');
@@ -66,6 +69,10 @@ function App() {
   const handleClickContact = () => {
     setModalContact((prevState) => !prevState);
   };
+
+  const handleClickSettings = () => {
+    setModalSettings((prevState) => !prevState);
+  }
 
   return (
     <>
@@ -140,10 +147,11 @@ function App() {
         {isModalLoginOpen ? <ModalLogin id={mode} closeModal={setModalLogin} /> : null}
 
 
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} />
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings}/>
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
-        {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} menu={setMenu} /> : null}
+        {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
+        {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
 
         {paginaActiva === "Nosotros" ? <About id={mode} activa={setPaginaActiva} menu={setMenu} /> : null}
 
