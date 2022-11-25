@@ -11,9 +11,9 @@ import { AuthProvider } from '../../context/AuthProvider';
 
 
 //const logged = false;
-export const ModalLogin = ({ closeModal, id }) => {
+export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
     
-    const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
+    //const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
     console.log(userLogged);
     
     return (
@@ -31,16 +31,16 @@ export const ModalLogin = ({ closeModal, id }) => {
                 <div className='tabs-login' id={id}>
                     <Tabs>
                         <TabList className="tabs-login-nav">
-                            <Tab tabName="signin" disabled={false} >Entrar</Tab>
-                            <Tab tabName="signup" disabled={userLogged ? true : false} >Registro</Tab>
+                            <Tab tabname="signin" disabled={false} >Entrar</Tab>
+                            <Tab tabname="signup" disabled={userLogged ? true : false} >Registro</Tab>
                         </TabList>
                         <TabPanel className="tabs-login-body">
                             <AuthProvider>
-                                <Signin id={id} />
+                                <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
                             </AuthProvider>
                         </TabPanel>
                         <TabPanel className="tabs-login-body">
-                            <Signup id={id} />
+                            <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged}/>
                         </TabPanel>
                     </Tabs>
                 </div>

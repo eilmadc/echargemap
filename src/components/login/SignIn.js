@@ -10,6 +10,7 @@ import { ModalLogin } from "../login/ModalLogin";
 import axios from "../../api/axios";
 
 const SIGNIN_URL = '/back.php';
+//const SIGNIN_URL = '/backenduser.php';
 
 /*  Metodo: Signin - Utilizado para que el usuario sea validado en la base de datos sql del servidor.
     
@@ -24,9 +25,9 @@ const SIGNIN_URL = '/back.php';
         response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
 
 */
-const Signin = ({ id }) => {
+const Signin = ({ id, userLogged, setUserLogged }) => {
 
-    const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
+    //const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
 
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
@@ -40,12 +41,12 @@ const Signin = ({ id }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
 
-
-    //Almacenar en Local Storage si el usuario esta logado en el servidor.
-    useEffect(() => {
-        localStorage.setItem('userLogged', JSON.stringify(userLogged))}, 
+   //Almacenar en Local Storage si el usuario esta logado en el servidor.
+  useEffect(() => {
+    localStorage.setItem('userLogged', JSON.stringify(userLogged))
+  },
     [userLogged]);
-
+ 
     useEffect(() => {
         userRef.current.focus();
     }, [])
@@ -70,7 +71,6 @@ const Signin = ({ id }) => {
             );
 
             //const roles = response?.data?.roles;
-
             //TODO: Ver si utilizaremos el token para mantener la sesion, en vez de enviar userName y password en cada transaccion
             //const accessToken = response?.data?.accessToken;
             //setAuth({ userName, password, roles, accessToken });
@@ -85,7 +85,7 @@ const Signin = ({ id }) => {
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {
-                window.alert('Login correcto');
+                //window.alert('Login correcto');
                 console.log(response.data);
                 setUserLogged(true);
 
@@ -96,7 +96,6 @@ const Signin = ({ id }) => {
             else {
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
-                setUserLogged(false);
             }
 
         } catch (e) {
@@ -124,13 +123,13 @@ const Signin = ({ id }) => {
         <>
             {
                 success ? (
-                    <section >
+                    <section>
                         <br></br><br></br>
                         <h2>Login correcto</h2>
                         <br></br><br></br><br></br><br></br><br></br><br></br>
                     </section>
                 ) : (
-                    <section section className="section-signin">
+                    <section className="section-signin">
                         {/* Usamos aria-live assertive para mostrar el mensaje de error  */}
                         <p
                             ref={errorRef}

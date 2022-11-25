@@ -32,6 +32,7 @@ import { ModalSettings } from './components/ModalSettings';
 function App() {
 
   const [mode, setMode] = useState(localStorage.getItem('mode') || 'lightMode');
+  const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
 
   const toggleButton = () => {
     if (mode === 'lightMode') {
@@ -45,6 +46,12 @@ function App() {
     localStorage.setItem('mode', mode);
     document.body.className = mode;
   }, [mode]);
+
+  //Almacenar en Local Storage si el usuario esta logado en el servidor.
+  useEffect(() => {
+    localStorage.setItem('userLogged', JSON.stringify(userLogged))
+  },
+    [setUserLogged]);
 
   const [isModalOpen, setModal] = useState(false);
   const [isModalLoginOpen, setModalLogin] = useState(false);
@@ -74,6 +81,7 @@ function App() {
     setModalSettings((prevState) => !prevState);
   }
 
+
   return (
     <>
       <div className='App' id={mode}>
@@ -85,8 +93,8 @@ function App() {
             <h1 id={mode} onClick={() => setPaginaActiva('paginaInicio')} className='title'>eChargeMap</h1>
           </div>
           <div className='buttons'>
-            <button className='login buttons-nav' id={mode} onClick={handleClickLogin}>Entrar </button>
-            <button className='language buttons-nav' id={mode} onClick={handleClick}>Idioma </button>
+            <button className='login buttons-nav' id={mode} onClick={handleClickLogin} hidden={userLogged ? true : false}>Entrar </button>
+            {/* <button className='language buttons-nav' id={mode} onClick={handleClick}>Idioma </button> */}
             <button className='share buttons-nav' id={mode} onClick={handleClick}>Compartir </button>
             <ReactSwitch id='switch'
               onChange={toggleButton}
@@ -144,10 +152,11 @@ function App() {
         </div>
 
         {isModalOpen ? <Modal closeModal={setModal} /> : null}
-        {isModalLoginOpen ? <ModalLogin id={mode} closeModal={setModalLogin} /> : null}
+
+        {isModalLoginOpen ? <ModalLogin id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogin} /> : null}
 
 
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings}/>
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} />
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
