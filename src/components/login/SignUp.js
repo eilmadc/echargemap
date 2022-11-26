@@ -9,7 +9,6 @@ import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
-import { response } from "express";
 
 const SIGNUP_URL = '/back.php';
 
@@ -198,14 +197,14 @@ const Signup = ({ id, userLogged, setUserLogged }) => {
             {success ? (
 
                 <section className="section-signup">
-                        <br></br><br></br>
-                        <h2>Bienvenid@</h2>
-                        <h2>Te has registrado correctamente {response.data.name}</h2>
-                        <h2>Esperamos que disfrutes de la experiencia,</h2>
-                        <h2>tanto como nosotros disfrutamos </h2>
-                        <h2>de poder ofrecerte este servicio.</h2>
-                        <h2>Gracias por unirte!</h2>
-                        <br></br><br></br><br></br><br></br><br></br><br></br>
+                    <br></br><br></br>
+                    <h2>Bienvenid@</h2>
+                    <h2>Te has registrado correctamente {stg.get('username')}</h2>
+                    <h2>Esperamos que disfrutes de la experiencia,</h2>
+                    <h2>tanto como nosotros disfrutamos </h2>
+                    <h2>de poder ofrecerte este servicio.</h2>
+                    <h2>Gracias por unirte!</h2>
+                    <br></br><br></br><br></br><br></br><br></br><br></br>
                 </section>
             ) : (
                 <section className="section-signup">
