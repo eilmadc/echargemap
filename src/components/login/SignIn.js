@@ -71,9 +71,14 @@ const Signin = ({ id, userLogged, setUserLogged }) => {
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {
-                //window.alert('Login correcto');
+                
+                /*mostrar datos en consola*/
                 console.log(response.data);
+                
+                /*poner userLogged en true*/
                 setUserLogged(true);
+
+                /*Almacenamiento local*/
                 stg.set('userLogged', true);
                 stg.set('username',response.data.userName);
                 stg.set('password',response.data.password);
