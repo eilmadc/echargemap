@@ -4,8 +4,6 @@ import './index.css';
 import App from './App';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { About } from './components/About';
-import Signin from './components/login/SignIn';
-import Signup from './components/login/SignUp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

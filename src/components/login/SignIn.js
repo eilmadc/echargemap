@@ -2,6 +2,7 @@ import '../../stylesheets/stylesSignIn.css';
 
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
+import stg from '../../utils/stg';
 //import AuthContext from "../../context/AuthProvider";
 //import { ModalLogin } from "../login/ModalLogin";
 
@@ -27,25 +28,15 @@ const SIGNIN_URL = '/back.php';
 */
 const Signin = ({ id, userLogged, setUserLogged }) => {
 
-    //const [userLogged, setUserLogged] = useState(localStorage.getItem('userLogged') || false);
-
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
-
     const userRef = useRef();
     const errorRef = useRef();
-
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
-
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
 
-   //Almacenar en Local Storage si el usuario esta logado en el servidor.
-  useEffect(() => {
-    localStorage.setItem('userLogged', JSON.stringify(userLogged))
-  },
-    [userLogged]);
  
     useEffect(() => {
         userRef.current.focus();
@@ -58,7 +49,6 @@ const Signin = ({ id, userLogged, setUserLogged }) => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-
         try {
             //BACKEND----->
             const response = await axios.post(
@@ -75,20 +65,19 @@ const Signin = ({ id, userLogged, setUserLogged }) => {
             //const accessToken = response?.data?.accessToken;
             //setAuth({ userName, password, roles, accessToken });
             //setAuth({ userName, password });
-
             //<----- end backend
-
             //setUserName('');
             //setPassword('');
-
-
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {
                 //window.alert('Login correcto');
                 console.log(response.data);
                 setUserLogged(true);
-
+                stg.set('userLogged', true);
+                stg.set('username',response.data.userName);
+                stg.set('password',response.data.password);
+                
                 /*  Si todo ha sido validado correctamente
                     validamos success en el html*/
                 setSuccess(true);
@@ -96,6 +85,7 @@ const Signin = ({ id, userLogged, setUserLogged }) => {
             else {
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
+                stg.set('userLogged', false);
             }
 
         } catch (e) {
