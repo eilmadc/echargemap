@@ -1,16 +1,17 @@
-import '../../stylesheets/stylesSignIn.css';
+
 
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
 import stg from '../../utils/stg';
+import '../../stylesheets/stylesSignIn.css';
+import md5 from 'md5';
 //import AuthContext from "../../context/AuthProvider";
 //import { ModalLogin } from "../login/ModalLogin";
-
 
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
 
-const SIGNIN_URL = '/back.php';
+const SIGNIN_URL = '/backenduser.php';
 //const SIGNIN_URL = '/backenduser.php';
 
 /*  Metodo: Signin - Utilizado para que el usuario sea validado en la base de datos sql del servidor.
@@ -53,7 +54,7 @@ const Signin = ({ id, userLogged, setUserLogged, link }) => {
             //BACKEND----->
             const response = await axios.post(
                 SIGNIN_URL,
-                JSON.stringify({ method: method, userName: userName, password: password }),
+                JSON.stringify({ method: method, userName: userName, password: md5(password) }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -88,6 +89,10 @@ const Signin = ({ id, userLogged, setUserLogged, link }) => {
                 setSuccess(true);
             }
             else {
+                console.log(password);
+                console.log(md5(password));
+                console.log(md5(md5(password)));
+                console.log(md5(md5(md5(password))));
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
                 stg.set('userLogged', false);

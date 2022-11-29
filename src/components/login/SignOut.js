@@ -9,13 +9,6 @@ const Signout = ({ closeModal, id, userLogged, setUserLogged }) => {
 
     const [success, setSuccess] = useState(false);
 
-    /*     //Limpiar Local Storage si el usuario esta logado en el servidor.
-        useEffect(() => {
-            localStorage.clear()
-        }
-        ,
-            []); */
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUserLogged(false);

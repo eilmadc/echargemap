@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
 import { ModalLogin } from '../src/components/login/ModalLogin';
 import { ModalLogout } from '../src/components/login/ModalLogout';
+import { ModalResetPass } from '../src/components/login/ModalResetPass';
 import { Menu } from "./components/Menu";
 import Map from './images/mapa.jpeg';
 import MapDark from './images/mapaDark.png';
@@ -54,6 +55,7 @@ function App() {
   const [isModalOpen, setModal] = useState(false);
   const [isModalLoginOpen, setModalLogin] = useState(false);
   const [isModalLogoutOpen, setModalLogout] = useState(false);
+  const [isModalResetPassOpen, setModalResetPass] = useState(false);
   const [isModalContactOpen, setModalContact] = useState(false);
   const [isModalSettingsOpen, setModalSettings] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
@@ -159,6 +161,8 @@ function App() {
         {isModalLoginOpen ? <ModalLogin id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogin}/> : null}
 
         {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
+
+        {isModalResetPassOpen ? <ModalResetPass id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalResetPass} /> : null}
 
         <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} />
 

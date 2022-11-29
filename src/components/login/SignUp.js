@@ -1,23 +1,24 @@
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
+import md5 from 'md5';
+/*Storage*/
 import stg from '../../utils/stg';
-
 import '../../stylesheets/stylesSignUp.css';
-
+/* ICONOS */
 import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 
 
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
 
-const SIGNUP_URL = '/back.php';
+const SIGNUP_URL = '/backenduser.php';
 
 /* REGEX */
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,30}$/;
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{4,19}$/;
 const PWD_REGEX = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#$%%]).{8,12}$/;
 const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
-const LOCATION_REGEX = /^[a-zA-Z]{5,30}$/;
+const LOCATION_REGEX = /^[a-zA-Z]{3,30}$/;
 
 /* SIGNUP en ECHARGEMAP */
 const Signup = ({ id, userLogged, setUserLogged }) => {
@@ -133,16 +134,19 @@ const Signup = ({ id, userLogged, setUserLogged }) => {
                 setErrorMessage("Invalid entry");
                 return;
             }
-
+            console.log(password);
+            console.log(md5(password));
             //BACKEND----->
             const response = await axios.post(
                 SIGNUP_URL,
-                JSON.stringify({ method: method, userName: userName, password: password, name: name, lastname: lastname, mail: mail, location: location }),
+                JSON.stringify({ method: method, userName: userName, password: md5(password), name: name, lastname: lastname, mail: mail, location: location }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
+            
+            console.log(response.data);
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.registeruser) {
@@ -155,7 +159,7 @@ const Signup = ({ id, userLogged, setUserLogged }) => {
                 /*Almacenamiento local*/
                 stg.set('userLogged', true);
                 stg.set('username', response.data.userName);
-                stg.set('password', response.data.password);
+                stg.set('password', (response.data.password));
                 stg.set('name', response.data.name);
                 stg.set('lastname', response.data.name);
                 stg.set('email', response.data.email);

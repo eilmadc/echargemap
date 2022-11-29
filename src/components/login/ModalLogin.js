@@ -7,7 +7,6 @@ import LogoDarkGreen from '../../images/logo_darkGreen.png';
 import LogoLightGreen from '../../images/logo_lightGreen.png';
 
 import { AuthProvider } from '../../context/AuthProvider';
-import { useState } from 'react';
 
 
 export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
