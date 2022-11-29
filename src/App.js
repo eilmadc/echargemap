@@ -94,15 +94,9 @@ function App() {
             <h1 id={mode} onClick={() => setPaginaActiva('paginaInicio')} className='title'>eChargeMap</h1>
           </div>
           <div className='buttons'>
-            <div className='logout nav'>
-
-              <icon hidden={userLogged ? false : true}><BsPersonCircle id={mode} size={25} /></icon>
-              <h3 className='buttons-nav' onClick={handleClickSettings} hidden={userLogged ? false : true}> {stg.get('username')}</h3>
-            </div>
             <button className='login buttons-nav' id={mode} onClick={handleClickLogin} hidden={userLogged ? true : false}>Entrar </button>
             {/* <button className='language buttons-nav' id={mode} onClick={handleClick}>Idioma </button> */}
             <button className='share buttons-nav' id={mode} onClick={handleClick}>Compartir </button>
-
           </div>
           <ReactSwitch id='switch'
             onChange={toggleButton}
@@ -153,9 +147,12 @@ function App() {
             width={60}
             boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)" />
-
-
+          <div className='logout-nav'>
+            <icon hidden={userLogged ? false : true}><BsPersonCircle id={mode} size={10} /></icon>
+            <h3 className='buttons-nav' onClick={handleClickSettings} hidden={userLogged ? false : true}> {stg.get('username')}</h3>
+          </div>
         </div>
+
 
         {isModalOpen ? <Modal closeModal={setModal} /> : null}
 

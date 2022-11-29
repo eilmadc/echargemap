@@ -45,22 +45,52 @@
 section.subpages-container {
     width: 30%;
     display: flex;
+
 }
 
-.subpages-list, 
+.subpages-list,
 .setting-header {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .subpages-list {
     margin: 10% 0 0 15%;
 }
 
-.subpages-list > .list-option {
-  padding: 15px 0;
-  margin: 20px 0;
-  font-size: 16px;
-  opacity: 0.9;
+.subpages-list > .list-option > a {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 5px;
+    padding: 15px 0;
+    margin: 20px 0;
+    font-size: 16px;
+    opacity: 0.9;
+    color: var(--blue);
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.list-option > a:hover {
+    opacity: 1;
+  }
+
+.list-option > a::after {
+    content: "";
+    position: relative;
+    left: 0;
+    width: 0;
+    right: 0;
+    height: 1px;
+    transition: all .45s;
+    background-color: var(--blue);
+}
+
+.list-option > a:hover::after {
+    width: 100%;
 }
 
 section.settings-container {
@@ -72,7 +102,7 @@ section.settings-container {
 .setting-header {
     height: fit-content;
     width: 100%;
-    /*margin: 4.3% 0 0 0;*/
+    /*padding: 0 2%;*/
     display: block;
 }
 
@@ -89,14 +119,54 @@ h3.desc {
     padding-left: 2%;
 }
 
+.introduce-nueva-contr {
+    font-size: 13px;
+    margin-bottom: -10px;
+}
+
 .setting-body {
     width: 100%;
     display: flex;
+    margin-left: 2%;
 }
 
-.setting-nombre-apellidos {
+.setting-manage-container {
+    width: 80%;
+}
+
+.setting-nombre-apellidos,
+.manage-options {
     width: 100%;
-    padding: 5% 0 5% 0;
+    padding: 20px 0 20px 0;
+    margin-left: -10px;
+}
+
+.manage-options {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5%;
+}
+
+.manage-options>a {
+    margin: 10px 0;
+    font-size: 13px;
+    color: var(--blue);
+}
+
+.manage-options>a:hover {
+    color: var(--blueHover);
+    font-style: italic;
+}
+
+
+.nueva-contr-container {
+    width: 70%;
+    padding-bottom: 30px;
+}
+
+.formulario-contr {
+    padding: 0 0 20px 0;
+    margin-left: -10px;
 }
 
 form.nombre-apellidos {
@@ -107,16 +177,25 @@ form.nombre-apellidos {
 
 .nombre-usuario,
 .ubicacion,
-.correo {
-    width: 100%;
+.correo,
+.antigua-contr,
+.nueva-contr,
+.repetir-contr {
+    min-width: 100%;
 }
 
+input.antigua-contr-input {
+    width: 120px;
+}
 
 .nombre-input,
 .apellidos-input,
 .usuario-input,
 .ubicacion-input,
-.correo-input {
+.correo-input,
+.antigua-contr-input,
+.nueva-contr-input,
+.repetir-contr-input {
     outline: none;
     border-style: solid;
     border: 1px solid rgba(216, 216, 216, 0.933);
@@ -127,7 +206,10 @@ form.nombre-apellidos {
 .apellidos-input:focus,
 .usuario-input:focus,
 .ubicacion-input:focus,
-.correo-input:focus {
+.correo-input:focus,
+.antigua-contr-input:focus,
+.nueva-contr-input:focus,
+.repetir-contr-input:focus {
     border: 1.5px solid var(--dark);
 }
 
@@ -143,8 +225,55 @@ form.nombre-apellidos {
 .nombre-apellidos,
 .nombre-usuario,
 .ubicacion,
-.correo {
+.correo,
+.antigua-contr,
+.nueva-contr,
+.repetir-contr {
     padding-top: 5%;
+}
+
+.desc-borrar-cuenta,
+.texto-borrar-cuenta {
+    font-size: 13px;
+    width: 70%;
+}
+
+.nombre-usuario-logado {
+    width: 70%;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.desc-borrar-cuenta {
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.texto-borrar-cuenta {
+    margin: 0 0 30px 0;
+    text-align: justify;
+}
+
+.setting-comentarios-container {
+    width: 70%;
+}
+
+.wrap-comentario {
+    outline: 1px solid var(--dark);
+    margin-top: 20px;
+}
+
+.titulo-comentario {
+    padding: 5px 5px 0 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.texto-comentario {
+    padding: 0 5px 5px 5px;
+    font-size: 11px;
 }
 
 .save-button-container {
@@ -154,7 +283,7 @@ form.nombre-apellidos {
     flex-direction: row-reverse;
     justify-content: space-between;
     padding-top: 8px;
-  }
+}
 
 button.save-button {
     padding: 0 20px;
@@ -194,4 +323,27 @@ button.discard-button {
 button.discard-button:hover {
     cursor: pointer;
     background-color: var(--violetHover);
+}
+
+button.discard-button:disabled {
+    background-color: var(--light);
+    border: 3px solid;
+    border-color: var(--violet);
+    color: var(--dark);
+    cursor: not-allowed;
+}
+
+button.save-button:disabled {
+    background-color: var(--light);
+    border: 3px solid;
+    border-color: var(--lightGreen);
+    color: var(--dark);
+    cursor: not-allowed;
+}
+
+.delete-acc-button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
 }

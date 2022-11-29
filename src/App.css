@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
 @import './stylesheets/constants.css';
 
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -61,51 +62,8 @@ header {
   padding-left: 10em;
 }
 
-/*.App {
-  height: 100vh;
-  padding-top: 1px;
-  background-color: var(--grey);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}*/
-
-.App {
-  overflow: hidden;
-}
-
-.nav {
-  width: 100%;
-  height: 60px;
-  padding-right: 5%;
-  padding-left: 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.menu-icon {
-  margin-left: 10em;
-}
-
 .menu-icon:hover {
   cursor: pointer;
-}
-
-.echargemap {
-  height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 51em;
-  user-select: none;
-}
-
-.echargemap .logo {
-  height: 52px;
-  width: 50px;
-  margin: 0 auto;
 }
 
 .echargemap:hover .logo {
@@ -118,41 +76,192 @@ header {
   cursor: pointer;
 }
 
-.buttons {
+@media only screen and (min-width : 480px) {}
+
+@media only screen and (min-width : 760px) {
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .nav {
+    min-width: 100%;
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .echargemap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .echargemap .logo {
+    height: 42px;
+    width: 40px;
+    margin: 0 auto;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .buttons-nav {
+    justify-content: space-between;
+    margin: 1em;
+    padding: 0.3em 1.5em;
+    border-radius: 30px;
+    opacity: 1;
+  }
+
+  .buttons-nav:hover {
+    cursor: pointer;
+    color: var(--violetHover);
+    opacity: 0.9;
+  }
+
+}
+
+@media only screen and (min-width : 992px) {
+
+  /*.App {
+      width: 100vh;
+      height: 100vh;
+    }*/
+
+  .nav {
+    min-width: 100%;
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .echargemap {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .buttons-nav {
+    justify-content: space-between;
+    margin: 0.5em;
+    padding: 0.5em 2em;
+    border-radius: 30px;
+    opacity: 1;
+  }
+
+  .buttons-nav:hover {
+    cursor: pointer;
+    color: var(--violetHover);
+    opacity: 0.9;
+  }
+
+}
+
+@media only screen and (min-width : 1280px) {
+
+  /*.App {
+  height: 100vh;
+  background-color: var(--grey);
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding-left: 10em;
+}*/
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .App {
+    overflow: hidden;
+  }
+
+  .nav {
+    min-width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+
+  .menu-icon {
+    margin-left: 10%;
+  }
+
+  .menu-icon:hover {
+    cursor: pointer;
+  }
+
+  .echargemap {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    margin-left: 21%;
+  }
+
+  .echargemap .logo {
+    height: 52px;
+    width: 50px;
+    margin: 0 auto;
+  }
+
+  .echargemap:hover .logo {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+
+  .echargemap:hover .title {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .buttons-nav {
+    justify-content: space-between;
+    margin: 0.5em;
+    padding: 0.5em 2em;
+    border-radius: 30px;
+    opacity: 1;
+  }
+
+  .buttons-nav:hover {
+    cursor: pointer;
+    color: var(--violetHover);
+    opacity: 0.9;
+  }
+
+  .btn-logout {
+    color: var(--blue);
+    font-size: 12px;
+    opacity: 1;
+  }
+
+  .btn-logout:hover {
+    opacity: 0.8;
+    font-style: italic;
+  }
+
+  .mode {
+    padding: 0px 0.2px;
+  }
 }
 
-.buttons-nav {
-  justify-content: space-between;
-  margin: 0.5em;
-  padding: 0.5em 2em;
-  border-radius: 30px;
-  border-color: white;
-  border-width: 0px;
-  border-style: none;
-  position: relative;
-  opacity: 1;
-}
-
-.buttons-nav:hover {
-  cursor: pointer;
-  color: var(--violetHover);
-  opacity: 0.9;
-}
-
-.btn-logout {
-  color: var(--blue);
-  font-size: 12px;
-  opacity: 1;
-}
-
-.btn-logout:hover {
-  opacity: 0.8;
-  font-style: italic;
-}
-
-.mode {
-  padding: 0px 0.2px;
-}
+/* Large Devices, Wide Screens */

@@ -84,17 +84,6 @@ label {
   border: 1px solid #aaa;
 }
 
-/*.input-signin:required:focus:valid {
-  color: var(--darkGreen);
-  border: 1.5px solid var(--darkGreen);
-}
-
-.input-signin:required:focus:invalid {
-  color: var(--violet);
-  border: 1.5px solid var(--violet);
-}*/
-
-
 
 /* BOTON de REGISTRO */
 .btn-signin {
@@ -162,7 +151,7 @@ label {
 
 .errorMessage {
   background-color: #4b5c6b;
-  color: #f7c325;
+  color: var(--yellow);
   font-weight: bold;
   padding: 0.5rem;
   margin-bottom: 0.5rem;

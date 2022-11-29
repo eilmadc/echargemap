@@ -1,11 +1,15 @@
 import React from 'react'
-import { useState } from 'react';
 
 
-export const SettingsInfoPersonal = ({ clickedButton }) => {
+export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData }) => {
 
-  const [saveButton, setSaveButton] = useState(false);
-  
+  const handleOnChange = (e) => {
+    e.preventDefault();
+
+    setNewData(true);
+    console.log(newData);
+  };
+
 
   return (
     <>
@@ -24,45 +28,40 @@ export const SettingsInfoPersonal = ({ clickedButton }) => {
               <form className='nombre-apellidos'>
                 <div className='wrap-nombre'>
                   <label className='nombre-label'>Nombre</label>
-                  <input className='nombre-input' type='text' name='nombre' onChange={() => {setSaveButton(true)}}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
                 </div>
                 <div className='wrap-apellidos'>
                   <label className='apellidos-label'>Apellidos</label>
-                  <input className='apellidos-input' type='text' name='apellidos' onChange={() => {setSaveButton(true)}}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='apellidos-input' type='text' name='apellidos' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
               <form className='nombre-usuario'>
                 <div className='wrap-usuario'>
                   <label className='usuario-label'>Nombre de usuario</label>
-                  <input className='usuario-input' type='text' name='usuario' onChange={() => {setSaveButton(true)}}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
               <form className='ubicacion'>
                 <div className='wrap-ubicacion'>
                   <label className='ubicacion-label'>Ubicación</label>
-                  <input className='ubicacion-input' type='text' name='ubicacion' onChange={() => setSaveButton(true)}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='ubicacion-input' type='text' name='ubicacion' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
               <form className='correo'>
                 <div className='wrap-correo'>
                   <label className='correo-label'>Correo electrónico</label>
-                  <input className='correo-input' type='text' name='correo' onChange={() => setSaveButton(true)}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='correo-input' type='text' name='correo' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
             </div>
-            {saveButton ?
-             <div className='save-button-container'>
-             <button className='save-button' type='submit' onClick={()=>clickedButton(true)}>Guardar cambios</button>
-             <button className='discard-button' type='submit' onClick={()=>clickedButton(true)}>Descartar cambios</button>
-           </div>
-            :
-            null}
+            <div className='save-button-container'>
+              <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={() => clickedButton(true)}>Guardar cambios</button>
+              <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={() => clickedButton(true)}>Descartar cambios</button>
+            </div>
+
           </div>
         </div>
       </section>
-
-
-
     </>
   );
 }
