@@ -168,7 +168,7 @@ function App() {
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
-        {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
+        {isModalSettingsOpen ? <ModalSettings id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalSettings} /> : null}
 
         {paginaActiva === "Nosotros" ? <About id={mode} activa={setPaginaActiva} menu={setMenu} /> : null}
 

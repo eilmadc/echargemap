@@ -229,9 +229,6 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
                                 Example: My_username2
                             </p>
 
-
-
-
                             {/*  PASSWORD INPUT */}
                             <label id={id}
                                 htmlFor="password">

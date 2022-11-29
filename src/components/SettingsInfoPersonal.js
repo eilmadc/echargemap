@@ -1,5 +1,12 @@
-import React from 'react'
 
+import { useRef, useState, useEffect } from "react";
+import React from 'react'
+import stg from '../utils/stg';
+import md5 from 'md5';
+/* LIBERIA AXIOS */
+import axios from "../api/axios";
+
+const UPDATE_URL = '/backenduser.php';
 
 export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData }) => {
 
@@ -9,6 +16,7 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData }) => 
     setNewData(true);
     console.log(newData);
   };
+
 
 
   return (
@@ -28,29 +36,29 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData }) => 
               <form className='nombre-apellidos'>
                 <div className='wrap-nombre'>
                   <label className='nombre-label'>Nombre</label>
-                  <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} value={stg.get('name')}>{/*rellenar con la información del usuario*/}</input>
                 </div>
                 <div className='wrap-apellidos'>
                   <label className='apellidos-label'>Apellidos</label>
-                  <input className='apellidos-input' type='text' name='apellidos' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='apellidos-input' type='text' name='apellidos' onChange={handleOnChange} value={stg.get('lastname')}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
               <form className='nombre-usuario'>
                 <div className='wrap-usuario'>
                   <label className='usuario-label'>Nombre de usuario</label>
-                  <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange} value={stg.get('username')}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
               <form className='ubicacion'>
                 <div className='wrap-ubicacion'>
                   <label className='ubicacion-label'>Ubicación</label>
-                  <input className='ubicacion-input' type='text' name='ubicacion' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='ubicacion-input' type='text' name='ubicacion' onChange={handleOnChange} value={stg.get('location')}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
               <form className='correo'>
                 <div className='wrap-correo'>
                   <label className='correo-label'>Correo electrónico</label>
-                  <input className='correo-input' type='text' name='correo' onChange={handleOnChange}>{/*rellenar con la información del usuario*/}</input>
+                  <input className='correo-input' type='text' name='correo' onChange={handleOnChange} value={stg.get('email')}>{/*rellenar con la información del usuario*/}</input>
                 </div>
               </form>
             </div>

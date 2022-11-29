@@ -89,10 +89,10 @@ const Signin = ({ id, userLogged, setUserLogged, link }) => {
                 setSuccess(true);
             }
             else {
-                console.log(password);
+/*                 console.log(password);
                 console.log(md5(password));
                 console.log(md5(md5(password)));
-                console.log(md5(md5(md5(password))));
+                console.log(md5(md5(md5(password)))); */
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
                 stg.set('userLogged', false);

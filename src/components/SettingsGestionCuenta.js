@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-
+import stg from '../utils/stg';
 export const SettingsGestionCuenta = ({ clickedButton }) => {
 
   const [show, setShow] = useState('');
@@ -28,7 +28,7 @@ export const SettingsGestionCuenta = ({ clickedButton }) => {
                     <form className='antigua-contr'>
                       <div className='wrap-antigua-contr'>
                         <label className='antigua-contr'>Contraseña actual</label>
-                        <input className='antigua-contr-input' type='text' name='antigua' />
+                        <input className='antigua-contr-input' type='text' name='antigua' value={stg.get('password')}/>
                       </div>
                     </form>
                     <form className='nueva-contr'>
