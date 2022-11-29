@@ -320,8 +320,6 @@ const Signup = ({ id, userLogged, setUserLogged }) => {
                             <br />
                         </p>
 
-
-
                         {/*  CONFIRMACION DE PASSWORD INPUT */}
                         <label id={id}
                             htmlFor="confirm_password">

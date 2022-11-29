@@ -25,14 +25,6 @@ import { ModalContact } from './components/ModalContact';
 import { ModalSettings } from './components/ModalSettings';
 import stg from '../src/utils/stg';
 
-/*react-router-dom: Ruteo de Paths*/
-/* import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";  */
-
 function App() {
 
   const [mode, setMode] = useState(localStorage.getItem('mode') || 'lightMode');

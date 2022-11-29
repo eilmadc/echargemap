@@ -20,8 +20,7 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
 
   const userName = stg.get('username');
 
-  console.log(newData);
-
+  //console.log(newData);
    
   useEffect(() => {
     setErrorMessage('');
@@ -89,7 +88,9 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
     }
 
   }
+
   getDataUser();
+  
   return (
     <>
       <div className='modal-settings' id={id}>
@@ -110,9 +111,9 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
               </div>
             </div>
           </section>
-          {panel === "info" ? <SettingsInfoPersonal clickedButton={setClickedButton} setNewData={setNewData} newData={newData} /> : null}
-          {panel === 'gestion' ? <SettingsGestionCuenta clickedButton={setClickedButton} /> : null}
-          {panel === 'comentarios' ? <SettingsComentarios clickedButton={setClickedButton} /> : null}
+          {panel === "info" ? <SettingsInfoPersonal clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal}/> : null}
+          {panel === 'gestion' ? <SettingsGestionCuenta clickedButton={setClickedButton} closeModal={closeModal}/> : null}
+          {panel === 'comentarios' ? <SettingsComentarios clickedButton={setClickedButton} closeModal={closeModal}/> : null}
 
         </div>
       </div>
