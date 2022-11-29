@@ -1,9 +1,16 @@
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
+import stg from '../../utils/stg';
 
 import '../../stylesheets/stylesSignUp.css';
 
 import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
+
+
+/* LIBERIA AXIOS */
+import axios from "../../api/axios";
+
+const SIGNUP_URL = '/back.php';
 
 /* REGEX */
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,30}$/;
@@ -13,36 +20,43 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 const LOCATION_REGEX = /^[a-zA-Z]{5,30}$/;
 
 /* SIGNUP en ECHARGEMAP */
-const Signup = ({ id }) => {
+const Signup = ({ id, userLogged, setUserLogged }) => {
+
+    const method = 'registeruser';
     const userRef = useRef();
     const errorRef = useRef();
 
+    /*USERNAME */
     const [userName, setUserName] = useState('');
     const [validUserName, setValidUserName] = useState(false);
     const [userNameFocus, setUserNameFocus] = useState(false);
 
+    /*PASSWORD*/
     const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(false);
     const [passwordFocus, setPasswordFocus] = useState(false);
 
+    /*PASSWORD COINCIDENCIA*/
     const [matchPassword, setMatchPassword] = useState('');
     const [validMatchPassword, setValidMatchPassword] = useState(false);
     const [matchPasswordFocus, setMatchPasswordFocus] = useState(false);
 
-
+    /* NOMBRE DE USUARIO*/
     const [name, setName] = useState('');
     const [validName, setValidName] = useState(false);
     const [nameFocus, setNameFocus] = useState(false);
 
-
+    /*APELLIDO*/
     const [lastname, setLastName] = useState('');
     const [validLastName, setValidLastName] = useState(false);
     const [lastnameFocus, setLastNameFocus] = useState(false);
 
+    /*MAIL*/
     const [mail, setMail] = useState('');
     const [validMail, setValidMail] = useState(false);
     const [mailFocus, setMailFocus] = useState(false);
 
+    /*MUNICIPIO(location)*/
     const [location, setLocation] = useState('');
     const [validLocation, setValidLocation] = useState(false);
     const [locationFocus, setLocationFocus] = useState(false);
@@ -120,13 +134,60 @@ const Signup = ({ id }) => {
                 return;
             }
 
-            /*  Si todo ha sido validado correctamente
-                validamos el formulario */
-            setSuccess(true);
+            //BACKEND----->
+            const response = await axios.post(
+                SIGNUP_URL,
+                JSON.stringify({ method: method, userName: userName, password: password, name: name, lastname: lastname, mail: mail, location: location }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+
+            /*Validamos la respuesta del servidor: con el mensaje de response.data*/
+            if (response.data.registeruser) {
+
+                console.log(response.data);
+
+                /*poner userLogged en true*/
+                setUserLogged(true);
+
+                /*Almacenamiento local*/
+                stg.set('userLogged', true);
+                stg.set('username', response.data.userName);
+                stg.set('password', response.data.password);
+                stg.set('name', response.data.name);
+                stg.set('lastname', response.data.name);
+                stg.set('email', response.data.email);
+                stg.set('location', response.data.location);
+
+                /*  Si todo ha sido validado correctamente
+                    validamos success en el html*/
+                setSuccess(true);
+            }
+            else {
+                alert('Ha ocurrido un error de registro ' + response.data.userName);
+                console.log(response.data);
+                stg.set('userLogged', false);
+            }
 
         } catch (e) {
-            this.setState({ e });
-            console.log("Error: " + e.message);
+            /* CONTROL DE ERRORES DE RESPUESTA DEL SERVIDOR*/
+
+            if (!e?.response) {
+                console.log(e);
+                setErrorMessage('Sin Respuesta del Servidor.');
+            } else if (e.response?.status === 400) {
+                setErrorMessage('400: No existen Usuario ni Password');
+            } else if (e.response?.status === 401) {
+                setErrorMessage('401: Sin Autorizacion');
+            } else if (e.response?.status === 500) {
+                setErrorMessage('500: Error de Servidor');
+            } else {
+                setErrorMessage('El Login ha fallado');
+            }
+
+            errorRef.current.focus();
         }
     }
 
@@ -136,10 +197,14 @@ const Signup = ({ id }) => {
             {success ? (
 
                 <section className="section-signup">
-                    <h1> Success! </h1>
-                    <p>
-                        <a href="#">Sign In</a>
-                    </p>
+                    <br></br><br></br>
+                    <h2>Bienvenid@</h2>
+                    <h2>Te has registrado correctamente {stg.get('username')}</h2>
+                    <h2>Esperamos que disfrutes de la experiencia,</h2>
+                    <h2>tanto como nosotros disfrutamos </h2>
+                    <h2>de poder ofrecerte este servicio.</h2>
+                    <h2>Gracias por unirte!</h2>
+                    <br></br><br></br><br></br><br></br><br></br><br></br>
                 </section>
             ) : (
                 <section className="section-signup">

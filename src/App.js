@@ -156,7 +156,7 @@ function App() {
 
         {isModalOpen ? <Modal closeModal={setModal} /> : null}
 
-        {isModalLoginOpen ? <ModalLogin id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogin} /> : null}
+        {isModalLoginOpen ? <ModalLogin id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogin}/> : null}
 
         {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
 
@@ -177,6 +177,8 @@ function App() {
             </div>
           </div>
           : null}
+{/* 
+          {paginaActiva === "Registro" ? <ModalLogin id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogin(true)} activa={setPaginaActiva} tabname={'signup'}/> : null} */}
 
 
       </div>

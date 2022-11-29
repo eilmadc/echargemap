@@ -7,12 +7,14 @@ import LogoDarkGreen from '../../images/logo_darkGreen.png';
 import LogoLightGreen from '../../images/logo_lightGreen.png';
 
 import { AuthProvider } from '../../context/AuthProvider';
+import { useState } from 'react';
 
 
 export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
 
+    //const [tabActiva, setTabActiva] = useState('');
     console.log(userLogged);
-    
+
     return (
         <div className='modal-login' id={id}>
             <div className='modal-login-header' id={id}>
@@ -31,16 +33,21 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
                             <Tab tabname="signin" disabled={false} >Entrar</Tab>
                             <Tab tabname="signup" disabled={userLogged ? true : false} >Registro</Tab>
                         </TabList>
-                        <TabPanel className="tabs-login-body">
+                        <TabPanel id='signin' className="tabs-login-body">
                             <AuthProvider>
                                 <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
                             </AuthProvider>
                         </TabPanel>
-                        <TabPanel className="tabs-login-body">
-                            <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged}/>
+                        <TabPanel id='signup' className="tabs-login-body">
+                            <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
                         </TabPanel>
                     </Tabs>
                 </div>
+                {/* {link === "signin"
+                    ? 
+                    <Tab tabname="signup" disabled={userLogged ? true : false} >Registro</Tab>
+                    : null}
+                {link === "signup" ? <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} link={setLink} /> : null} */}
             </div >
         </div >
     );

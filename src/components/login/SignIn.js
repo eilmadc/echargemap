@@ -26,7 +26,7 @@ const SIGNIN_URL = '/back.php';
         response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
 
 */
-const Signin = ({ id, userLogged, setUserLogged }) => {
+const Signin = ({ id, userLogged, setUserLogged, link }) => {
 
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
@@ -71,9 +71,14 @@ const Signin = ({ id, userLogged, setUserLogged }) => {
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {
-                //window.alert('Login correcto');
+                
+                /*mostrar datos en consola*/
                 console.log(response.data);
+                
+                /*poner userLogged en true*/
                 setUserLogged(true);
+
+                /*Almacenamiento local*/
                 stg.set('userLogged', true);
                 stg.set('username',response.data.userName);
                 stg.set('password',response.data.password);
@@ -179,8 +184,7 @@ const Signin = ({ id, userLogged, setUserLogged }) => {
                         <p className='line-signup' id={id}>
                             No tienes una cuenta? <br />
                             <span className="line">
-                                {/* {<Signup />} */}
-                                <a href="#" id={id}> Regístrate</a>
+                                <a href='#' id={id}  > Regístrate</a>
                             </span>
                         </p>
                     </section>
