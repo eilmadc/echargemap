@@ -18,17 +18,7 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
   //const [tabActiva, setTabActiva] = useState('');
   console.log(userLogged);
   const [resetPassword, setResetPassword] = useState(false);
-  const [activeTab, setActiveTab] = useState('.1');
 
-
-
-  const handleTab = (eventKey) => {
-    if (activeTab === '1') {
-      setActiveTab('2');
-    } else {
-      setActiveTab('1')
-    };
-  };
   
   console.log(activeTab);
 
@@ -49,15 +39,15 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
         <div className='tabs-login' id={id}>
           <Tabs defaultActiveKey='1'>
             <TabList className="tabs-login-nav">
-              <Tab tabname="signin" disabled={false} eventKey={'1'} onClick={() => setResetPassword(false)}>Entrar</Tab>
-              <Tab tabname="signup" disabled={userLogged ? true : false} eventKey={'2'} >Registro</Tab>
+              <Tab tabname="signin" disabled={false} onClick={() => setResetPassword(false)}>Entrar</Tab>
+              <Tab tabname="signup" disabled={userLogged ? true : false}  >Registro</Tab>
             </TabList>
-            <TabPanel id='signin' className="tabs-login-body" eventKey={'1'}>
+            <TabPanel id='signin' className="tabs-login-body" >
               {resetPassword ? <ResetPass id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
                 : <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />}
             </TabPanel>
-            <TabPanel id='signup' className="tabs-login-body" eventKey={'2'}>
-              <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} handleTab={handleTab} />
+            <TabPanel id='signup' className="tabs-login-body" >
+              <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
             </TabPanel>
           </Tabs>
         </div>

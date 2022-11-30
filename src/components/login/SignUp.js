@@ -24,7 +24,7 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 const LOCATION_REGEX = /^[a-zA-Z]{3,30}$/;
 
 /* SIGNUP en ECHARGEMAP */
-const Signup = ({ id, userLogged, setUserLogged, handleTab }) => {
+const Signup = ({ id, userLogged, setUserLogged }) => {
 
     const method = 'registeruser';
     const userRef = useRef();
@@ -540,7 +540,7 @@ const Signup = ({ id, userLogged, setUserLogged, handleTab }) => {
                         Ya tienes una cuenta?<br />
                         <span className="line">
                             { }
-                            <a href="#" onSelect={handleTab} id={id}>Accede</a>
+                            <a href="#" id={id}>Accede</a>
                         </span>
                     </p>
 
