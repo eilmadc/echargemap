@@ -177,18 +177,12 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
                     <section className="section-signin">
 
                         {/*FORMULARIO DE SALIDA-LOGOUT */}
-                        <h2 id={id}>Reset Password</h2>
-                        <br></br>
-                        <h3>
-                            ¿Has olvidado tu contraseña?
-                        </h3>
-                        <br></br><br></br>
+                        <h2 id={id}>¿Has olvidado tu contraseña?</h2>
                         <form className='form-signup' onSubmit={handleSubmit}>
 
                             {/*  PASSWORD INPUT */}
-                            <label id={id}
-                                htmlFor="password">
-                                Contraseña
+                            <label id={id} htmlFor="password">
+                                Contraseña nueva
                             </label>
                             <div className='validInvalidIcons'>
 
@@ -315,8 +309,8 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
 
 
                             <button
-                                className="btn-signup"
-                                disabled={!validUserName || !validPassword || !validName || !validLastName || !validMail || !validLocation ? true : false}
+                                className="btn-reset"
+                                disabled={!validPassword || !validMail ? true : false}
                             >
                                 Resetea Contraseña
                             </button>

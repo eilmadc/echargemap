@@ -95,7 +95,8 @@ label {
 }
 
 /* BOTON de REGISTRO */
-.btn-signup {
+.btn-signup,
+.btn-reset {
   align-self: flex-center;
   font-size: 14px;
   font-weight: 600;
@@ -110,13 +111,15 @@ label {
 }
 
 /* BOTON de REGISTRO */
-.btn-signup:hover {
+.btn-signup:hover,
+.btn-reset:hover {
   background-color: var(--lightGreenHover);
   
 }
 
 /* BOTON de REGISTRO */
-.btn-signup:disabled {
+.btn-signup:disabled,
+.btn-reset:disabled {
   background-color: var(--light);
   border: 3px solid;
   border-color: var(--violet);

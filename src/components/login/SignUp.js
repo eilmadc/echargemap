@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import React from 'react';
 import md5 from 'md5';
+import Signin from "./SignIn";
+import { Navigate } from "react-router-dom";
 /*Storage*/
 import stg from '../../utils/stg';
 import '../../stylesheets/stylesSignUp.css';
@@ -10,6 +12,7 @@ import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
+
 
 const SIGNUP_URL = '/backenduser.php';
 
@@ -21,7 +24,7 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 const LOCATION_REGEX = /^[a-zA-Z]{3,30}$/;
 
 /* SIGNUP en ECHARGEMAP */
-const Signup = ({ id, userLogged, setUserLogged }) => {
+const Signup = ({ id, userLogged, setUserLogged, handleTab }) => {
 
     const method = 'registeruser';
     const userRef = useRef();
@@ -537,7 +540,7 @@ const Signup = ({ id, userLogged, setUserLogged }) => {
                         Ya tienes una cuenta?<br />
                         <span className="line">
                             { }
-                            <a href="#" id={id}>Accede</a>
+                            <a href="#" onSelect={handleTab} id={id}>Accede</a>
                         </span>
                     </p>
 
