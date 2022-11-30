@@ -1,15 +1,17 @@
 import React from 'react'
 import { useState } from 'react';
-
-export const SettingsGestionCuenta = ({ clickedButton }) => {
+import stg from '../utils/stg';
+export const SettingsGestionCuenta = ({ clickedButton, userLogged, setResetPassword }) => {
 
   const [show, setShow] = useState('');
   const [deleteAccountBtn, setDeleteAccountBtn] = useState(false);
+  const isLogged = stg.get('userlogged');
+  console.log(isLogged);
 
   return (
     <>
       <section className='settings-container'>
-        <div className='setting-header'>
+        <div className='setting-header' >
           <div className='setting-title'>
             <h2 className='settingtitle manage-account'>Gestión de la cuenta</h2>
           </div>
@@ -28,7 +30,7 @@ export const SettingsGestionCuenta = ({ clickedButton }) => {
                     <form className='antigua-contr'>
                       <div className='wrap-antigua-contr'>
                         <label className='antigua-contr'>Contraseña actual</label>
-                        <input className='antigua-contr-input' type='text' name='antigua' />
+                        <input className='antigua-contr-input' type='password' name='antigua' value={stg.get('password')}/>
                       </div>
                     </form>
                     <form className='nueva-contr'>
@@ -54,7 +56,7 @@ export const SettingsGestionCuenta = ({ clickedButton }) => {
               {show === 'borrar-cuenta' ?
                 <div className='borrar-cuenta-container'>
                   <div className='desc-borrar-cuenta'>Estás en proceso de borrar todos los datos de tu cuenta.</div>
-                  <div className='nombre-usuario-logado'>{`Monica`/** rellenar con el nombre del usuario logado */},</div>
+                  <div className='nombre-usuario-logado' ><h4 >{stg.get('username')}</h4></div>
                   <div className='texto-borrar-cuenta'>si continúas, tu nombre, ubicación y correo electrónico así como tus comentarios y estaciones guardadas se eliminarán y no podrás volver a acceder a ellas.<br /><br />
                     Al hacer clic tu cuenta de eChargeMap será suprimida.<br />
                   </div>

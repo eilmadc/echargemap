@@ -27,7 +27,7 @@ const SIGNIN_URL = '/backenduser.php';
         response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
 
 */
-const Signin = ({ id, userLogged, setUserLogged, link }) => {
+const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
 
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
@@ -89,10 +89,10 @@ const Signin = ({ id, userLogged, setUserLogged, link }) => {
                 setSuccess(true);
             }
             else {
-                console.log(password);
+/*                 console.log(password);
                 console.log(md5(password));
                 console.log(md5(md5(password)));
-                console.log(md5(md5(md5(password))));
+                console.log(md5(md5(md5(password)))); */
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
                 stg.set('userLogged', false);
@@ -177,7 +177,7 @@ const Signin = ({ id, userLogged, setUserLogged, link }) => {
                                 Has olvidado tu clave de acceso?
                                 <span className='line'>
                                     {/* {<Signup />} */}
-                                    <a href="#" id={id}> Restablecer contraseña</a>
+                                    <a href="#" id={id} onClick={()=>{setResetPassword(true)}}> Restablecer contraseña</a>
                                     {/* <NavLink to="#" id={id}> Restablecer contraseña</Navlink> */}
                                 </span>
                             </p>
