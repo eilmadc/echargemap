@@ -48,18 +48,7 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, close
       setNewData(true);
       clickedButton(true);
       e.preventDefault();
-      /*       const var1 = USER_REGEX.test(userName);
-            const var2 = PWD_REGEX.test(password);
-            const var3 = EMAIL_REGEX.test(mail);
-            const var4 = LOCATION_REGEX.test(location); 
-      
-            if (!var1 || !var2 || !var3 || !var4) {
-              setErrorMessage("Invalid entry");
-              return;
-            }
-            console.log(password);
-            console.log(md5(password));*/
-      //BACKEND----->
+
       const response = await axios.post(
         UPDATE_URL,
         JSON.stringify({ method: method, userName: userName, password: password, name: nameU, lastname: lastname, mail: mail, location: location }),
@@ -73,22 +62,8 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, close
 
       /*Validamos la respuesta del servidor: con el mensaje de response.data*/
       if (response.data.updateuser) {
-
         console.log(response.data);
         setSuccess(true);
-        /*Almacenamiento local*/
-        /*         stg.set('userLogged', true);
-        
-                stg.set('name', response.data.name);
-                stg.set('lastname', response.data.lastName);
-                stg.set('username', response.data.userName);
-                stg.set('password', (response.data.password));
-                stg.set('email', response.data.email);
-                stg.set('location', response.data.location); */
-
-        /*  Si todo ha sido validado correctamente
-            validamos success en el html*/
-
       }
       else {
         alert('Ha ocurrido un error de registro ' + response.data.userName);
@@ -112,7 +87,7 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, close
         setErrorMessage('El Login ha fallado');
       }
 
-     errorRef.current.focus();
+      errorRef.current.focus();
     }
   }
   return (
@@ -137,7 +112,7 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, close
           </div>
           <div className='setting-body'>
             <div className='setting-info-container'>
-              <form  onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className='setting-nombre-apellidos'>
                   <form className='nombre-apellidos'>
                     <div className='wrap-nombre'>

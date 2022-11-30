@@ -1,18 +1,36 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import Signup from './SignUp';
 import Signin from './SignIn';
+import ResetPass from './ResetPass';
 import '../../stylesheets/stylesModalLogin.css';
 import LogoDarkGreen from '../../images/logo_darkGreen.png';
 import LogoLightGreen from '../../images/logo_lightGreen.png';
+import { SettingsGestionCuenta } from '../SettingsGestionCuenta';
+import stg from '../../utils/stg';
 
-import { AuthProvider } from '../../context/AuthProvider';
+//import { AuthProvider } from '../../context/AuthProvider';
 
 
 export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
 
     //const [tabActiva, setTabActiva] = useState('');
     console.log(userLogged);
+    const [resetPassword, setResetPassword] = useState(false);
+
+    stg.set('userLogged', userLogged);
+    console.log(resetPassword);
+
+/*     function loadComponent(resetPassword) {
+
+        if (resetPassword) {
+            <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
+        } else {
+            <ResetPass userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
+        }
+    } */
+
 
     return (
         <div className='modal-login' id={id}>
@@ -32,14 +50,23 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
                             <Tab tabname="signin" disabled={false} >Entrar</Tab>
                             <Tab tabname="signup" disabled={userLogged ? true : false} >Registro</Tab>
                         </TabList>
-                        <TabPanel id='signin' className="tabs-login-body">
-                            <AuthProvider>
-                                <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
-                            </AuthProvider>
+                        <TabPanel
+                            id='signin'
+                            className="tabs-login-body"
+                            //{/* <AuthProvider> */}
+                            //<Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
+                            //{/* </AuthProvider> */}
+                            >
+                            {//loadComponent(resetPassword)
+                            !(resetPassword)
+                                ? <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
+                                : <ResetPass userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
+                            }
                         </TabPanel>
-                        <TabPanel id='signup' className="tabs-login-body">
-                            <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
-                        </TabPanel>
+                            <TabPanel id='signup' className="tabs-login-body">
+                                <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
+                            </TabPanel>
+
                     </Tabs>
                 </div>
                 {/* {link === "signin"

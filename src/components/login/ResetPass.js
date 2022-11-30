@@ -62,9 +62,9 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
 
 
     /* USE EFFECTs */
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
+    /*     useEffect(() => {
+            userRef.current.focus();
+        }, []) */
 
     /*Validacion del nombre de usuario */
     useEffect(() => {
@@ -182,58 +182,13 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
                         <h3>
                             ¿Has olvidado tu contraseña?
                         </h3>
-
+                        <br></br><br></br>
                         <form className='form-signup' onSubmit={handleSubmit}>
-
-                            {/*  USERNAME INPUT */}
-                            <label id={id}
-                                htmlFor="username">
-                                Nombre de usuario
-                            </label>
-                            <div className='validInvalidIcons'>
-                                <input id={id}
-                                    className="input-signup username"
-                                    type="text"
-                                    ref={userRef}
-                                    autoComplete="off"
-                                    onChange={(e) => setUserName(e.target.value)}
-                                    /*  onChange={(e) => setSuccess(true)} */
-                                    required
-                                    aria-invalid={validUserName ? "false" : "true"}
-                                    aria-describedby="usernameinfo"
-                                    onFocus={() => setUserNameFocus(true)}
-                                    onBlur={() => setUserNameFocus(false)}
-                                />
-
-                                {/* Iconos de validación de regex en username */}
-                                <span
-                                    className={validUserName ? "valid" : "hide"}
-                                >
-                                    <FaCheck />
-                                </span>
-                                <span
-                                    className={validUserName || !userName ? "hide" : "invalid"}
-                                >
-                                    <FaTimes />
-                                </span>
-                            </div>
-                            {/* Mensaje de información del campo del usuairo*/}
-                            <p
-                                id="usernameinfo"
-                                className={userNameFocus && userName && !validUserName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                5 to 20 characters <br />
-                                Must begin with a letter <br />
-                                Characters allowed: 0-9, a - z,  A - Z  and "_"<br />
-                                Example: My_username2
-                            </p>
 
                             {/*  PASSWORD INPUT */}
                             <label id={id}
                                 htmlFor="password">
                                 Contraseña
-
                             </label>
                             <div className='validInvalidIcons'>
 
@@ -318,89 +273,6 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
                             </p>
 
 
-                            {/*  CONFIRMACION DE NAME */}
-                            <label id={id}
-                                htmlFor="name">
-                                Nombre
-                            </label>
-
-                            <div className='validInvalidIcons'>
-
-                                <input id={id}
-                                    className="input-signup name"
-                                    type="text"
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                    aria-invalid={validName ? "false" : "true"}
-                                    aria-describedby="nameinfo"
-                                    onFocus={() => setNameFocus(true)}
-                                    onBlur={() => setNameFocus(false)}
-                                />
-                                {/* Iconos de validacion de nombre*/}
-                                <span
-                                    className={validName && name ? "valid" : "hide"}
-                                >
-                                    <FaCheck />
-                                </span>
-                                <span
-                                    className={validName || !name ? "hide" : "invalid"}
-                                >
-                                    <FaTimes />
-                                </span>
-                            </div>
-                            {/* Mensaje de informacion del campo Name*/}
-                            <p
-                                id="nameinfo"
-                                className={nameFocus && !validName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 3 characters.
-                                <br />
-                            </p>
-
-
-
-                            {/*  CONFIRMACION DE Apellido*/}
-                            <label id={id}
-                                htmlFor="lastname">
-                                Apellidos
-                            </label>
-
-                            <div className='validInvalidIcons'>
-
-                                <input id={id}
-                                    className="input-signup lastname"
-                                    type="text"
-                                    onChange={(e) => setLastName(e.target.value)}
-                                    required
-                                    aria-invalid={validLastName ? "false" : "true"}
-                                    aria-describedby="lastnameinfo"
-                                    onFocus={() => setLastNameFocus(true)}
-                                    onBlur={() => setLastNameFocus(false)}
-                                />
-                                {/* Iconos de validacion de Apellido*/}
-                                <span
-                                    className={validLastName && lastname ? "valid" : "hide"}
-                                >
-                                    <FaCheck />
-                                </span>
-                                <span
-                                    className={validLastName || !lastname ? "hide" : "invalid"}
-                                >
-                                    <FaTimes />
-                                </span>
-                            </div>
-                            {/* Mensaje de informacion del campo LastName*/}
-                            <p
-                                id="lastnameinfo"
-                                className={lastnameFocus && !validLastName ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 3 characters.
-                                <br />
-                            </p>
-
-
                             {/*  CONFIRMACION DE EMAIL */}
                             <label id={id}
                                 htmlFor="email">
@@ -442,53 +314,11 @@ const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
                             </p>
 
 
-
-                            {/*  CONFIRMACION DE LOCATION */}
-                            <label id={id}
-                                htmlFor="location">
-                                Ubicación
-                            </label>
-                            <div className='validInvalidIcons'>
-
-                                <input id={id}
-                                    className="input-signup location"
-                                    type="text"
-                                    onChange={(e) => setLocation(e.target.value)}
-                                    required
-                                    aria-invalid={validLocation ? "false" : "true"}
-                                    aria-describedby="locationinfo"
-                                    onFocus={() => setLocationFocus(true)}
-                                    onBlur={() => setLocationFocus(false)}
-                                />
-                                {/* Iconos de validacion de location*/}
-                                <span
-                                    className={validLocation && location ? "valid" : "hide"}
-                                >
-                                    <FaCheck />
-                                </span>
-                                <span
-                                    className={validLocation || !location ? "hide" : "invalid"}
-                                >
-                                    <FaTimes />
-                                </span>
-                            </div>
-                            {/* Mensaje de informacion del campo location*/}
-                            <p
-                                id="locationinfo"
-                                className={locationFocus && !validLocation ? "instructions-signup" : "offscreen"}
-                            >
-                                <FaInfoCircle />
-                                Must have min 5 characters.
-                                <br />
-                            </p>
-
-
-
                             <button
                                 className="btn-signup"
                                 disabled={!validUserName || !validPassword || !validName || !validLastName || !validMail || !validLocation ? true : false}
                             >
-                                Crea tu cuenta
+                                Resetea Contraseña
                             </button>
                         </form>
                     </section>

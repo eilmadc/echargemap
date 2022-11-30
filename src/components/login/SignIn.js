@@ -27,7 +27,7 @@ const SIGNIN_URL = '/backenduser.php';
         response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
 
 */
-const Signin = ({ id, userLogged, setUserLogged, link }) => {
+const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
 
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
@@ -177,7 +177,7 @@ const Signin = ({ id, userLogged, setUserLogged, link }) => {
                                 Has olvidado tu clave de acceso?
                                 <span className='line'>
                                     {/* {<Signup />} */}
-                                    <a href="#" id={id}> Restablecer contraseña</a>
+                                    <a href="#" id={id} onClick={()=>{setResetPassword(true)}}> Restablecer contraseña</a>
                                     {/* <NavLink to="#" id={id}> Restablecer contraseña</Navlink> */}
                                 </span>
                             </p>
