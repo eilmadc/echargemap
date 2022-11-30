@@ -15,12 +15,10 @@ import stg from '../../utils/stg';
 
 export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
 
-  //const [tabActiva, setTabActiva] = useState('');
   console.log(userLogged);
   const [resetPassword, setResetPassword] = useState(false);
-
+  const [tabIndex, setTabIndex] = useState(0);
   
-  console.log(activeTab);
 
   stg.set('userLogged', userLogged);
 
@@ -37,17 +35,17 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
           <h3 className='modal-login-echargemap' id={id}>eChargeMap</h3>
         </div>
         <div className='tabs-login' id={id}>
-          <Tabs defaultActiveKey='1'>
+          <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
             <TabList className="tabs-login-nav">
               <Tab tabname="signin" disabled={false} onClick={() => setResetPassword(false)}>Entrar</Tab>
               <Tab tabname="signup" disabled={userLogged ? true : false}  >Registro</Tab>
             </TabList>
-            <TabPanel id='signin' className="tabs-login-body" >
+            <TabPanel id='signin' className="tabs-login-body">
               {resetPassword ? <ResetPass id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />
-                : <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} />}
+                : <Signin id={id} userLogged={userLogged} setUserLogged={setUserLogged} setResetPassword={setResetPassword} setTabIndex={setTabIndex}/>}
             </TabPanel>
             <TabPanel id='signup' className="tabs-login-body" >
-              <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} />
+              <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} setTabIndex={setTabIndex} />
             </TabPanel>
           </Tabs>
         </div>

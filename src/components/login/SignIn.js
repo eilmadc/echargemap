@@ -27,7 +27,7 @@ const SIGNIN_URL = '/backenduser.php';
         response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
 
 */
-const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
+const Signin = ({ id, userLogged, setUserLogged, setTabIndex, setResetPassword }) => {
 
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
@@ -38,7 +38,7 @@ const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
 
- 
+
     useEffect(() => {
         userRef.current.focus();
     }, [])
@@ -72,27 +72,27 @@ const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {
-                
+
                 /*mostrar datos en consola*/
                 console.log(response.data);
-                
+
                 /*poner userLogged en true*/
                 setUserLogged(true);
 
                 /*Almacenamiento local*/
                 stg.set('userLogged', true);
-                stg.set('username',response.data.userName);
-                stg.set('password',response.data.password);
-                
+                stg.set('username', response.data.userName);
+                stg.set('password', response.data.password);
+
                 /*  Si todo ha sido validado correctamente
                     validamos success en el html*/
                 setSuccess(true);
             }
             else {
-/*                 console.log(password);
-                console.log(md5(password));
-                console.log(md5(md5(password)));
-                console.log(md5(md5(md5(password)))); */
+                /*                 console.log(password);
+                                console.log(md5(password));
+                                console.log(md5(md5(password)));
+                                console.log(md5(md5(md5(password)))); */
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
                 stg.set('userLogged', false);
@@ -177,7 +177,7 @@ const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
                                 Has olvidado tu clave de acceso?
                                 <span className='line'>
                                     {/* {<Signup />} */}
-                                    <a href="#" id={id} onClick={()=>{setResetPassword(true)}}> Restablecer contraseña</a>
+                                    <a href="#" id={id} onClick={() => { setResetPassword(true) }}> Restablecer contraseña</a>
                                     {/* <NavLink to="#" id={id}> Restablecer contraseña</Navlink> */}
                                 </span>
                             </p>
@@ -189,8 +189,9 @@ const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
                         <p className='line-signup' id={id}>
                             No tienes una cuenta? <br />
                             <span className="line">
-                                <a href='#' id={id}  > Regístrate</a>
+                                <a id={id}  onClick={() => {setTabIndex(1)}}  > Regístrate</a>
                             </span>
+
                         </p>
                     </section>
                 )

@@ -169,12 +169,15 @@ h3.desc {
     margin-left: -10px;
 }
 
+
+
 form.nombre-apellidos {
     flex-direction: row;
     justify-content: space-between;
     width: 100%
 }
 
+form.form-wrapper,
 .nombre-usuario,
 .ubicacion,
 .correo,

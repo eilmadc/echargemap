@@ -101,19 +101,19 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
           <section className='subpages-container'>
             <div className='subpages-list'>
               <div className='list-option'>
-                <a role='button' onClick={() => setPanel('info')}>Información personal</a>
+                <a  className='list-items' id={id} role='button' onClick={() => setPanel('info')}>Información personal</a>
               </div>
               <div className='list-option'>
-                <a role='button' onClick={() => setPanel('gestion')}>Gestión de la cuenta</a>
+                <a id={id} className='list-items' role='button' onClick={() => setPanel('gestion')}>Gestión de la cuenta</a>
               </div>
               <div className='list-option'>
-                <a role='button' onClick={() => setPanel('comentarios')}>Comentarios</a>
+                <a id={id} className='list-items' role='button' onClick={() => setPanel('comentarios')}>Comentarios</a>
               </div>
             </div>
           </section>
-          {panel === "info" ? <SettingsInfoPersonal clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal}/> : null}
-          {panel === 'gestion' ? <SettingsGestionCuenta clickedButton={setClickedButton} closeModal={closeModal}/> : null}
-          {panel === 'comentarios' ? <SettingsComentarios clickedButton={setClickedButton} closeModal={closeModal}/> : null}
+          {panel === "info" ? <SettingsInfoPersonal id={id} clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal}/> : null}
+          {panel === 'gestion' ? <SettingsGestionCuenta id={id} clickedButton={setClickedButton} closeModal={closeModal}/> : null}
+          {panel === 'comentarios' ? <SettingsComentarios id={id} clickedButton={setClickedButton} closeModal={closeModal}/> : null}
 
         </div>
       </div>

@@ -8,7 +8,7 @@ import axios from "../api/axios";
 
 const UPDATE_URL = '/backenduser.php';
 
-export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, closeModal }) => {
+export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, closeModal }) => {
 
   const method = 'updateuser';
   const userRef = useRef();
@@ -104,50 +104,51 @@ export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, close
         <section className='settings-container'>
           <div className='setting-header'>
             <div className='setting-title'>
-              <h2 className='settingtitle info-personal'>Información personal</h2>
+              <h2 id={id} className='settingtitle info-personal'>Información personal</h2>
             </div>
             <div className='setting-desc'>
-              <h3 className='desc info-personal'>Edita los datos de tu perfil</h3>
+              <h3 id={id} className='desc info-personal'>Edita los datos de tu perfil</h3>
             </div>
           </div>
           <div className='setting-body'>
             <div className='setting-info-container'>
-              <form onSubmit={handleSubmit}>
+              <form className='form-wrapper' onSubmit={handleSubmit}>
                 <div className='setting-nombre-apellidos'>
                   <form className='nombre-apellidos'>
                     <div className='wrap-nombre'>
-                      <label className='nombre-label'>Nombre</label>
+                      <label id={id} className='nombre-label'>Nombre</label>
                       <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} value={nameU}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                     <div className='wrap-apellidos'>
-                      <label className='apellidos-label'>Apellidos</label>
+                      <label id={id} className='apellidos-label'>Apellidos</label>
                       <input className='apellidos-input' type='text' name='apellidos' onChange={handleOnChange} value={lastname}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='nombre-usuario'>
                     <div className='wrap-usuario'>
-                      <label className='usuario-label'>Nombre de usuario</label>
+                      <label id={id} className='usuario-label'>Nombre de usuario</label>
                       <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange} value={userName}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='ubicacion'>
                     <div className='wrap-ubicacion'>
-                      <label className='ubicacion-label'>Ubicación</label>
+                      <label id={id} className='ubicacion-label'>Ubicación</label>
                       <input className='ubicacion-input' type='text' name='ubicacion' onChange={handleOnChange} value={location}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='correo'>
                     <div className='wrap-correo'>
-                      <label className='correo-label'>Correo electrónico</label>
+                      <label id={id} className='correo-label'>Correo electrónico</label>
                       <input className='correo-input' type='text' name='correo' onChange={handleOnChange} value={mail}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                 </div>
                 <div className='save-button-container'>
                   <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={() => handleSubmit}>Guardar cambios</button>
+                  <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={() => handleExit}>Descartar cambios</button>
                 </div>
               </form>
-              <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={() => handleExit}>Descartar cambios</button>
+              
             </div>
           </div>
         </section>

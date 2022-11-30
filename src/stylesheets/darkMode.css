@@ -151,3 +151,24 @@ section.contact-header#darkMode:before {
 .footer#darkMode {
     background-color: var(--footerDarkBackground);
 }
+
+/* SETTINGS */
+
+.modal-settings#darkMode, 
+.modal-settings-header#darkMode {
+    background-color: var(--darkPageBackground);
+}
+
+h2#darkMode.settingtitle,
+h3#darkMode.desc,
+a.list-items#darkMode {
+    color: var(--lightGray);
+}
+
+a#darkMode.list-option {
+
+}
+
+
+
+
