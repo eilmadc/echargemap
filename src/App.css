@@ -76,7 +76,109 @@ header {
   cursor: pointer;
 }
 
-@media only screen and (min-width : 480px) {}
+@media only screen and (max-width : 480px) {
+  h1.title {
+    display: none;
+  }        
+
+  .nav  {
+    min-width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: 40px;
+  }
+
+  .echargemap .logo {
+    height: 41px;
+    width: 39px;
+    margin: 0 auto;
+  }
+
+  .menu-icon, .echargemap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons-nav {
+    justify-content: space-between;
+    margin: 0.15em;
+    padding: 0.05em 0.5em;
+    border-radius: 30px;
+    opacity: 1;
+  }
+
+  .buttons-nav:hover {
+    cursor: pointer;
+    color: var(--violetHover);
+    opacity: 0.9;
+  }
+}
+
+@media only screen and (min-width : 481px) {
+
+  h1 {
+    display: unset;
+    font-size: 20px;
+  }
+
+  .nav {
+    min-width: 100%;
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .menu-icon {
+    width: 40px;
+    height: 50px;
+  }
+
+  .echargemap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .echargemap .logo {
+    height: 32px;
+    width: 30px;
+    margin: 0 auto;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .buttons-nav {
+    justify-content: space-between;
+    margin: 0.2em;
+    padding: 0.1em 1em;
+    border-radius: 30px;
+    opacity: 1;
+  }
+
+  .buttons-nav:hover {
+    cursor: pointer;
+    color: var(--violetHover);
+    opacity: 0.9;
+  }
+}
 
 @media only screen and (min-width : 760px) {
 
@@ -91,6 +193,11 @@ header {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+  }
+
+  .menu-icon {
+    width: 45px;
+    height: 55px;
   }
 
   .echargemap {
@@ -124,6 +231,11 @@ header {
     opacity: 0.9;
   }
 
+  .logout-nav {
+    display: flex;
+    align-items: center;
+  }
+
 }
 
 @media only screen and (min-width : 992px) {
@@ -134,12 +246,17 @@ header {
     }*/
 
   .nav {
-    min-width: 100%;
+    width: 100%;
     min-height: 60px;
     display: flex;
-    flex-direction: row;
+
     justify-content: space-around;
     align-items: center;
+  }
+
+  .menu-icon {
+    width: 50px;
+    height: 60px;
   }
 
   .echargemap {
@@ -264,4 +381,3 @@ header {
   }
 }
 
-/* Large Devices, Wide Screens */
