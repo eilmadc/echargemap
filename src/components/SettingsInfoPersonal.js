@@ -8,7 +8,7 @@ import axios from "../api/axios";
 
 const UPDATE_URL = '/backenduser.php';
 
-export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, closeModal }) => {
+export const SettingsInfoPersonal = ({ clickedButton, setNewData, newData, closeModal, userLogged, setUserLogged }) => {
 
   const method = 'updateuser';
   const userRef = useRef();

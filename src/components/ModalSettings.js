@@ -16,15 +16,15 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
 
   const method = 'readuser';
   const errorRef = useRef();
-  const [errorMessage, setErrorMessage] =useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const userName = stg.get('username');
 
   //console.log(newData);
-   
+
   useEffect(() => {
     setErrorMessage('');
-}, [userName])
+  }, [userName])
 
   const getDataUser = async (e) => {
     //e.preventDefault();
@@ -41,16 +41,14 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
         }
       );
 
+      console.log (response.data[0][0]);
       /*Validamos la respuesta del servidor: con el mensaje de response.data*/
       if (response.data.readuser) {
-
-        /*poner userLogged en true*/
-        setUserLogged(true);
 
         /*Almacenamiento local*/
         stg.set('userLogged', true);
         stg.set('username', response.data[0][0].username);
-        stg.set('password', (response.data[0][0].password));
+        stg.set('password', response.data[0][0].password);
         stg.set('name', response.data[0][0].name);
         stg.set('lastname', response.data[0][0].lastname);
         stg.set('email', response.data[0][0].mail);
@@ -84,13 +82,13 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
         setErrorMessage('Error de busqueda de usuario');
       }
 
-      errorRef.current.focus();
+      //errorRef.current.focus();
     }
 
   }
 
   getDataUser();
-  
+
   return (
     <>
       <div className='modal-settings' id={id}>
@@ -111,9 +109,9 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
               </div>
             </div>
           </section>
-          {panel === "info" ? <SettingsInfoPersonal clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal}/> : null}
-          {panel === 'gestion' ? <SettingsGestionCuenta clickedButton={setClickedButton} closeModal={closeModal}/> : null}
-          {panel === 'comentarios' ? <SettingsComentarios clickedButton={setClickedButton} closeModal={closeModal}/> : null}
+          {panel === "info" ? <SettingsInfoPersonal clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal} /> : null}
+          {panel === 'gestion' ? <SettingsGestionCuenta clickedButton={setClickedButton} closeModal={closeModal} /> : null}
+          {panel === 'comentarios' ? <SettingsComentarios clickedButton={setClickedButton} closeModal={closeModal} /> : null}
 
         </div>
       </div>

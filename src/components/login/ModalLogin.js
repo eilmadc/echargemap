@@ -20,7 +20,7 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
   const [resetPassword, setResetPassword] = useState(false);
 
   
-  console.log(activeTab);
+  //console.log(activeTab);
 
   stg.set('userLogged', userLogged);
 

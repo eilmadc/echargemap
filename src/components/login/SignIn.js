@@ -27,7 +27,7 @@ const SIGNIN_URL = '/backenduser.php';
         response:   Respuesta del servidor. Los datos relativos a la respuesta de los mensajes enviados en response.data.
 
 */
-const Signin = ({ id, userLogged, setUserLogged, link, setResetPassword }) => {
+const Signin = ({ id, userLogged, setUserLogged,  setResetPassword }) => {
 
     //const { setAuth } = React.useContext(AuthContext);
     const method = 'loginuser';
