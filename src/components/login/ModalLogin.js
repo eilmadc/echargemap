@@ -7,7 +7,6 @@ import ResetPass from './ResetPass';
 import '../../stylesheets/stylesModalLogin.css';
 import LogoDarkGreen from '../../images/logo_darkGreen.png';
 import LogoLightGreen from '../../images/logo_lightGreen.png';
-import { SettingsGestionCuenta } from '../SettingsGestionCuenta';
 import stg from '../../utils/stg';
 
 //import { AuthProvider } from '../../context/AuthProvider';
@@ -49,14 +48,7 @@ export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
             </TabPanel>
           </Tabs>
         </div>
-        {/* {link === "signin"
-                    ? 
-                    <Tab tabname="signup" disabled={userLogged ? true : false} >Registro</Tab>
-                    : null}
-                {link === "signup" ? <Signup id={id} userLogged={userLogged} setUserLogged={setUserLogged} link={setLink} /> : null} */}
       </div >
     </div >
-
-
   );
 }

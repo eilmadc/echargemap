@@ -61,14 +61,8 @@ const Signin = ({ id, userLogged, setUserLogged, setTabIndex, setResetPassword }
                 }
             );
 
-            //const roles = response?.data?.roles;
             //TODO: Ver si utilizaremos el token para mantener la sesion, en vez de enviar userName y password en cada transaccion
-            //const accessToken = response?.data?.accessToken;
-            //setAuth({ userName, password, roles, accessToken });
-            //setAuth({ userName, password });
-            //<----- end backend
-            //setUserName('');
-            //setPassword('');
+
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {

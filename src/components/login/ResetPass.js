@@ -16,7 +16,7 @@ const PWD_REGEX = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#$%%]).{8,12}$/;
 const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
 
-const ResetPass = ({ closeModal, id, userLogged, setUserLogged }) => {
+const ResetPass = ({ id, closeModal, setUserLogged }) => {
 
     const method = 'updateuser';
     const userRef = useRef();

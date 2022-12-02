@@ -9,7 +9,8 @@ import axios from "../api/axios";
 
 const READ_URL = '/backenduser.php';
 
-export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => {
+export const ModalSettings = ({ id, closeModal }) => {
+
   const [panel, setPanel] = useState('info');
   const [clickedButton, setClickedButton] = useState(false);
   const [newData, setNewData] = useState(false);
@@ -18,49 +19,32 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
   const errorRef = useRef();
   const [errorMessage, setErrorMessage] = useState(false);
 
-  const userName = stg.get('username');
-
-  //console.log(newData);
-
-  useEffect(() => {
-    setErrorMessage('');
-  }, [userName])
 
   const getDataUser = async (e) => {
-    //e.preventDefault();
-    const userName = stg.get('username');
 
     try {
-      //BACKEND----->
+
+      //BACKEND READUSER----->
       const response = await axios.post(
         READ_URL,
-        JSON.stringify({ method: method, userName: userName }),
+        JSON.stringify({ method: method, userName: stg.get('username') }),
         {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true
         }
       );
 
-      console.log (response.data[0][0]);
       /*Validamos la respuesta del servidor: con el mensaje de response.data*/
       if (response.data.readuser) {
-
         /*Almacenamiento local*/
-        stg.set('userLogged', true);
         stg.set('username', response.data[0][0].username);
-        stg.set('password', response.data[0][0].password);
         stg.set('name', response.data[0][0].name);
         stg.set('lastname', response.data[0][0].lastname);
         stg.set('email', response.data[0][0].mail);
         stg.set('location', response.data[0][0].location);
-
       }
       else {
-        /*                 console.log(password);
-                  console.log(md5(password));
-                  console.log(md5(md5(password)));
-                  console.log(md5(md5(md5(password)))); */
-        alert('El login del usuario y password ha fallado: ' + response.data.userName);
+        alert('El login del usuario y password ha fallado: ' + response.data[0][0].userName);
         console.log(response.data);
         stg.set('userLogged', false);
       }
@@ -68,7 +52,6 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
     } catch (e) {
 
       /* CONTROL DE ERRORES DE RESPUESTA DEL SERVIDOR*/
-
       if (!e?.response) {
         console.log(e);
         setErrorMessage('Sin Respuesta del Servidor.');
@@ -81,10 +64,8 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
       } else {
         setErrorMessage('Error de busqueda de usuario');
       }
-
-      //errorRef.current.focus();
+      errorRef.current.focus();
     }
-
   }
 
   getDataUser();
@@ -99,7 +80,7 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
           <section className='subpages-container'>
             <div className='subpages-list'>
               <div className='list-option'>
-                <a  className='list-items' id={id} role='button' onClick={() => setPanel('info')}>Información personal</a>
+                <a className='list-items' id={id} role='button' onClick={() => setPanel('info')}>Información personal</a>
               </div>
               <div className='list-option'>
                 <a id={id} className='list-items' role='button' onClick={() => setPanel('gestion')}>Gestión de la cuenta</a>
@@ -109,10 +90,9 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
               </div>
             </div>
           </section>
-          {panel === "info" ? <SettingsInfoPersonal id={id} clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal}/> : null}
-          {panel === 'gestion' ? <SettingsGestionCuenta id={id} clickedButton={setClickedButton} closeModal={closeModal}/> : null}
-          {panel === 'comentarios' ? <SettingsComentarios id={id} clickedButton={setClickedButton} closeModal={closeModal}/> : null}
-
+          {panel === "info" ? <SettingsInfoPersonal id={id} clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal} /> : null}
+          {panel === 'gestion' ? <SettingsGestionCuenta id={id} clickedButton={setClickedButton} closeModal={closeModal} /> : null}
+          {panel === 'comentarios' ? <SettingsComentarios id={id} clickedButton={setClickedButton} closeModal={closeModal} /> : null}
         </div>
       </div>
     </>

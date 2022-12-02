@@ -157,7 +157,7 @@ return (
 
       {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
 
-      {isModalResetPassOpen ? <ModalResetPass id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalResetPass} /> : null}
+      {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
 
       <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} />
 
