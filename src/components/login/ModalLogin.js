@@ -14,7 +14,6 @@ import stg from '../../utils/stg';
 
 export const ModalLogin = ({ closeModal, id, userLogged, setUserLogged }) => {
 
-  console.log(userLogged);
   const [resetPassword, setResetPassword] = useState(false);
   const [tabIndex, setTabIndex] = useState(0);
   

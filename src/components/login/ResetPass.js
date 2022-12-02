@@ -11,24 +11,18 @@ import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
 import axios from "../../api/axios";
 
 const RESETPASSWORD_URL = '/backenduser.php';
-const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{4,19}$/;
+
 const PWD_REGEX = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#$%%]).{8,12}$/;
 const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
 
 const ResetPass = ({ id, closeModal, setUserLogged }) => {
 
-    const method = 'updateuser';
-    const userRef = useRef();
-    const errorRef = useRef();
+    const method1 = 'readuser';
+    const method2 = 'resetpassword';
+
     const [success, setSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-
-
-    /*USERNAME */
-    const [userName, setUserName] = useState('');
-    const [validUserName, setValidUserName] = useState(false);
-    const [userNameFocus, setUserNameFocus] = useState(false);
 
     /*PASSWORD*/
     const [password, setPassword] = useState('');
@@ -40,37 +34,10 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
     const [validMatchPassword, setValidMatchPassword] = useState(false);
     const [matchPasswordFocus, setMatchPasswordFocus] = useState(false);
 
-    /* NOMBRE DE USUARIO*/
-    const [name, setName] = useState('');
-    const [validName, setValidName] = useState(false);
-    const [nameFocus, setNameFocus] = useState(false);
-
-    /*APELLIDO*/
-    const [lastname, setLastName] = useState('');
-    const [validLastName, setValidLastName] = useState(false);
-    const [lastnameFocus, setLastNameFocus] = useState(false);
-
     /*MAIL*/
     const [mail, setMail] = useState('');
     const [validMail, setValidMail] = useState(false);
     const [mailFocus, setMailFocus] = useState(false);
-
-    /*MUNICIPIO(location)*/
-    const [location, setLocation] = useState('');
-    const [validLocation, setValidLocation] = useState(false);
-    const [locationFocus, setLocationFocus] = useState(false);
-
-
-    /* USE EFFECTs */
-    /*     useEffect(() => {
-            userRef.current.focus();
-        }, []) */
-
-    /*Validacion del nombre de usuario */
-    useEffect(() => {
-        const result = USER_REGEX.test(userName);
-        setValidUserName(result);
-    }, [userName])
 
     /*Validacion de la contraseña*/
     useEffect(() => {
@@ -94,54 +61,76 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
 
     useEffect(() => {
         setErrorMessage('');
-    }, [userName, password, matchPassword, name, lastname, mail, location])
+    }, [password, matchPassword, mail])
 
 
     const handleSubmit = async (e) => {
         try {
-            e.preventDefault();
-            const var1 = USER_REGEX.test(userName);
+            //e.preventDefault();
             const var2 = PWD_REGEX.test(password);
             const var3 = EMAIL_REGEX.test(mail);
 
-            if (!var1 || !var2 || !var3) {
+            if (!var2 || !var3) {
                 setErrorMessage("Invalid entry");
                 return;
             }
 
-            //BACKEND----->
+            //TODO el servidor debe chequear si existe algun usuario con ese email
+            //Error del servidor en readuser. envia readuser_ok sin tener datos crrectos.
+
             const response = await axios.post(
                 RESETPASSWORD_URL,
-                JSON.stringify({ method: method, userName: userName, password: md5(password), name: name, lastname: lastname, mail: mail, location: location }),
+                JSON.stringify({ method: method1, mail: mail }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
             );
 
-            /*Validamos la respuesta del servidor: con el mensaje de response.data*/
-            if (response.data.updateuser) {
+            console.log(response.data);
 
-                console.log(response.data);
+            if (response.data.readuser) {
 
-                /*poner userLogged en true*/
-                setUserLogged(true);
 
-                /*Almacenamiento local*/
-                stg.set('userLogged', true);
-                stg.set('username', response.data.userName);
-                stg.set('password', (response.data.password));
-                stg.set('name', response.data.name);
-                stg.set('lastname', response.data.lastname);
-                stg.set('email', response.data.email);
-                stg.set('location', response.data.location);
+                //BACKEND----->
+                const response2 = await axios.post(
+                    RESETPASSWORD_URL,
+                    JSON.stringify({ method: method2, password: md5(password), mail: mail }),
+                    {
+                        headers: { 'Content-Type': 'application/json' },
+                        withCredentials: true
+                    }
+                );
 
-                /*  Si todo ha sido validado correctamente
-                    validamos success en el html*/
-                setSuccess(true);
-            }
-            else {
-                alert('Ha ocurrido un error de registro para el usuario: ' + response.data.userName);
+                /*Validamos la respuesta del servidor: con el mensaje de response.data*/
+                if (response2.data.updateuser) {
+
+                    console.log(response2.data);
+
+                    /*poner userLogged en true*/
+                    setUserLogged(true);
+
+                    /*Almacenamiento local*/
+                    stg.set('userLogged', true);
+                    stg.set('username', response2.data.userName);
+                    stg.set('password', (response2.data.password));
+                    stg.set('name', response2.data.name);
+                    stg.set('lastname', response2.data.lastname);
+                    stg.set('email', response2.data.email);
+                    stg.set('location', response2.data.location);
+
+                    /*  Si todo ha sido validado correctamente
+                        validamos success en el html*/
+                    setSuccess(true);
+                }
+                else {
+                    alert('Ha ocurrido un error de registro para el usuario: ' + response.data2.email);
+                    console.log(response2.data);
+                    stg.set('userLogged', false);
+                }
+
+            } else {
+                alert('No existe ningun usuario que se corresponda con este mail: ' + response.data.email);
                 console.log(response.data);
                 stg.set('userLogged', false);
             }
@@ -160,7 +149,7 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
             } else {
                 setErrorMessage('El Login ha fallado');
             }
-            errorRef.current.focus();
+            //errorRef.current.focus();
         }
     }
 
@@ -259,7 +248,7 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
                             {/* Mensaje de informacion del campo de confirmacion de la password*/}
                             <p
                                 id="confirminfo"
-                                className={matchPasswordFocus && !validName ? "instructions-signup" : "offscreen"}
+                                className={matchPasswordFocus && !validPassword ? "instructions-signup" : "offscreen"}
                             >
                                 <FaInfoCircle />
                                 Must match the confirm password with password.
@@ -311,6 +300,7 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
                             <button
                                 className="btn-reset"
                                 disabled={!validPassword || !validMail ? true : false}
+                                onClick={handleSubmit}
                             >
                                 Resetea Contraseña
                             </button>

@@ -89,7 +89,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
 
       const response = await axios.post(
         UPDATE_URL,
-        JSON.stringify({ method: method, userName: userName, password: md5(password), name: nameU, lastname: lastname, mail: mail, location: location }),
+        JSON.stringify({ method: method, userName: userName, password: password, name: nameU, lastname: lastname, mail: mail, location: location }),
         {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true
@@ -103,7 +103,6 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
       console.log('lastname: ' + lastname);
       console.log('mail:' + mail);
       console.log('location:' + location);
-      console.log(response.data[0]);
 
       /*Validamos la respuesta del servidor: con el mensaje de response.data*/
       if (response.data.updateuser) {
@@ -121,6 +120,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
       }
       else {
         alert('Ha ocurrido un error de registro ' + userName);
+        handleDiscardChanges();
         console.log(response.data);
       }
 
