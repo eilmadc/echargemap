@@ -6,6 +6,7 @@ import './stylesheets/lightMode.css';
 import './stylesheets/About.css';
 import './stylesheets/stylesModalContact.css';
 import './stylesheets/stylesModalSettings.css';
+import './stylesheets/stylesECMap.css';
 import { ReactDimmer } from 'react-dimmer';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { BsPersonCircle } from 'react-icons/bs';
@@ -16,8 +17,7 @@ import { ModalLogin } from '../src/components/login/ModalLogin';
 import { ModalLogout } from '../src/components/login/ModalLogout';
 import { ModalResetPass } from '../src/components/login/ModalResetPass';
 import { Menu } from "./components/Menu";
-import Map from './images/mapa.jpeg';
-import MapDark from './images/mapaDark.png';
+import ECMap from "../src/components/map/ECMap";
 import ReactSwitch from 'react-switch';
 import LogoDarkGreen from './images/logo_darkGreen.png';
 import LogoLightGreen from './images/logo_lightGreen.png';
@@ -25,7 +25,6 @@ import { About } from './components/About';
 import { ModalContact } from './components/ModalContact';
 import { ModalSettings } from './components/ModalSettings';
 import stg from '../src/utils/stg';
-
 
 
 function App() {
@@ -40,6 +39,7 @@ function App() {
       setMode('lightMode');
     }
   };
+
 
   useEffect(() => {
     localStorage.setItem('mode', mode);
@@ -171,7 +171,10 @@ function App() {
           <div className='body' id={mode}>
             <div className='container-main'>
               <div className='container-map'>
-                <img className='map-photo' id={mode} src={mode === 'lightMode' ? Map : MapDark} alt='mapa' />
+              
+                <ECMap id={mode}> </ECMap>
+
+               {/*  <img className='map-photo' id={mode} src={mode === 'lightMode' ? Map : MapDark} alt='mapa' /> */}
               </div>
             </div>
           </div>
