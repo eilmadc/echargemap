@@ -18,8 +18,8 @@ const EMAIL_REGEX = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
 
 const ResetPass = ({ id, closeModal, setUserLogged }) => {
 
-    const method1 = 'readuser';
-    const method2 = 'resetpassword';
+    const method1 = 'readpass';
+    const method2 = 'resetpass';
 
     const [success, setSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -78,6 +78,7 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
             //TODO el servidor debe chequear si existe algun usuario con ese email
             //Error del servidor en readuser. envia readuser_ok sin tener datos crrectos.
 
+            console.log('email: ' + mail);
             const response = await axios.post(
                 RESETPASSWORD_URL,
                 JSON.stringify({ method: method1, mail: mail }),
@@ -87,9 +88,9 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
                 }
             );
 
-            console.log(response.data);
+            console.log(response.data.readpass);
 
-            if (response.data.readuser) {
+            if (response.data.readpass) {
 
 
                 //BACKEND----->
@@ -103,35 +104,35 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
                 );
 
                 /*Validamos la respuesta del servidor: con el mensaje de response.data*/
-                if (response2.data.updateuser) {
+                if (response2.data.resetpass) {
 
                     console.log(response2.data);
 
                     /*poner userLogged en true*/
-                    setUserLogged(true);
+                    //setUserLogged(true);
 
                     /*Almacenamiento local*/
-                    stg.set('userLogged', true);
+/*                     stg.set('userLogged', true);
                     stg.set('username', response2.data.userName);
                     stg.set('password', (response2.data.password));
                     stg.set('name', response2.data.name);
                     stg.set('lastname', response2.data.lastname);
-                    stg.set('email', response2.data.email);
-                    stg.set('location', response2.data.location);
+                    stg.set('email', response2.data.mail);
+                    stg.set('location', response2.data.location); */
 
                     /*  Si todo ha sido validado correctamente
                         validamos success en el html*/
                     setSuccess(true);
                 }
                 else {
-                    alert('Ha ocurrido un error de registro para el usuario: ' + response.data2.email);
+                    alert('Ha ocurrido un error de registro para el mail: ' + response.data2.email);
                     console.log(response2.data);
                     stg.set('userLogged', false);
                 }
 
             } else {
                 alert('No existe ningun usuario que se corresponda con este mail: ' + response.data.email);
-                console.log(response.data);
+                console.log(response.data[0][0]);
                 stg.set('userLogged', false);
             }
         } catch (e) {
