@@ -1,0 +1,107 @@
+@import 'constants.css';
+
+.modal-stations {
+  display: flex-block;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 33vw;
+  height: 65vh;
+  min-width: 40rem;
+  min-height: 25rem;
+  /*background-color: var(--light);*/
+  border-radius: 15px 15px;
+  z-index: 200;
+}
+
+/* Barra superior del modal*/
+.modal-station-header {
+  height: 3.5rem;
+  background-color: var(--light);
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+h2 {
+  color: var(--dark);
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: var(--dark);
+  font-size: 16px;
+}
+
+.modal-station-header button {
+  position: relative;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: var(--violet);
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Header de la x para cerrar el modal */
+.modal-station-header h2 {
+  color: #207868;
+  position: absolute;
+  align-items: flex-start;
+  top: 0;
+  right: 0.7rem;
+  margin: 0.7rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+/*Body del login */
+.modal-station-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  place-content: center;
+  background-color: var(--light);
+}
+
+.tabs-station-nav {
+  background-color: var(--lightGreen);
+  color: var(--grey);
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: 80%;
+  margin: 5px auto;
+  padding-right: 40px;
+  border-radius: 15px;
+  border-top: 2px solid #bae6e1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tabs-station-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+}
+
+
+.logo-station {
+  display: flex;
+  padding-bottom: 2%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 50px;
+  width: 47px;
+}

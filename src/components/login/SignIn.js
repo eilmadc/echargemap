@@ -12,7 +12,6 @@ import md5 from 'md5';
 import axios from "../../api/axios";
 
 const SIGNIN_URL = '/backenduser.php';
-//const SIGNIN_URL = '/backenduser.php';
 
 /*  Metodo: Signin - Utilizado para que el usuario sea validado en la base de datos sql del servidor.
     

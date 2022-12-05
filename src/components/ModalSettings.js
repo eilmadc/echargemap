@@ -71,9 +71,6 @@ export const ModalSettings = ({ id, closeModal, setUserLogged }) => {
     }
   }
 
-
-
-
   return (
     <>
       <div className='modal-settings' id={id}>

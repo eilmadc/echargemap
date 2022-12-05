@@ -7,6 +7,8 @@ import './stylesheets/About.css';
 import './stylesheets/stylesModalContact.css';
 import './stylesheets/stylesModalSettings.css';
 import './stylesheets/stylesECMap.css';
+import './stylesheets/stylesModalStations.css';
+
 import { ReactDimmer } from 'react-dimmer';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { BsPersonCircle } from 'react-icons/bs';
@@ -24,6 +26,7 @@ import LogoLightGreen from './images/logo_lightGreen.png';
 import { About } from './components/About';
 import { ModalContact } from './components/ModalContact';
 import { ModalSettings } from './components/ModalSettings';
+import { ModalStations } from './components/stations/ModalStations';
 import stg from '../src/utils/stg';
 
 
@@ -50,9 +53,9 @@ function App() {
   const [isModalOpen, setModal] = useState(false);
   const [isModalLoginOpen, setModalLogin] = useState(false);
   const [isModalLogoutOpen, setModalLogout] = useState(false);
-  const [isModalResetPassOpen, setModalResetPass] = useState(false);
   const [isModalContactOpen, setModalContact] = useState(false);
   const [isModalSettingsOpen, setModalSettings] = useState(false);
+  const [isModalStationsOpen, setModalStations] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
 
   const [paginaActiva, setPaginaActiva] = useState('paginaInicio');
@@ -67,8 +70,8 @@ function App() {
 
   const handleMenu = () => {
     setMenu((prevState) => !prevState);
-/*     console.log(stg.get('userLogged'));
-    console.log(userLogged); */
+    /*     console.log(stg.get('userLogged'));
+        console.log(userLogged); */
   };
 
   const handleClickContact = () => {
@@ -79,6 +82,9 @@ function App() {
     setModalSettings((prevState) => !prevState);
   }
 
+  const handleClickStations = () => {
+    setModalStations((prevState) => !prevState);
+  }
 
   return (
     <>
@@ -158,8 +164,9 @@ function App() {
         {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
 
         {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
+        {isModalStationsOpen ? <ModalStations id={mode} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
 
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} />
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} />
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
@@ -171,10 +178,10 @@ function App() {
           <div className='body' id={mode}>
             <div className='container-main'>
               <div className='container-map'>
-              
+
                 <ECMap id={mode}> </ECMap>
 
-               {/*  <img className='map-photo' id={mode} src={mode === 'lightMode' ? Map : MapDark} alt='mapa' /> */}
+                {/*  <img className='map-photo' id={mode} src={mode === 'lightMode' ? Map : MapDark} alt='mapa' /> */}
               </div>
             </div>
           </div>
@@ -203,6 +210,8 @@ function App() {
         zIndex={100}
         blur={1.5}
       />
+
+
 
       <ReactDimmer
         isOpen={isModalLogoutOpen}
