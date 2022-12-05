@@ -67,8 +67,8 @@ function App() {
 
   const handleMenu = () => {
     setMenu((prevState) => !prevState);
-    console.log(stg.get('userLogged'));
-    console.log(userLogged);
+/*     console.log(stg.get('userLogged'));
+    console.log(userLogged); */
   };
 
   const handleClickContact = () => {

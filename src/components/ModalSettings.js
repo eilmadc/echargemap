@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useRef, useState, useEffect } from "react";
-import { SettingsInfoPersonal } from './SettingsInfoPersonal';
-import { SettingsGestionCuenta } from './SettingsGestionCuenta';
-import { SettingsComentarios } from './SettingsComentarios';
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import { SettingsInfoPersonal } from '../components/SettingsInfoPersonal';
+import { SettingsGestionCuenta } from '../components/SettingsGestionCuenta';
+import { SettingsComentarios } from '../components/SettingsComentarios';
 import stg from '../utils/stg';
 /* LIBERIA AXIOS */
 import axios from "../api/axios";
 
 const READ_URL = '/backenduser.php';
 
-export const ModalSettings = ({ id, closeModal }) => {
+export const ModalSettings = ({ id, closeModal, setUserLogged }) => {
 
   const [panel, setPanel] = useState('info');
   const [clickedButton, setClickedButton] = useState(false);
@@ -19,6 +19,9 @@ export const ModalSettings = ({ id, closeModal }) => {
   const errorRef = useRef();
   const [errorMessage, setErrorMessage] = useState(false);
 
+  useLayoutEffect(() => {
+    getDataUser();
+  })
 
   const getDataUser = async (e) => {
 
@@ -68,7 +71,8 @@ export const ModalSettings = ({ id, closeModal }) => {
     }
   }
 
-  getDataUser();
+
+
 
   return (
     <>
@@ -91,7 +95,7 @@ export const ModalSettings = ({ id, closeModal }) => {
             </div>
           </section>
           {panel === "info" ? <SettingsInfoPersonal id={id} clickedButton={setClickedButton} setNewData={setNewData} newData={newData} closeModal={closeModal} /> : null}
-          {panel === 'gestion' ? <SettingsGestionCuenta id={id} clickedButton={setClickedButton} closeModal={closeModal} /> : null}
+          {panel === 'gestion' ? <SettingsGestionCuenta id={id} clickedButton={setClickedButton} closeModal={closeModal} setUserLogged={setUserLogged} /> : null}
           {panel === 'comentarios' ? <SettingsComentarios id={id} clickedButton={setClickedButton} closeModal={closeModal} /> : null}
         </div>
       </div>

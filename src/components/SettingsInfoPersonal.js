@@ -1,10 +1,11 @@
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import React from 'react'
 import stg from '../utils/stg';
 /* LIBERIA AXIOS */
 import axios from "../api/axios";
 import md5 from "md5";
+import { useRootClose } from "rsuite/esm/utils";
 
 const UPDATE_URL = '/backenduser.php';
 
@@ -12,6 +13,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
 
   const method = 'updateuser';
   const errorRef = useRef();
+
 
   //TODO: Ver si son necesarias cuando UPDATEUSER este acabado en server. Optimizar
   const [userName, setUserName] = useState(stg.get('username'));
@@ -30,12 +32,28 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
     usuario: stg.get('username'),
     correo: stg.get('correo'),
     ubicacion: stg.get('location'),
-  })
+  });
 
+  console.log('userName: ' + userName);
+  console.log('nameU:' + nameU);
+  console.log('password: ' + password);
+  console.log('lastname: ' + lastname);
+  console.log('mail:' + mail);
+  console.log('location:' + location);
 
-  useEffect(() => {
+  console.log(state);
+
+/*   useLayoutEffect(() => {
+    setState({
+      ...state,
+      nombre: stg.get('name'),
+      apellidos: stg.get('lastname'),
+      usuario: stg.get('username'),
+      correo: stg.get('correo'),
+      ubicacion: stg.get('location'),
+    });
     setErrorMessage('');
-  }, [userName])
+  },[ ]) */
 
   const handleOnChange = (e) => {
 
@@ -57,7 +75,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
       case 'ubicacion': setLocation(e.target.value); break;
       default: break;
     }
-    console.log('EVENT:', e);
+    //console.log('EVENT:', e);
   };
 
   /*DESCARTAR CAMBIOS EN EL FORMULARIO*/
@@ -111,9 +129,9 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
 
         /*Almacenamiento local*/
         stg.set('name', nameU);
-        stg.set('lastname', nameU);
-        stg.set('username', nameU);
-        stg.set('location', nameU);
+        stg.set('lastname', lastname);
+        stg.set('username', userName);
+        stg.set('location', location);
 
         setSuccess(true);
 
@@ -169,7 +187,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   <form className='nombre-apellidos'>
                     <div className='wrap-nombre'>
                       <label id={id} className='nombre-label'>Nombre</label>
-                      <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} value={state.nombre}>{ }</input>
+                      <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} defaultValue={nameU} value={state.nombre} >{}</input>
                     </div>
                     <div className='wrap-apellidos'>
                       <label id={id} className='apellidos-label'>Apellidos</label>
@@ -179,7 +197,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   <form className='nombre-usuario'>
                     <div className='wrap-usuario'>
                       <label id={id} className='usuario-label'>Nombre de usuario</label>
-                      <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange} value={userName}>{/*rellenar con la información del usuario*/}</input>
+                      <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange} value={state.usuario}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='ubicacion'>
@@ -196,7 +214,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   </form>
                 </div>
                 <div className='save-button-container'>
-                  <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={() => handleSubmit}>Guardar cambios</button>
+                  <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={handleSubmit}>Guardar cambios</button>
                 </div>
 
               </form>
