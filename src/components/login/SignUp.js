@@ -165,7 +165,7 @@ const Signup = ({ id, userLogged, setUserLogged, setTabIndex }) => {
                 stg.set('password', (response.data.password));
                 stg.set('name', response.data.name);
                 stg.set('lastname', response.data.name);
-                stg.set('email', response.data.email);
+                stg.set('email', response.data.mail);
                 stg.set('location', response.data.location);
 
                 /*  Si todo ha sido validado correctamente

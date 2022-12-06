@@ -2,7 +2,7 @@ import '../stylesheets/stylesSignOut.css';
 import React from 'react'
 import { useState, useEffect } from 'react';
 import stg from '../utils/stg';
-export const SettingsGestionCuenta = ({ id, clickedButton, userLogged, setResetPassword }) => {
+import md5 from 'md5';
 
 /* ICONOS */
 import { FaInfoCircle, FaCheck, FaTimes } from 'react-icons/fa';
@@ -25,7 +25,7 @@ export const SettingsGestionCuenta = ({ id, clickedButton, setUserLogged, setRes
   const isLogged = stg.get('userLogged');
   const [message, setMessage] = useState('');
 
-  return (
+  /* return (
     <>
       <section className='settings-container'>
         <div className='setting-header' >
@@ -83,7 +83,7 @@ export const SettingsGestionCuenta = ({ id, clickedButton, setUserLogged, setRes
                     <button className='discard-button' type='submit' onClick={() => setDeleteAccountBtn(true)}>Eliminar cuenta</button>
                   </div>
                 </div>
-                : null}
+                : null} */
   /*PASSWORD*/
   const [password, setPassword] = useState('');
   const [validPassword, setValidPassword] = useState(false);
