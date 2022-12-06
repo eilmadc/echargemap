@@ -12,7 +12,6 @@ import md5 from 'md5';
 import axios from "../../api/axios";
 
 const SIGNIN_URL = '/backenduser.php';
-//const SIGNIN_URL = '/backenduser.php';
 
 /*  Metodo: Signin - Utilizado para que el usuario sea validado en la base de datos sql del servidor.
     
@@ -61,14 +60,8 @@ const Signin = ({ id, userLogged, setUserLogged, setTabIndex, setResetPassword }
                 }
             );
 
-            //const roles = response?.data?.roles;
             //TODO: Ver si utilizaremos el token para mantener la sesion, en vez de enviar userName y password en cada transaccion
-            //const accessToken = response?.data?.accessToken;
-            //setAuth({ userName, password, roles, accessToken });
-            //setAuth({ userName, password });
-            //<----- end backend
-            //setUserName('');
-            //setPassword('');
+
 
             /*Validamos la respuesta del servidor: con el mensaje de response.data*/
             if (response.data.loginuser) {

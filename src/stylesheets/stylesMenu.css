@@ -32,6 +32,7 @@
   align-items: flex-start;
 }
 
+
 .menu-items > .list > a {
   display: flex;
   flex-direction: column;
@@ -64,6 +65,13 @@ a:hover {
   width: 100%;
 }
 
+/* .visible{
+
+}
+
+.hidden {
+
+} */
 /* LIGHTMODE STYLES */
 
 #lightMode > a {

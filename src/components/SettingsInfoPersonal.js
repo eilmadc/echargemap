@@ -1,19 +1,21 @@
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import React from 'react'
 import stg from '../utils/stg';
-import md5 from 'md5';
 /* LIBERIA AXIOS */
 import axios from "../api/axios";
+import md5 from "md5";
+import { useRootClose } from "rsuite/esm/utils";
 
 const UPDATE_URL = '/backenduser.php';
 
-export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, closeModal, userLogged, setUserLogged }) => {
+export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, closeModal }) => {
 
   const method = 'updateuser';
-  const userRef = useRef();
   const errorRef = useRef();
 
+
+  //TODO: Ver si son necesarias cuando UPDATEUSER este acabado en server. Optimizar
   const [userName, setUserName] = useState(stg.get('username'));
   const [password, setPassword] = useState(stg.get('password'));
   const [nameU, setNameU] = useState(stg.get('name'));
@@ -24,30 +26,84 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
   const [errorMessage, setErrorMessage] = useState('');
   const [success, setSuccess] = useState(false);
 
+  const [state, setState] = useState({
+    nombre: stg.get('name'),
+    apellidos: stg.get('lastname'),
+    usuario: stg.get('username'),
+    correo: stg.get('correo'),
+    ubicacion: stg.get('location'),
+  });
+
+  console.log('userName: ' + userName);
+  console.log('nameU:' + nameU);
+  console.log('password: ' + password);
+  console.log('lastname: ' + lastname);
+  console.log('mail:' + mail);
+  console.log('location:' + location);
+
+  console.log(state);
+
+/*   useLayoutEffect(() => {
+    setState({
+      ...state,
+      nombre: stg.get('name'),
+      apellidos: stg.get('lastname'),
+      usuario: stg.get('username'),
+      correo: stg.get('correo'),
+      ubicacion: stg.get('location'),
+    });
+    setErrorMessage('');
+  },[ ]) */
+
   const handleOnChange = (e) => {
+
     e.preventDefault();
 
     setNewData(true);
-    console.log(newData);
 
     /*Cambio en los valores del formulario y su almacenaje en las variables correspondientes*/
-    setUserName(e.target.userName);
-    setNameU(e.target.nameU);
-    setLastName(e.target.lastName);
-    //email no se cambia, puesto que es el campo clave.
-    setLocation(e.target.location);
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    });
+
+    switch (e.target.name) {
+      //email no se cambia, puesto que es el campo clave.
+      case 'nombre': setNameU(e.target.value); break;
+      case 'apellidos': setLastName(e.target.value); break;
+      case 'usuario': setUserName(e.target.value); break;
+      case 'ubicacion': setLocation(e.target.value); break;
+      default: break;
+    }
+    //console.log('EVENT:', e);
   };
 
-  const handleExit = (e) => {
-    clickedButton(true);
+  /*DESCARTAR CAMBIOS EN EL FORMULARIO*/
+  const handleDiscardChanges = (e) => {
+
+    setNewData(false);
+    clickedButton(false);
+    closeModal(true);
+
+    setState({
+      ...state,
+      nombre: stg.get('name'),
+      apellidos: stg.get('lastname'),
+      usuario: stg.get('username'),
+      correo: stg.get('correo'),
+      ubicacion: stg.get('location'),
+    });
   }
 
+  /*UPDATEUSER: ENVIAR CAMBIOS EN EL FORMULARIO AL SERVIDOR PARA ACTUALIZAR AL USUARIO EN LA DB*/
   const handleSubmit = async (e) => {
 
     try {
+
+      e.preventDefault();
+
       setNewData(true);
       clickedButton(true);
-      e.preventDefault();
 
       const response = await axios.post(
         UPDATE_URL,
@@ -58,17 +114,32 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
         }
       );
 
-      console.log(response.data);
+      //TODO: borrar cuando todas las pruebas esten realizadas.
+      console.log('userName: ' + userName);
+      console.log('nameU:' + nameU);
+      console.log('password: ' + password);
+      console.log('lastname: ' + lastname);
+      console.log('mail:' + mail);
+      console.log('location:' + location);
 
       /*Validamos la respuesta del servidor: con el mensaje de response.data*/
       if (response.data.updateuser) {
+
         console.log(response.data);
+
+        /*Almacenamiento local*/
+        stg.set('name', nameU);
+        stg.set('lastname', lastname);
+        stg.set('username', userName);
+        stg.set('location', location);
+
         setSuccess(true);
+
       }
       else {
-        alert('Ha ocurrido un error de registro ' + response.data.userName);
+        alert('Ha ocurrido un error de registro ' + userName);
+        handleDiscardChanges();
         console.log(response.data);
-        stg.set('userLogged', false);
       }
 
     } catch (e) {
@@ -86,7 +157,6 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
       } else {
         setErrorMessage('El Login ha fallado');
       }
-
       errorRef.current.focus();
     }
   }
@@ -117,17 +187,17 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   <form className='nombre-apellidos'>
                     <div className='wrap-nombre'>
                       <label id={id} className='nombre-label'>Nombre</label>
-                      <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} value={nameU}>{/*rellenar con la información del usuario*/}</input>
+                      <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} defaultValue={nameU} value={state.nombre} >{}</input>
                     </div>
                     <div className='wrap-apellidos'>
                       <label id={id} className='apellidos-label'>Apellidos</label>
-                      <input className='apellidos-input' type='text' name='apellidos' onChange={handleOnChange} value={lastname}>{/*rellenar con la información del usuario*/}</input>
+                      <input className='apellidos-input' type='text' name='apellidos' onChange={handleOnChange} value={state.apellidos}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='nombre-usuario'>
                     <div className='wrap-usuario'>
                       <label id={id} className='usuario-label'>Nombre de usuario</label>
-                      <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange} value={userName}>{/*rellenar con la información del usuario*/}</input>
+                      <input className='usuario-input' type='text' name='usuario' onChange={handleOnChange} value={state.usuario}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='ubicacion'>
@@ -144,11 +214,13 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   </form>
                 </div>
                 <div className='save-button-container'>
-                  <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={() => handleSubmit}>Guardar cambios</button>
-                  <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={() => handleExit}>Descartar cambios</button>
+                  <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={handleSubmit}>Guardar cambios</button>
                 </div>
+
               </form>
-              
+              <div className='save-button-container' >
+                <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={handleDiscardChanges}>Descartar cambios</button>
+              </div>
             </div>
           </div>
         </section>
