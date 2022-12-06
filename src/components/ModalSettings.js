@@ -98,13 +98,13 @@ export const ModalSettings = ({ id, closeModal, userLogged, setUserLogged }) => 
         <div className='modal-settings-container'>
           <section className='subpages-container'>
             <div className='subpages-list'>
-              <div className='list-option'>
-                <a  className='list-items' id={id} role='button' onClick={() => setPanel('info')}>Información personal</a>
+              <div className='list-option' id={id}>
+                <a className='list-items' id={id} role='button' onClick={() => setPanel('info')}>Información personal</a>
               </div>
-              <div className='list-option'>
+              <div className='list-option' id={id}>
                 <a id={id} className='list-items' role='button' onClick={() => setPanel('gestion')}>Gestión de la cuenta</a>
               </div>
-              <div className='list-option'>
+              <div className='list-option' id={id}>
                 <a id={id} className='list-items' role='button' onClick={() => setPanel('comentarios')}>Comentarios</a>
               </div>
             </div>

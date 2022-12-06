@@ -212,11 +212,19 @@ return (
     />
 
     <ReactDimmer
+      isOpen={isModalSettingsOpen}
+      exitDimmer={setModalSettings}
+      zIndex={100}
+      blur={1.5}
+    />
+
+<ReactDimmer
       isOpen={isModalContactOpen}
       exitDimmer={setModalContact}
       zIndex={100}
       blur={1.5}
     />
+
   </>
 
 );

@@ -155,18 +155,47 @@ section.contact-header#darkMode:before {
 /* SETTINGS */
 
 .modal-settings#darkMode, 
-.modal-settings-header#darkMode {
+.modal-settings-header#darkMode,
+.settingtitle#darkMode {
     background-color: var(--darkPageBackground);
 }
 
 h2#darkMode.settingtitle,
 h3#darkMode.desc,
+.introduce-nueva-contr#darkMode {
+    color: var(--light);
+}
+
+
 a.list-items#darkMode {
+    color: var(--blueHover)
+}
+
+.list-option#darkMode > a::after {
+    color: var(--blueHover)
+}
+
+.cambio-contr#darkMode,
+.borrar-cuenta#darkMode {
+    color: var(--blueHover);
+}
+
+.borrar-cuenta-container {
     color: var(--lightGray);
 }
 
-a#darkMode.list-option {
+.comentarios#darkMode,
+.setting-comentarios-container#darkMode {
+    color: var(--lightGray);
+}
 
+.wrap-comentario#darkMode {
+    outline: 2px solid var(--grey);
+}
+
+.titulo-comentario#darkMode,
+.texto-comentario#darkMode {
+    color: var(--lightGray);
 }
 
 
