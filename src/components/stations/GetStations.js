@@ -10,7 +10,7 @@ const STATIONS_URL = '/backendstations.php';
 
 export const GetStations = ({ id, closeModal, setUserLogged }) => {
 
-    const method = 'readstations';
+    const method = 'readstationsmunicipi';
     const location = 'Barcelona';
     const [errorMessage, setErrorMessage] = useState('');
     const errorRef = useRef();
