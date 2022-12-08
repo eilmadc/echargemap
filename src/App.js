@@ -58,6 +58,10 @@ function App() {
   const [isModalStationsOpen, setModalStations] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
 
+  const [markers, setMarkers] = useState([]);
+  const [stationsData, setStationsData] = useState([]);
+
+
   const [paginaActiva, setPaginaActiva] = useState('paginaInicio');
 
   const handleClick = () => {
@@ -163,10 +167,11 @@ function App() {
 
         {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
 
-        {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
-        {isModalStationsOpen ? <ModalStations id={mode} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
+        {isModalSettingsOpen ? <ModalSettings id={mode}  closeModal={setModalSettings} /> : null}
 
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} />
+        {isModalStationsOpen ? <ModalStations id={mode} setMarkers={setMarkers} markers={markers} stationsData={stationsData} setStationsData={setStationsData} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
+        
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} setMarkers={setMarkers}/>
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
@@ -178,8 +183,7 @@ function App() {
           <div className='body' id={mode}>
             <div className='container-main'>
               <div className='container-map'>
-
-                <ECMap id={mode}> </ECMap>
+                <ECMap id={mode} markers={markers} stationsData={stationsData} />
 
                 {/*  <img className='map-photo' id={mode} src={mode === 'lightMode' ? Map : MapDark} alt='mapa' /> */}
               </div>
@@ -211,8 +215,6 @@ function App() {
         blur={1.5}
       />
 
-
-
       <ReactDimmer
         isOpen={isModalLogoutOpen}
         exitDimmer={setModalLogout}
@@ -233,11 +235,7 @@ function App() {
         zIndex={100}
         blur={1.5}
       />
-
-
-
     </>
-
   );
 }
 

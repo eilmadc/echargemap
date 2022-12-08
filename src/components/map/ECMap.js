@@ -1,40 +1,48 @@
 import React from 'react';
 import "../../stylesheets/stylesECMap.css";
 import { useEffect, useRef, useMemo, useState } from 'react';
-import MapLight from '../../images/mapa.jpeg';
-import MapDark from '../../images/mapaDark.png';
 
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from "@react-google-maps/api";
 import { isAccordionItemSelected } from 'react-bootstrap/esm/AccordionContext';
 
 
-const ECMap = ({ id }) => {
+const ECMap = ({ id, markers, stationsData }) => {
 
   /*Carga inicial de la API*/
   const { isLoaded } = useLoadScript({
     //env.local-- NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = "AIzaSyC7XftCh0NCOkAUkX81wcuUaVTpmuFew8k"(mielena)
     googleMapsApiKey: "AIzaSyC7XftCh0NCOkAUkX81wcuUaVTpmuFew8k",
   });
-
   if (!isLoaded) return <div><h1>Loading...</h1></div>
-  return <Map></Map>
+  return <Map markers={markers} stationsData={stationsData}></Map>
 }
 
 /*FUNCION DE CARGA DEL MAPA*/
-function Map() {
+export function Map({ markers, stationsData }) {
 
   //Posicion inicial de centrado de mapa, zoom, 
-  const center = useMemo(() => ({ lat: 41.593502, lng: 1.8378068 }), []);
+  var center = useMemo(() => ({ lat: 41.390205, lng: 2.154007 }), []);
   const zoom = 11;
-  const [selected, setSelected] = useState(null);
+
   const [success, setSuccess] = useState(false);
+  const [rerender, setRerender] = useState(false);
+  const [popUp, setPopUp] = useState(false);
+  const [popUpInfo, setPopUpInfo] = useState(null);
+
+
+  console.log(stationsData)
+
+
+  
+
+  console.log(popUpInfo)
+
+  console.log(markers)
 
   return (
     <>
       {success ?
-        (
-          null
-        ) : (
+        (null) : (
           <section>
             <div id='map' className='map-container'>
 
@@ -43,10 +51,14 @@ function Map() {
                 center={center}
                 mapContainerClassName="map-container"
               >
-                {<MarkerF position={center}/>}
-              
+                {markers.map(elem => (
+                  <MarkerF position={elem} onClick={() => { setPopUpInfo(elem); setPopUp(true) }} />
+                ))}
+
+                
+
               </ GoogleMap>
-            
+
             </div>
           </section>
         )
@@ -54,6 +66,4 @@ function Map() {
     </>
   );
 }
-
-
-export default ECMap
+export default ECMap;
