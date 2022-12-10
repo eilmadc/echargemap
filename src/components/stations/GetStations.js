@@ -34,6 +34,7 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
       console.log(response);
 
       if (response.data.readstationsmunicipi) {
+        console.log(response.data)
 
         for (let i = 0; i < response.data[0].length; i++) {
           let lat = Number(parseFloat(response.data[0][i].latitud));

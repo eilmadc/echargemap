@@ -43,17 +43,17 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
 
   console.log(state);
 
-/*   useLayoutEffect(() => {
-    setState({
-      ...state,
-      nombre: stg.get('name'),
-      apellidos: stg.get('lastname'),
-      usuario: stg.get('username'),
-      correo: stg.get('correo'),
-      ubicacion: stg.get('location'),
-    });
-    setErrorMessage('');
-  },[ ]) */
+  /*   useLayoutEffect(() => {
+      setState({
+        ...state,
+        nombre: stg.get('name'),
+        apellidos: stg.get('lastname'),
+        usuario: stg.get('username'),
+        correo: stg.get('correo'),
+        ubicacion: stg.get('location'),
+      });
+      setErrorMessage('');
+    },[ ]) */
 
   const handleOnChange = (e) => {
 
@@ -187,7 +187,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   <form className='nombre-apellidos'>
                     <div className='wrap-nombre'>
                       <label id={id} className='nombre-label'>Nombre</label>
-                      <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} defaultValue={nameU} value={state.nombre} >{}</input>
+                      <input className='nombre-input' type='text' name='nombre' onChange={handleOnChange} defaultValue={nameU} value={state.nombre} >{ }</input>
                     </div>
                     <div className='wrap-apellidos'>
                       <label id={id} className='apellidos-label'>Apellidos</label>
@@ -215,14 +215,15 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                 </div>
                 <div className='save-button-container'>
                   <button className='save-button' disabled={!newData ? true : false} type='submit' onClick={handleSubmit}>Guardar cambios</button>
+                  <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={handleDiscardChanges}>Descartar cambios</button>
                 </div>
-
               </form>
-              <div className='save-button-container' >
-                <button className='discard-button' disabled={!newData ? true : false} type='submit' onClick={handleDiscardChanges}>Descartar cambios</button>
+              <div className='button-container'>
+                
               </div>
             </div>
           </div>
+
         </section>
       )
       }

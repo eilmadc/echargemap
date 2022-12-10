@@ -21,8 +21,8 @@
 }
 
 .menu-items {
-   margin-top: 10em;
-   
+  margin-top: 10em;
+
 }
 
 .list {
@@ -33,7 +33,7 @@
 }
 
 
-.menu-items > .list > a {
+.menu-items>.list>a {
   display: flex;
   flex-direction: column;
   padding-inline-start: 20px;
@@ -47,11 +47,11 @@ a:hover {
   cursor: pointer;
 }
 
-.list > a:hover {
+.list>a:hover {
   opacity: 1;
 }
 
-.list > a::after {
+.list>a::after {
   content: "";
   position: relative;
   left: 0;
@@ -61,38 +61,52 @@ a:hover {
   transition: all .45s;
 }
 
-.list > a:hover::after {
+.list>a:hover::after {
   width: 100%;
 }
 
-/* .visible{
-
+.btn-signout {
+  margin-left: 20%;
+  margin-top: 280px;
+  padding: 0 20px;
+  min-width: 140px;
+  height: 40px;
+  background-color: var(--light);
+  border-radius: 25px;
+  border: 3px solid;
+  border-color: var(--violet);
+  font-family: 'Poppins', regular;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.2;
+  transition: all .4s;
 }
 
-.hidden {
+.btn-signout:hover {
+  background-color: var(--violet);
+  cursor: pointer;
+}
 
-} */
 /* LIGHTMODE STYLES */
 
-#lightMode > a {
+#lightMode>a {
   color: var(--blue);
 }
 
-#lightMode > a::after {
+#lightMode>a::after {
   background: var(--blue);
 }
 
 /* DARKMODE STYLES */
 
- #darkMode .app-menu {
+#darkMode .app-menu {
   background-color: var(--grey);
 }
-
-
 
 
 @media only screen and (max-width : 480px) {
   .app-menu {
     width: 50%;
   }
- }
+}

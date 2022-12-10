@@ -25,6 +25,10 @@
     color: var(--blue);
 }
 
+.user-login#lightMode {
+    color: var(--blue);
+}
+
 /* MODAL LOGIN */
 
 #lightMode .modallogin {
@@ -52,4 +56,12 @@ input#lightMode {
 
 .footer#lightMode {
     background-color: var(--footerLightBackground);
+}
+
+/* SETTINGS */
+
+.desc-borrar-cuenta#lightMode,
+.nombre-usuario-logado#lightMode,
+.texto-borrar-cuenta#lightMode {
+    color: var(--grey);
 }
