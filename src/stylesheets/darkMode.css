@@ -53,6 +53,16 @@
     background: var(--light);
 }
 
+.btn-signout#darkMode {
+    background-color: var(--grey);
+    color: var(--light);
+    font-weight: 100;
+}
+
+.btn-signout#darkMode:hover {
+    background-color: var(--violet);
+}
+
 /* MODAL LOGIN-SIGNUP */
 
 .modal-login #darkMode {
@@ -198,6 +208,9 @@ a.list-items#darkMode {
     color: var(--lightGray);
 }
 
+.user-login#darkMode {
+    color: var(--light);
+}
 
 
 

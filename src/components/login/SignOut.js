@@ -30,11 +30,11 @@ const Signout = ({ closeModal, id, userLogged, setUserLogged }) => {
                     <section className="section-signin">
 
                         {/*FORMULARIO DE SALIDA-LOGOUT */}
-                        <h2 id={id}>Cerrar Sesion</h2>
+                        <h2 id={id}>Cerrar Sesión</h2>
                         <br></br>
-                        <h3>
+                        <h2 id={id}>
                             ¿Estás seguro de cerrar la sesión?
-                        </h3>
+                        </h2>
                         <br></br>
                         <span>
                             <br />

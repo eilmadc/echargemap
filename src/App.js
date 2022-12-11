@@ -11,7 +11,7 @@ import './stylesheets/stylesModalStations.css';
 
 import { ReactDimmer } from 'react-dimmer';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { BsPersonCircle } from 'react-icons/bs';
+import { BiUser } from 'react-icons/bi';
 import { useEffect, useState } from "react";
 import { View, StyleSheet, Text, Dimensions } from "react";
 import Modal from "./components/Modal";
@@ -155,8 +155,8 @@ function App() {
             boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)" />
           <div className='logout-nav'>
-            <icon hidden={userLogged ? false : true}><BsPersonCircle id={mode} size={10} /></icon>
-            <h3 className='buttons-nav' onClick={handleClickSettings} hidden={userLogged ? false : true}> {stg.get('username')}</h3>
+            <icon  hidden={userLogged ? false : true}><BiUser className='user-icon' id={mode} color={mode === 'lightMode' ? '#4B5C6B' : '#d8d8d9'} size={20} /></icon>
+            <h3 className='user-login' id={mode} onClick={handleClickSettings} hidden={userLogged ? false : true}> {stg.get('username')}</h3>
           </div>
         </div>
 
