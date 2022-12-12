@@ -124,3 +124,31 @@ h3.obtener-estaciones-confirm {
   font-size: 14px;
 }
 
+
+
+
+/*SELECT */
+.select-station {
+  width: 27rem;
+  color: var(--dark);
+  margin: 0.3rem;
+  border: 1px solid --violet;
+  transition: .3s border-color;
+  font-size: small;
+  
+}
+
+.select-station:hover {
+  border: 1px solid --violet;
+}
+
+.select-station:focus:valid {
+  color: var(--darkGreen);
+  border: 1.5px solid var(--darkGreen);
+  color: #207868;
+}
+
+.select-station:required:focus:invalid {
+  color: var(--violet);
+  border: 1.5px solid var(--violet);
+}

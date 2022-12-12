@@ -1,34 +1,38 @@
 import '../../stylesheets/stylesModalStations.css';
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, render } from "react";
 import React from 'react';
 import Select from 'react-select';
 import stg from '../../utils/stg';
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
+import GetProvincia from "../stations/GetProvincias";
+import GetMunicipis from "../stations/GetMunicipis";
 import ECMap from '../map/ECMap';
+import GetProvincias from './GetProvincias';
+
+
 
 const STATIONS_URL = '/backendstations.php';
 
+/* //Para borrar despues de tener el componente de obtencion de municipis
+const dataSelector = [{
+    provincia: ['Barcelona', 'Lleida', 'Girona', 'Tarragona']
+}
+]; */
 
 export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData, setUserLogged }) => {
     const method = 'readstationsmunicipi';
-    const location = 'Barcelona';
+
+    const [dataChild, setDataChild] = useState('');
+
+    const [location, setLocation] = useState('Barcelona');
     const [errorMessage, setErrorMessage] = useState('');
     const errorRef = useRef();
     const [success, setSuccess] = useState(false);
     var response = '';
     var coordenates = [];
     var data = [];
-
-    //Para borrar despues de tener el componente de obtencion de municipis
-    const [municipis, setSelectedMunicipis] = useState({
-        municipis:[ "Barcelona", "Lleida", "Girona"]
-    }
-    );
-
-    Object.keys('municipis');
-
 
     const getStationsResponse = async (e) => {
         try {
@@ -50,7 +54,6 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     data.push(response.data[0][i]);
 
                     coordenates.push({ lat: Number(parseFloat(lat)), lng: Number(parseFloat(lng)) });
-
 
                 }
                 setMarkers(coordenates)
@@ -81,15 +84,6 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
         }
     }
 
-    const selectMunicipi = (e) => {
-        const selectedMunicipi = municipis.find((entry) => entry.municipi === e.target.value);
-        setSelectedMunicipis(selectedMunicipi);
-        
-        //setSelectedMunicipis(e.target.value);
-        console.log('Option selected:');
-        console.log('Barcelona')
-    }
-
     return (
         <>
             {success ? (
@@ -104,32 +98,13 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     {/*FORMULARIO */}
                     <h2 id={id}>Obtener estaciones</h2>
                     <br></br>
-                    <h3>
-                        ¿Deseas obtener las estaciones del municipio?
-                    </h3>
                     <br></br>
-                    <Select
-                        onChange={selectMunicipi}
-/*                         className='btn-signout-accept'
-                        classNamePrefix="select"
-                        // defaultValue={ }
-                        isDisabled={false}
-                        isLoading={false}
-                        isClearable={false}
-                        isRtl={false}
-                        isSearchable={true} */
-                        //name='municipi'
-                    >
-                        {
-                            Object.keys(municipis).map((entry, index) => {
-                                return (
-                                    <option key={index} value={entry.municipis}>
-                                        {entry.municipis}
-                                    </option>
-                                );
-                            })
-                        }
-                    </Select>
+                    
+                    <GetProvincias></GetProvincias>
+                    <br></br>
+                    <GetMunicipis></GetMunicipis>
+                    <br></br>
+
                     <span>
                         <br />
                     </span>

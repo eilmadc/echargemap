@@ -37,6 +37,13 @@ h3 {
   font-size: 16px;
 }
 
+a{
+  
+  align-items: center;
+  margin: 0;
+  color: var(--dark);
+  font-size: 16px;
+}
 .modal-login-header button {
   position: relative;
   border-radius: 50%;
@@ -105,3 +112,26 @@ h3 {
   height: 50px;
   width: 47px;
 }
+
+/*Body del login */
+.modal-share-body {
+  width: 100%;
+  display:inline-flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  place-content: center;
+  background-color: var(--light);
+}
+
+/*Body del login */
+.modal-share-body-p {
+ 
+  display:inline;
+  flex-direction:column;
+  flex-wrap: wrap;
+  place-content: center;
+  background-color: var(--light);
+  padding: 1em;
+  
+}
+

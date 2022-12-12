@@ -2,6 +2,7 @@ import * as React from 'react';
 import '../../stylesheets/stylesModalStations.css';
 import stg from '../../utils/stg';
 import { GetStations}  from '../stations/GetStations';
+import {GetMunicipis} from '../stations/GetMunicipis';
 
 export const ModalStations = ({ id, setMarkers, markers, stationsData, setStationsData, closeModal, setUserLogged }) => {
     
