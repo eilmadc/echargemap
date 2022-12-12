@@ -8,6 +8,10 @@ import LogoDarkGreen from '../images/logo_darkGreen.png';
 import LogoLightGreen from '../images/logo_lightGreen.png';
 import TwitterIconLight from '../images/twitter-icon-light.png';
 import TwitterIconDark from '../images/twitter-icon-dark.png';
+import LinkedInIconLight from '../images/linkedin-icon-light.png';
+import LinkedInIconDark from '../images/linkedin-icon-dark.png';
+import InstagramIconLight from '../images/instagram-icon-light.png';
+import InstagramIconDark from '../images/instagram-icon-dark.png';
 
 export const About = ({ id, menu }) => {
 
@@ -84,8 +88,8 @@ export const About = ({ id, menu }) => {
             <img id={id} className='logo-footer' src={id === 'lightMode' ? LogoDarkGreen : LogoLightGreen} alt='logo' />
             <div className='socialmediaicons'>
               <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? TwitterIconDark : TwitterIconLight}></img>
-              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? TwitterIconDark : TwitterIconLight}></img>
-              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? TwitterIconDark : TwitterIconLight}></img>
+              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? LinkedInIconDark : LinkedInIconLight}></img>
+              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? InstagramIconDark : InstagramIconLight}></img>
             </div>
             {/*<h1 id={id} className='title-footer'>eChargeMap</h1>*/}
           </div>
