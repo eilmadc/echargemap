@@ -37,10 +37,10 @@ class GetProvincias extends React.Component {
             STATIONS_URL,
             JSON.stringify({ method: method }),
             {
-                headers: { 'Content-Type': 'application/json', 'access-control-allow-headers': 'content-type'},
-                withCredentials: true
+                headers: { 'Content-Type': 'application/json'},
+                withCredentials: false
             },
-            { timeout: 2 }
+            { timeout: 4 }
         ).then(response => {
             console.log(response.data);
             if (response.data.readprovincias) {

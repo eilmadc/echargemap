@@ -145,7 +145,7 @@ const Signup = ({ id, userLogged, setUserLogged, setTabIndex }) => {
                 JSON.stringify({ method: method, userName: userName, password: md5(password), name: name, lastname: lastname, mail: mail, location: location }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    withCredentials: false
                 }
             );
             
