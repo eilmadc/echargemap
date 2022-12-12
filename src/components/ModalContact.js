@@ -11,7 +11,7 @@ export const ModalContact = ({ id, closeModal }) => {
     console.log(e.target.username.value, e.target.phone.value, e.target.msg.value, e.target.email.value);
     }
 
-
+ 
 
   return (
     <>
@@ -19,7 +19,7 @@ export const ModalContact = ({ id, closeModal }) => {
         <div className='modal-contact-header' id={id} >
           <button className='fa-cross' onClick={() => { closeModal(false); }}>X</button>
         </div>
-        <section className='contact-header' id={id} style={{ backgroundImage: `url(${background})` }}>
+        <section className='contact-header' id={id} alt='tecleando-mensaje' style={{ backgroundImage: `url(${background})` }}>
           <div className='contact-title-1' id={id}>Contacta con nosotros</div>
           <div className='contact-title-2' id={id}>Déjanos tu mensaje</div>
         </section>
