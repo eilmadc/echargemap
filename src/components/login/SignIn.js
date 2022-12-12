@@ -56,7 +56,7 @@ const Signin = ({ id, userLogged, setUserLogged, setTabIndex, setResetPassword }
                 JSON.stringify({ method: method, userName: userName, password: md5(password) }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    withCredentials: false
                 }
             );
 
@@ -82,10 +82,6 @@ const Signin = ({ id, userLogged, setUserLogged, setTabIndex, setResetPassword }
                 setSuccess(true);
             }
             else {
-                /*                 console.log(password);
-                                console.log(md5(password));
-                                console.log(md5(md5(password)));
-                                console.log(md5(md5(md5(password)))); */
                 alert('El login del usuario y password ha fallado: ' + response.data.userName);
                 console.log(response.data);
                 stg.set('userLogged', false);

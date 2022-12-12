@@ -36,49 +36,54 @@ class GetMunicipis extends React.Component {
             STATIONS_URL,
             JSON.stringify({ method: method }),
             {
-                headers: { 'Content-Type': 'application/json', 'access-control-allow-headers': 'content-type' },
-                withCredentials: true
+                headers: { 'Content-Type': 'application/json'},
+                withCredentials: false
             },
-            { timeout: 2 }
+            { timeout: 4 }
         ).then(response => {
-            console.log(response.data);
+            if (response.data.readmunicipis) {
+                console.log(response.data);
 
-            const data = response.data[0];
+                const data = response.data[0];
 
-            const options = data.map(x => ({
-                "value": x.municipi,
-                "label": x.municipi
-            }))
+                const options = data.map(x => ({
+                    "value": x.municipi,
+                    "label": x.municipi
+                }))
 
-            this.setState({ "selectOptions": options });
+                this.setState({ "selectOptions": options });
 
+            } else {
+                setErrorMessage(response);
+            }
         })
+
             .catch(err => {
                 console.log(err);
-            });
-                /*
-                        if (response.data.readstationsmunicipi) {
-                
-                            for (let i = 0; i < response.data[0].length; i++) {
-                                let lat = Number(parseFloat(response.data[0][i].latitud));
-                                let lng = Number(parseFloat(response.data[0][i].longitud));
-                                data.push(response.data[0][i]);
-                
-                                coordenates.push({ lat: Number(parseFloat(lat)), lng: Number(parseFloat(lng)) });
-                
-                            }
-                            setMarkers(coordenates)
-                            setStationsData(data);
-                
-                        } else {
-                            console.log(response)
-                        } */
-
-
-
-            }
-
+            })
+        /*
+                if (response.data.readstationsmunicipi) {
         
+                    for (let i = 0; i < response.data[0].length; i++) {
+                        let lat = Number(parseFloat(response.data[0][i].latitud));
+                        let lng = Number(parseFloat(response.data[0][i].longitud));
+                        data.push(response.data[0][i]);
+        
+                        coordenates.push({ lat: Number(parseFloat(lat)), lng: Number(parseFloat(lng)) });
+        
+                    }
+                    setMarkers(coordenates)
+                    setStationsData(data);
+        
+                } else {
+                    console.log(response)
+                } */
+
+
+
+    }
+
+
 
     componentDidMount() {
         this.getAllMunicipis();

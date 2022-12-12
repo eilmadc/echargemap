@@ -99,10 +99,10 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     <h2 id={id}>Obtener estaciones</h2>
                     <br></br>
                     <br></br>
-                    
+
                     <GetProvincias></GetProvincias>
                     <br></br>
-                    <GetMunicipis></GetMunicipis>
+                    <GetMunicipis ></GetMunicipis>
                     <br></br>
 
                     <span>
@@ -126,3 +126,5 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
         </>
     )
 }
+
+export default GetStations;
