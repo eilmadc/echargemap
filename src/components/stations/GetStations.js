@@ -82,12 +82,12 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
           <br></br><br></br><br></br><br></br><br></br><br></br>
         </section>
       ) : (
-        <section className="section-signin">
+        <section className="section-signin obtener-estaciones">
 
           {/*FORMULARIO */}
-          <h2 id={id}>Obtener estaciones</h2>
+          <h2 className='obtener-estaciones' id={id}>Obtener estaciones</h2>
           <br></br>
-          <h3>
+          <h3 className='obtener-estaciones-confirm' id={id}>
             ¿Deseas obtener las estaciones del municipio?
           </h3>
           <br></br>

@@ -22,8 +22,8 @@ const Signout = ({ closeModal, id, userLogged, setUserLogged }) => {
                 success ? (
                     <section>
                         <br></br><br></br>
-                        <h2>Has cerrado sesión satisfactoriamente</h2>
-                        <h2>Hasta pronto!</h2>
+                        <h2 id={id}>Has cerrado sesión satisfactoriamente</h2>
+                        <h2 id={id}>Hasta pronto!</h2>
                         <br></br><br></br><br></br><br></br><br></br><br></br>
                     </section>
                 ) : (

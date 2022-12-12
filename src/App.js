@@ -171,7 +171,7 @@ function App() {
 
         {isModalStationsOpen ? <ModalStations id={mode} setMarkers={setMarkers} markers={markers} stationsData={stationsData} setStationsData={setStationsData} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
         
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} setMarkers={setMarkers}/>
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} isActiva={paginaActiva} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} setMarkers={setMarkers}/>
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}

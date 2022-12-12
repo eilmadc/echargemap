@@ -6,7 +6,7 @@ import stg from '../utils/stg';
     isMenuOpen;
 }*/
 
-export const Menu = ({ id, isMenuOpen, setMenu, activa, openModalContact, openModalSettings, openModalStations, userLogged, setUserLogged, closeModal }) => {
+export const Menu = ({ id, isMenuOpen, setMenu, isActiva, activa, openModalContact, openModalSettings, openModalStations, userLogged, setUserLogged, closeModal }) => {
 
   const handleClickLogout = () => {
     //setModalLogout((prevState) => !prevState);
@@ -20,7 +20,7 @@ export const Menu = ({ id, isMenuOpen, setMenu, activa, openModalContact, openMo
         <div className='menu-items'>
           <ul className='list' id={id}>
           {/* <a role="button" onClick={() => activa('Buscar') */}
-            <a role="button" onClick={() => { openModalStations(true); setMenu(false) } } >Buscar</a>
+            <a role="button" onClick={() => {openModalStations(true); setMenu(false) } } >Buscar</a>
             <a role="button" onClick={() => activa('Nosotros')} >Nosotros</a>
             <a role="button" onClick={() => { openModalContact(true); setMenu(false) }} >Contacto</a>
             <a role="button" onClick={() => { openModalSettings(true); setMenu(false) } } style={{visibility: stg.get('userLogged') ? 'visible' : 'hidden'}}  >Ajustes</a>

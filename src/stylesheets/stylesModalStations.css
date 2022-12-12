@@ -105,3 +105,22 @@ h3 {
   height: 50px;
   width: 47px;
 }
+
+section.obtener-estaciones {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 0;
+  margin-bottom: 2rem;
+}
+
+h2.obtener-estaciones {
+  font-size: 18px;
+}
+
+h3.obtener-estaciones-confirm {
+  font-size: 14px;
+}
+
