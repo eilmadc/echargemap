@@ -28,6 +28,7 @@ import { ModalContact } from './components/ModalContact';
 import { ModalSettings } from './components/ModalSettings';
 import { ModalStations } from './components/stations/ModalStations';
 import stg from '../src/utils/stg';
+import { Share } from './components/Share';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
   const [isModalSettingsOpen, setModalSettings] = useState(false);
   const [isModalStationsOpen, setModalStations] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
+  const [isModalShareOpen, setModalShare ] = useState(false);
 
   const [markers, setMarkers] = useState([]);
   const [stationsData, setStationsData] = useState([]);
@@ -64,8 +66,8 @@ function App() {
 
   const [paginaActiva, setPaginaActiva] = useState('paginaInicio');
 
-  const handleClick = () => {
-    setModal((prevState) => !prevState);
+  const handleClickShare = () => {
+    setModalShare((prevState) => !prevState);
   };
 
   const handleClickLogin = () => {
@@ -103,7 +105,7 @@ function App() {
           <div className='buttons'>
             <button className='login buttons-nav' id={mode} onClick={handleClickLogin} hidden={userLogged ? true : false}>Entrar </button>
             {/* <button className='language buttons-nav' id={mode} onClick={handleClick}>Idioma </button> */}
-            <button className='share buttons-nav' id={mode} onClick={handleClick}>Compartir </button>
+            <button className='share buttons-nav' id={mode} onClick={handleClickShare}>Compartir </button>
           </div>
           <ReactSwitch id='switch'
             onChange={toggleButton}
@@ -155,7 +157,7 @@ function App() {
             boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)" />
           <div className='logout-nav'>
-            <icon  hidden={userLogged ? false : true}><BiUser className='user-icon' id={mode} color={mode === 'lightMode' ? '#4B5C6B' : '#d8d8d9'} size={20} /></icon>
+            <icon hidden={userLogged ? false : true}><BiUser className='user-icon' id={mode} color={mode === 'lightMode' ? '#4B5C6B' : '#d8d8d9'} size={20} /></icon>
             <h3 className='user-login' id={mode} onClick={handleClickSettings} hidden={userLogged ? false : true}> {stg.get('username')}</h3>
           </div>
         </div>
@@ -167,11 +169,13 @@ function App() {
 
         {isModalLogoutOpen ? <ModalLogout id={mode} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} /> : null}
 
-        {isModalSettingsOpen ? <ModalSettings id={mode}  closeModal={setModalSettings} /> : null}
+        {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
 
         {isModalStationsOpen ? <ModalStations id={mode} setMarkers={setMarkers} markers={markers} stationsData={stationsData} setStationsData={setStationsData} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
-        
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} isActiva={paginaActiva} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} setMarkers={setMarkers}/>
+
+        {isModalShareOpen ? <Share id={mode} closeModal={setModalShare} /> : null}
+
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} setMarkers={setMarkers} />
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
@@ -231,6 +235,13 @@ function App() {
       <ReactDimmer
         isOpen={isModalContactOpen}
         exitDimmer={setModalContact}
+        zIndex={100}
+        blur={1.5}
+      />
+
+      <ReactDimmer
+        isOpen={isModalShareOpen}
+        exitDimmer={setModalShare}
         zIndex={100}
         blur={1.5}
       />
