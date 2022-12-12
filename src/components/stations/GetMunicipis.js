@@ -18,6 +18,7 @@ class GetMunicipis extends React.Component {
             "selectOptions": [],
             "location": '',
             "method": 'none',
+            id : {id}
         }
     }
 
@@ -98,7 +99,7 @@ class GetMunicipis extends React.Component {
         console.log(this.state);
         return (
             <>
-                <h3>
+                <h3 >
                     MUNICIPIO:
                 </h3>
                 <Select

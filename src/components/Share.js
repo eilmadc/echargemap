@@ -23,7 +23,7 @@ export const Share = ({ id, closeModal }) => {
                 </button>
             </div>
             <div className='modal-share-body' id={id}>
-                <h2> Compartir web en: </h2>
+                <h2 id={id}> Compartir web en: </h2>
                 <p className="modal-share-body-p">
                 <TelegramShareButton url={shareUrl} title={title}>
                     <TelegramIcon></TelegramIcon>
@@ -44,7 +44,7 @@ export const Share = ({ id, closeModal }) => {
             
             <br></br><br></br><br></br>
 
-            <h2> Nuestro Proyecto en: </h2>
+            <h2 id={id}> Nuestro Proyecto en: </h2>
                 <p className="modal-share-body-p">
                     <a  href="https://github.com/eilmadc/echargemap" target="_blank" rel="noopener noreferrer">Cliente
                         <GrGithub style={{ opacity: '0.75', border:'none', color:'black'}} size={56} ></GrGithub>
