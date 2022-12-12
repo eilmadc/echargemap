@@ -25,9 +25,6 @@ export const About = ({ id, menu }) => {
 
     <>
       <div className='about-container' id={id}>
-        <div className='about-title'>
-          <h1 className='about-us'>Sobre nosotros</h1>
-        </div>
         <div className='about-body'>
           <div className='about-echargemap'>
             <h3 className='what' id={id}>Qué hacemos</h3>
@@ -51,7 +48,7 @@ export const About = ({ id, menu }) => {
               <div className='wrapper-photos'>
                 <div className='profile-card' id={id}>
                   <div className='img'>
-                    <img src={foto1} />
+                    <img src={foto1} alt='front-end-developer' />
                   </div>
                   <div className='caption' id={id}>
                     <h2>Elena</h2>
@@ -60,7 +57,7 @@ export const About = ({ id, menu }) => {
                 </div>
                 <div className='profile-card' id={id}>
                   <div className='img'>
-                    <img src={foto2} />
+                    <img src={foto2} alt='back-end-developer' />
                   </div>
                   <div className='caption' id={id}>
                     <h2>Alejandro</h2>
@@ -69,7 +66,7 @@ export const About = ({ id, menu }) => {
                 </div>
                 <div className='profile-card' id={id}>
                   <div className='img'>
-                    <img src={foto3} />
+                    <img src={foto3} alt='diseñadora' />
                   </div>
                   <div className='caption' id={id}>
                     <h2>Mònica</h2>
@@ -87,9 +84,9 @@ export const About = ({ id, menu }) => {
             <p id={id} className='copyright'>©2022ECHARGEMAP</p>
             <img id={id} className='logo-footer' src={id === 'lightMode' ? LogoDarkGreen : LogoLightGreen} alt='logo' />
             <div className='socialmediaicons'>
-              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? TwitterIconDark : TwitterIconLight}></img>
-              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? LinkedInIconDark : LinkedInIconLight}></img>
-              <img id={id} className='socialmedia twitter' src={id === 'lightMode' ? InstagramIconDark : InstagramIconLight}></img>
+              <img id={id} alt='twitter' className='socialmedia twitter' src={id === 'lightMode' ? TwitterIconDark : TwitterIconLight}></img>
+              <img id={id} alt='linkedin' className='socialmedia twitter' src={id === 'lightMode' ? LinkedInIconDark : LinkedInIconLight}></img>
+              <img id={id} alt='instagram' className='socialmedia twitter' src={id === 'lightMode' ? InstagramIconDark : InstagramIconLight}></img>
             </div>
             {/*<h1 id={id} className='title-footer'>eChargeMap</h1>*/}
           </div>

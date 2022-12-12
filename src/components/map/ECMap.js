@@ -15,7 +15,7 @@ const ECMap = ({ id, markers, stationsData }) => {
   if (!isLoaded) return <div><h1>Loading...</h1></div>
   return <Map markers={markers} id={id} stationsData={stationsData} options={darkStyle} ></Map>
 }
-
+ 
 /*FUNCION DE CARGA DEL MAPA*/
 export function Map({ markers, stationsData, id, darkStyle }) {
 

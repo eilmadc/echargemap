@@ -87,7 +87,7 @@ function App() {
   }
 
   const handleClickStations = () => {
-    setModalStations((prevState) => !prevState);
+    setModalStations((prevState) => !prevState); 
   }
 
   return (
@@ -210,7 +210,6 @@ function App() {
 
       <ReactDimmer
         isOpen={isModalSettingsOpen}
-        exitDimmer={setModalSettings}
         zIndex={100}
         blur={1.5}
       />

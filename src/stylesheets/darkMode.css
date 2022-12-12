@@ -226,9 +226,7 @@ a.list-items#darkMode {
     background-color: var(--grey);
 }
 
-.obtener-estaciones#darkMode {
-    
-}
+
 
 .obtener-estaciones-confirm#darkMode {
     color: var(--light);
