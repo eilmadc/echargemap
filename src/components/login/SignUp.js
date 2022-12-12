@@ -532,7 +532,9 @@ const Signup = ({ id, userLogged, setUserLogged, setTabIndex }) => {
                         <button
                             className="btn-signup"
                             disabled={!validUserName || !validPassword || !validName || !validLastName || !validMail || !validLocation ? true : false}
+                            title={!validUserName || !validPassword || !validName || !validLastName || !validMail || !validLocation ? 'Antes de crear la cuenta rellena los datos' : ''}
                         >
+                        
                             Crea tu cuenta
                         </button>
                     </form>
