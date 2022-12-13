@@ -18,7 +18,7 @@ class GetMunicipis extends React.Component {
             "selectOptions": [],
             "location": '',
             "method": 'none',
-            id : {id}
+           // id : {id}
         }
     }
 
@@ -26,13 +26,12 @@ class GetMunicipis extends React.Component {
     async getAllMunicipis() {
 
         const method = 'readmunicipis';
-        const location = 'Barcelona';
+        //const location = 'Barcelona';
         const setErrorMessage = '';
         //const errorRef = useRef();
         //const [success, setSuccess] = useState(false);
         var response = '';
-
-
+        
         response = await axios.post(
             STATIONS_URL,
             JSON.stringify({ method: method }),
@@ -79,12 +78,7 @@ class GetMunicipis extends React.Component {
                 } else {
                     console.log(response)
                 } */
-
-
-
     }
-
-
 
     componentDidMount() {
         this.getAllMunicipis();
@@ -92,25 +86,35 @@ class GetMunicipis extends React.Component {
 
 
     handleChange(e) {
-
         const location = e.value;
         const stationMethod = 'readstationmunicipi';
         this.setState({ "location": location });
-        this.setState({ "method": stationMethod });
+        this.setState({ "method": stationMethod })
+        
     }
 
+/*     changeLocationInParent(props) {
+        console.log(props);
+        console.log(this.state);
+        console.log(this.state.location);
+        props.changeLocation(this.state.location);
+    } */
 
     render() {
         console.log(this.state);
+        console.log(this.state.location);
         return (
             <>
                 <h3 >
                     MUNICIPIO:
                 </h3>
                 <Select
+                    locationMunicipi={this.state.location}
+                    methodMunicipi={this.state.method}
                     options={this.state.selectOptions}
                     onChange={this.handleChange.bind(this)}
-                    className="select-station" > {this.props}</Select>
+                    className="select-station" >
+                    </Select>
 
             </>
         );
