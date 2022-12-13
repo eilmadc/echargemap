@@ -6,7 +6,6 @@ import stg from '../../utils/stg';
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
-import GetProvincia from "../stations/GetProvincias";
 import GetMunicipis from "../stations/GetMunicipis";
 import ECMap from '../map/ECMap';
 import GetProvincias from './GetProvincias';
@@ -15,48 +14,39 @@ import GetProvincias from './GetProvincias';
 
 const STATIONS_URL = '/backendstations.php';
 
-/* //Para borrar despues de tener el componente de obtencion de municipis
-const dataSelector = [{
-    provincia: ['Barcelona', 'Lleida', 'Girona', 'Tarragona']
-}
-]; */
+export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData }) => {
+    const method = 'readstations';
 
-export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData, setUserLogged, props }) => {
-    const method = 'readstationsmunicipi';
-
-    const [dataChild, setDataChild] = useState('');
-    const [location, setLocation] = useState('Barcelona');
     const [errorMessage, setErrorMessage] = useState('');
-    const errorRef = useRef();
     const [success, setSuccess] = useState(false);
+    const [data, setData] = useState([]);
 
     var response = '';
     var coordenates = [];
-    var data = [];
+    
+     useEffect(() => {getStationsResponse();}, [])
 
     const getStationsResponse = async (e) => {
-        //console.log(props.location);
         try {
             
             //setLocation(this.location);
             response = await axios.post(
                 STATIONS_URL,
-                JSON.stringify({ method: method, municipi: location }),
+                JSON.stringify({ method: method }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: false
                 }
             )
-            console.log(response.data);
 
-            if (response.data.readstationsmunicipi) {
+            if (response.data.readstations) {
 
                 for (let i = 0; i < response.data[0].length; i++) {
                     let lat = Number(parseFloat(response.data[0][i].latitud));
                     let lng = Number(parseFloat(response.data[0][i].longitud));
                     data.push(response.data[0][i]);
 
-                    coordenates.push({ lat: Number(parseFloat(lat)), lng: Number(parseFloat(lng)) });
+                    coordenates.push({ lat: lat, lng: lng });
 
                 }
                 setMarkers(coordenates)
@@ -103,25 +93,26 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     <br></br>
                     <br></br>
 
-                    <GetProvincias changeLocation={(location) => setLocation(location)}></GetProvincias>
+                    <GetProvincias id={id} stationsData={stationsData} setStationsData={setStationsData} setMarkers={setMarkers} markers={markers}></GetProvincias>
                     <br></br>
-                    <GetMunicipis changeLocation={(location) => setLocation(location)} ></GetMunicipis>
+                    <GetMunicipis id={id} stationsData={stationsData} setStationsData={setStationsData} setMarkers={setMarkers} markers={markers}  ></GetMunicipis>
                     <br></br>
 
                     <span>
                         <br />
                     </span>
+                    <h2>Para ver todos los puntos de recarga de Catalunya, pulsa Recargar</h2>
 
                     <button
                         className="btn-signout-accept"
-                        onClick={getStationsResponse}
-                /*onClick={getStationsResponse}*/ >
-                        Aceptar
+                        
+                        onClick={getStationsResponse} >
+                        Recargar
                     </button>
                     <button
                         className="btn-signout-cancel"
                         onClick={() => { closeModal(false); }} >
-                        Cancelar
+                        Cerrar
                     </button>
                 </section>
             )

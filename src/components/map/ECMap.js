@@ -20,16 +20,11 @@ const ECMap = ({ id, markers, stationsData }) => {
 export function Map({ markers, stationsData, id, darkStyle }) {
 
   //Posicion inicial de centrado de mapa, zoom, 
-  var center = useMemo(() => ({ lat: 41.390205, lng: 2.154007 }), []);
-  const zoom = 13;
+  var center = useMemo(() => ({ lat: 41.85827778393937, lng: 1.7586420189607188 }), []);
+  const zoom = 9;
 
   const [success, setSuccess] = useState(false);
-  const [rerender, setRerender] = useState(false);
-  const [popUp, setPopUp] = useState(false);
-  const [popUpInfo, setPopUpInfo] = useState(null);
 
-
-  console.log(markers)
 
   return (
     <>
@@ -42,11 +37,9 @@ export function Map({ markers, stationsData, id, darkStyle }) {
               zoom={zoom}
               center={center}
               mapContainerClassName="map-container"
-              styles={ darkStyle}>
+              >
 
-                {markers.map(elem => (
-                  <MarkerF position={elem} onClick={() => { setPopUpInfo(elem); setPopUp(true) }} />
-                ))}
+                {Array.isArray(markers) ? markers.map(elem => ( <MarkerF position={elem}/> )) : console.log("aaa",markers)}
 
               </GoogleMap>
             </div>

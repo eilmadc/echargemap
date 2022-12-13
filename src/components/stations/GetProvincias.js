@@ -6,113 +6,82 @@ import stg from '../../utils/stg';
 
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
-import GetMunicipis from './GetMunicipis';
 
 const STATIONS_URL = '/backendstations.php';
 
+function GetProvincias({ id, markers, setMarkers, stationsData }) {
+
+  console.log(stationsData)
+
+  const [selectOptions, setSelectOptions] = useState([]);
+  const [location, setLocation] = useState('');
+  const [method, setMethod] = useState('readprovincias');
+  const [errorMessage, setErrorMessage] = useState('');
+  const response = '';
+  var coordenates = [];
+  useEffect(() => { getAllProvincias(); }, [])
 
 
-class GetProvincias extends React.Component {
+  const getAllProvincias = async (e) => {
+    response = await axios.post(
+      STATIONS_URL,
+      JSON.stringify({ method: method }),
+      {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: false
+      },
+      { timeout: 4 }
+    ).then(response => {
+      console.log(response.data);
+      if (response.data.readprovincias) {
+        var datos = response.data[0].sort((a,b) => a.provincia > b.provincia ? 1 : -1);;
+        console.log(datos)
 
-    constructor(props) {
-      
-        super(props)    
-        this.state = {
-            "selectOptions": [],
-            "location": '',
-            "method": 'none',
-            "id": props.id
+        const options = datos.map(x => ({
+          "value": x.provincia,
+          "label": x.provincia
+        }))
+        console.log(options)
+        setSelectOptions(options);
+        console.log(selectOptions)
+      } else {
+        setErrorMessage(response);
+      }
+    })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  const handleChange = (e) => {
+
+    try {
+      for (let i = 0; i < stationsData.length; i++) {
+        if (stationsData[i].provincia === e.value) {
+          let lat = Number(parseFloat(stationsData[i].latitud));
+          let lng = Number(parseFloat(stationsData[i].longitud));
+          coordenates.push({ lat: lat, lng: lng })
         }
+      }
+      setMarkers(coordenates);
+
+    } catch (e) {
+      console.log('Error' + e)
     }
 
-    
-    async getAllProvincias() {
+  }
 
-        const method = 'readprovincias';
-        const location = 'Barcelona';
-        const setErrorMessage = '';
-        //const errorRef = useRef();
-        //const [success, setSuccess] = useState(false);
-        var response = '';
-
-
-        response = await axios.post(
-            STATIONS_URL,
-            JSON.stringify({ method: method }),
-            {
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: false
-            },
-            { timeout: 4 }
-        ).then(response => {
-            console.log(response.data);
-            if (response.data.readprovincias) {
-                const data = response.data[0];
-
-                const options = data.map(x => ({
-                    "value": x.provincia,
-                    "label": x.provincia
-                }))
-
-                this.setState({ "selectOptions": options });
-            } else {
-                setErrorMessage(response);
-            }
-        })
-
-            .catch(err => {
-                console.log(err);
-            });
-        /*
-                if (response.data.readstationsmunicipi) {
-        
-                    for (let i = 0; i < response.data[0].length; i++) {
-                        let lat = Number(parseFloat(response.data[0][i].latitud));
-                        let lng = Number(parseFloat(response.data[0][i].longitud));
-                        data.push(response.data[0][i]);
-        
-                        coordenates.push({ lat: Number(parseFloat(lat)), lng: Number(parseFloat(lng)) });
-        
-                    }
-                    setMarkers(coordenates)
-                    setStationsData(data);
-        
-                } else {
-                    console.log(response)
-                } */
-
-
+  return (
+    <>
+      <h3 id={id}>
+        PROVINCIA:
+      </h3>
+      { <Select
+          options={selectOptions}
+          onChange={handleChange}
+          className="select-station" > </Select> }
+    </>
+  )
 }
 
-    componentDidMount() {
-        this.getAllProvincias();
-    }
-
-
-    handleChange(e) {
-
-        const location = e.value;
-        const stationMethod = 'readstationprovincia';
-        this.setState({ "location": location });
-        this.setState({ "method": stationMethod });
-    }
-
-
-    render() {
-        console.log(this.state);
-        return (
-            <>
-                <h3>
-                    PROVINCIA:
-                </h3>
-                <Select
-                    location={this.state.location}
-                    method={this.state.method}
-                    options={this.state.selectOptions}
-                    onChange={this.handleChange.bind(this)}
-                    className="select-station" > </Select>
-            </>
-        );
-    }
-}
 export default GetProvincias;
