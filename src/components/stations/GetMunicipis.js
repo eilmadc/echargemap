@@ -30,7 +30,6 @@ const getAllMunicipis = async(e) => {
     },
     { timeout: 4 }
   ).then(response => {
-    console.log(response.data);
     if (response.data.readmunicipis) {
       var datos = response.data[0].sort((a,b) => a.municipi > b.municipi ? 1 : -1);
       console.log(datos)

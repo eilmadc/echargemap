@@ -34,7 +34,6 @@ function GetProvincias({ id, markers, setMarkers, stationsData }) {
       },
       { timeout: 4 }
     ).then(response => {
-      console.log(response.data);
       if (response.data.readprovincias) {
         var datos = response.data[0].sort((a,b) => a.provincia > b.provincia ? 1 : -1);;
         console.log(datos)
@@ -43,9 +42,7 @@ function GetProvincias({ id, markers, setMarkers, stationsData }) {
           "value": x.provincia,
           "label": x.provincia
         }))
-        console.log(options)
         setSelectOptions(options);
-        console.log(selectOptions)
       } else {
         setErrorMessage(response);
       }
