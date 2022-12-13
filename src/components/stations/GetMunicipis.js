@@ -11,17 +11,17 @@ const STATIONS_URL = '/backendstations.php';
 
 
 class GetMunicipis extends React.Component {
-
     constructor(props) {
         super(props)
+        console.log(props.id)
         this.state = {
             "selectOptions": [],
             "location": '',
             "method": 'none',
-            id : {id}
+            "id": props.id
         }
-    }
 
+    }
 
     async getAllMunicipis() {
 
@@ -104,7 +104,7 @@ class GetMunicipis extends React.Component {
         console.log(this.state);
         return (
             <>
-                <h3 >
+                <h3 id={this.state.id}>
                     MUNICIPIO:
                 </h3>
                 <Select

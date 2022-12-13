@@ -100,9 +100,9 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     <br></br>
                     <br></br>
 
-                    <GetProvincias></GetProvincias>
+                    <GetProvincias id={id}></GetProvincias>
                     <br></br>
-                    <GetMunicipis ></GetMunicipis>
+                    <GetMunicipis id={id} ></GetMunicipis>
                     <br></br>
 
                     <span>

@@ -11,18 +11,21 @@ import GetMunicipis from './GetMunicipis';
 const STATIONS_URL = '/backendstations.php';
 
 
+
 class GetProvincias extends React.Component {
 
     constructor(props) {
-        super(props)
+      
+        super(props)    
         this.state = {
             "selectOptions": [],
             "location": '',
             "method": 'none',
+            "id": props.id
         }
     }
 
-
+    
     async getAllProvincias() {
 
         const method = 'readprovincias';
@@ -79,7 +82,6 @@ class GetProvincias extends React.Component {
                 } */
 
 
-
 }
 
 componentDidMount() {
@@ -96,11 +98,14 @@ handleChange(e) {
 }
 
 
+
+
+
 render() {
     console.log(this.state);
     return (
         <>
-            <h3>
+            <h3 id={this.state.id}>
                 PROVINCIA:
             </h3>
             <Select
