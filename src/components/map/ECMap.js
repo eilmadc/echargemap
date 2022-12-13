@@ -21,7 +21,7 @@ export function Map({ markers, stationsData, id, darkStyle }) {
 
   //Posicion inicial de centrado de mapa, zoom, 
   var center = useMemo(() => ({ lat: 41.390205, lng: 2.154007 }), []);
-  const zoom = 11;
+  const zoom = 13;
 
   const [success, setSuccess] = useState(false);
   const [rerender, setRerender] = useState(false);

@@ -33,7 +33,7 @@ export const ModalSettings = ({ id, closeModal, setUserLogged }) => {
         JSON.stringify({ method: method, userName: stg.get('username') }),
         {
           headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          withCredentials: false
         }
       );
 

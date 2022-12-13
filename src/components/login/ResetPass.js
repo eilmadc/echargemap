@@ -84,7 +84,7 @@ const ResetPass = ({ id, closeModal, setUserLogged }) => {
                 JSON.stringify({ method: method1, mail: mail }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    withCredentials: false
                 }
             );
 

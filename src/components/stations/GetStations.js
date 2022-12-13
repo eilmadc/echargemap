@@ -21,27 +21,30 @@ const dataSelector = [{
 }
 ]; */
 
-export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData, setUserLogged }) => {
+export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData, setUserLogged, props }) => {
     const method = 'readstationsmunicipi';
 
     const [dataChild, setDataChild] = useState('');
-
     const [location, setLocation] = useState('Barcelona');
     const [errorMessage, setErrorMessage] = useState('');
     const errorRef = useRef();
     const [success, setSuccess] = useState(false);
+
     var response = '';
     var coordenates = [];
     var data = [];
 
     const getStationsResponse = async (e) => {
+        //console.log(props.location);
         try {
+            
+            //setLocation(this.location);
             response = await axios.post(
                 STATIONS_URL,
                 JSON.stringify({ method: method, municipi: location }),
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                    withCredentials: false
                 }
             )
             console.log(response.data);
@@ -60,7 +63,7 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                 setStationsData(data);
 
             } else {
-                console.log(response)
+                console.log('error' + response)
             }
 
         } catch (e) {
@@ -80,7 +83,7 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                 setErrorMessage('El Login ha fallado');
             }
 
-            errorRef.current.focus();
+            //errorRef.current.focus();
         }
     }
 
@@ -100,9 +103,9 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     <br></br>
                     <br></br>
 
-                    <GetProvincias id={id}></GetProvincias>
+                    <GetProvincias changeLocation={(location) => setLocation(location)}></GetProvincias>
                     <br></br>
-                    <GetMunicipis id={id} ></GetMunicipis>
+                    <GetMunicipis changeLocation={(location) => setLocation(location)} ></GetMunicipis>
                     <br></br>
 
                     <span>

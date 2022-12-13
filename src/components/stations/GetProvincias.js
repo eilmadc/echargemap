@@ -40,7 +40,7 @@ class GetProvincias extends React.Component {
             STATIONS_URL,
             JSON.stringify({ method: method }),
             {
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 withCredentials: false
             },
             { timeout: 4 }
@@ -59,10 +59,10 @@ class GetProvincias extends React.Component {
                 setErrorMessage(response);
             }
         })
-        
-        .catch(err => {
-            console.log(err);
-        });
+
+            .catch(err => {
+                console.log(err);
+            });
         /*
                 if (response.data.readstationsmunicipi) {
         
@@ -84,36 +84,35 @@ class GetProvincias extends React.Component {
 
 }
 
-componentDidMount() {
-    this.getAllProvincias();
-}
+    componentDidMount() {
+        this.getAllProvincias();
+    }
 
 
-handleChange(e) {
+    handleChange(e) {
 
-    const location = e.value;
-    const stationMethod = 'readstationprovincia';
-    this.setState({ "location": location });
-    this.setState({ "method": stationMethod });
-}
-
-
+        const location = e.value;
+        const stationMethod = 'readstationprovincia';
+        this.setState({ "location": location });
+        this.setState({ "method": stationMethod });
+    }
 
 
-
-render() {
-    console.log(this.state);
-    return (
-        <>
-            <h3 id={this.state.id}>
-                PROVINCIA:
-            </h3>
-            <Select
-                options={this.state.selectOptions}
-                onChange={this.handleChange.bind(this)}
-                className="select-station" > {this.props}</Select>
-        </>
-    );
-}
+    render() {
+        console.log(this.state);
+        return (
+            <>
+                <h3>
+                    PROVINCIA:
+                </h3>
+                <Select
+                    location={this.state.location}
+                    method={this.state.method}
+                    options={this.state.selectOptions}
+                    onChange={this.handleChange.bind(this)}
+                    className="select-station" > </Select>
+            </>
+        );
+    }
 }
 export default GetProvincias;
