@@ -19,6 +19,8 @@ function GetProvincias({ id, markers, setMarkers, stationsData }) {
   const [errorMessage, setErrorMessage] = useState('');
   const response = '';
   var coordenates = [];
+
+  //Al cargar el componente, recupera las provincias para mostrarlas como opciones en el Select
   useEffect(() => { getAllProvincias(); }, [])
 
 
@@ -55,6 +57,7 @@ function GetProvincias({ id, markers, setMarkers, stationsData }) {
 
   const handleChange = (e) => {
 
+    //Se recorre el array stationsData para encontrar coincidencias con la provincia seleccionada y extraer las coordenadas
     try {
       for (let i = 0; i < stationsData.length; i++) {
         if (stationsData[i].provincia === e.value) {

@@ -23,12 +23,13 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
 
     var response = '';
     var coordenates = [];
-    
-     useEffect(() => {getStationsResponse();}, [])
+
+//Al cargar el componente automáticamente hace la consulta
+    useEffect(() => { getStationsResponse(); }, [])
 
     const getStationsResponse = async (e) => {
         try {
-            
+
             //setLocation(this.location);
             response = await axios.post(
                 STATIONS_URL,
@@ -73,7 +74,6 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                 setErrorMessage('El Login ha fallado');
             }
 
-            //errorRef.current.focus();
         }
     }
 
@@ -101,11 +101,11 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     <span>
                         <br />
                     </span>
-                    <h2>Para ver todos los puntos de recarga de Catalunya, pulsa Recargar</h2>
+                    <h2 id={id}>Para ver todos los puntos de recarga de Catalunya, pulsa Recargar</h2>
 
                     <button
                         className="btn-signout-accept"
-                        
+
                         onClick={getStationsResponse} >
                         Recargar
                     </button>

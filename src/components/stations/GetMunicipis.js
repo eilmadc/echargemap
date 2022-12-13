@@ -12,11 +12,12 @@ const STATIONS_URL = '/backendstations.php';
 export const GetMunicipis = ({ id, setMarkers, stationsData }) => {
 
   const [selectOptions, setSelectOptions] = useState([]);
-  const [location, setLocation] = useState('');
   const [method, setMethod] = useState('readmunicipis');
   const [errorMessage, setErrorMessage] = useState('');
   const response = '';
   var coordenates = [];
+
+  //Al cargar el componente, recupera los municipios para mostrarlos como opciones en el Select
   useEffect(() => { getAllMunicipis(); }, [])
 
 const getAllMunicipis = async(e) => {
@@ -51,6 +52,8 @@ const getAllMunicipis = async(e) => {
 }
 
 const handleChange = (e) => {
+
+      //Se recorre el array stationsData para encontrar coincidencias con el municipio seleccionado y extraer las coordenadas
   try {
     for (let i = 0; i < stationsData.length; i++) {
       if (stationsData[i].municipi === e.value) {
