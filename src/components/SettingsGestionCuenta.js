@@ -80,7 +80,7 @@ export const SettingsGestionCuenta = ({ id, clickedButton, setUserLogged, setRes
         JSON.stringify({ method: methodChange, password: md5(password), mail: stg.get('email') }),
         {
           headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          withCredentials: false
         }
       );
 
@@ -145,7 +145,7 @@ export const SettingsGestionCuenta = ({ id, clickedButton, setUserLogged, setRes
         JSON.stringify({ method: methodDelete, password: md5(password), mail: stg.get('email') }),
         {
           headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          withCredentials: false
         }
       );
       if (response.data.deluser) {

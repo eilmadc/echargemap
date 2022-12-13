@@ -165,7 +165,7 @@ const Signup = ({ id, userLogged, setUserLogged, setTabIndex }) => {
                 stg.set('password', (response.data.password));
                 stg.set('name', response.data.name);
                 stg.set('lastname', response.data.name);
-                stg.set('email', response.data.mail);
+                stg.set('mail', response.data.mail);
                 stg.set('location', response.data.location);
 
                 /*  Si todo ha sido validado correctamente
@@ -241,7 +241,6 @@ const Signup = ({ id, userLogged, setUserLogged, setTabIndex }) => {
                                 ref={userRef}
                                 autoComplete="off"
                                 onChange={(e) => setUserName(e.target.value)}
-                                /*  onChange={(e) => setSuccess(true)} */
                                 required
                                 aria-invalid={validUserName ? "false" : "true"}
                                 aria-describedby="usernameinfo"
