@@ -25,6 +25,7 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
     useEffect(() => { getStationsResponse(); }, [])
 
     const getStationsResponse = async (e) => {
+       
         try {
 
             //setLocation(this.location);

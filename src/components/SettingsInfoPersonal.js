@@ -110,7 +110,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
         JSON.stringify({ method: method, userName: userName, password: password, name: nameU, lastname: lastname, mail: mail, location: location }),
         {
           headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
+          withCredentials: false
         }
       );
 
@@ -157,7 +157,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
       } else {
         setErrorMessage('El Login ha fallado');
       }
-      errorRef.current.focus();
+      //errorRef.current.focus();
     }
   }
   return (
