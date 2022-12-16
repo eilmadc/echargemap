@@ -226,8 +226,6 @@ a.list-items#darkMode {
     background-color: var(--grey);
 }
 
-
-
 .obtener-estaciones-confirm#darkMode {
     color: var(--light);
 }

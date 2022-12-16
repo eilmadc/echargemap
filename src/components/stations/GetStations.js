@@ -1,20 +1,17 @@
 import '../../stylesheets/stylesModalStations.css';
 import { useRef, useState, useEffect, render } from "react";
 import React from 'react';
-import Select from 'react-select';
-import stg from '../../utils/stg';
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import {BiArrowBack} from 'react-icons/bi';
 /* LIBERIA AXIOS */
 import axios from "../../api/axios";
 import GetMunicipis from "../stations/GetMunicipis";
-import ECMap from '../map/ECMap';
 import GetProvincias from './GetProvincias';
 
 
 
 const STATIONS_URL = '/backendstations.php';
 
-export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData }) => {
+export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData, setStationsData, setShowBuscar }) => {
     const method = 'readstations';
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -24,7 +21,7 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
     var response = '';
     var coordenates = [];
 
-//Al cargar el componente automáticamente hace la consulta
+    //Al cargar el componente automáticamente hace la consulta
     useEffect(() => { getStationsResponse(); }, [])
 
     const getStationsResponse = async (e) => {
@@ -86,34 +83,35 @@ export const GetStations = ({ id, closeModal, setMarkers, markers, stationsData,
                     <br></br><br></br><br></br><br></br><br></br><br></br>
                 </section>
             ) : (
-                <section className="section-signin">
+                <section className="section-getStations">
 
                     {/*FORMULARIO */}
                     <h2 id={id}>Obtener estaciones</h2>
                     <br></br>
                     <br></br>
+                    <div className='getProvincias'>
+                        <GetProvincias id={id} stationsData={stationsData} setMarkers={setMarkers} markers={markers}></GetProvincias>
+                        <br></br>
+                    </div>
+                    <div className='getMunicipis'>
+                        <GetMunicipis id={id} stationsData={stationsData} setStationsData={setStationsData} setMarkers={setMarkers} markers={markers}  ></GetMunicipis>
+                        <br></br>
+                    </div>
 
-                    <GetProvincias id={id} stationsData={stationsData} setStationsData={setStationsData} setMarkers={setMarkers} markers={markers}></GetProvincias>
-                    <br></br>
-                    <GetMunicipis id={id} stationsData={stationsData} setStationsData={setStationsData} setMarkers={setMarkers} markers={markers}  ></GetMunicipis>
-                    <br></br>
+                    <div className='getTodos'>
+                        <h2 className='obtener-estaciones' id={id} >Para ver todos los puntos de recarga de Catalunya, pulsa Recargar</h2>
 
-                    <span>
-                        <br />
-                    </span>
-                    <h2 id={id}>Para ver todos los puntos de recarga de Catalunya, pulsa Recargar</h2>
-
-                    <button
-                        className="btn-signout-accept"
-
-                        onClick={getStationsResponse} >
-                        Recargar
-                    </button>
-                    <button
-                        className="btn-signout-cancel"
-                        onClick={() => { closeModal(false); }} >
-                        Cerrar
-                    </button>
+                        <button
+                            className="btn-signout-accept"
+                            onClick={getStationsResponse} >
+                            Recargar
+                        </button>
+                        <button
+                            className="btn-signout-cancel"
+                            onClick={() => { setShowBuscar(false) }} >
+                            <BiArrowBack size={20}/>
+                        </button>
+                    </div>
                 </section>
             )
             }

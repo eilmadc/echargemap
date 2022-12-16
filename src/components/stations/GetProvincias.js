@@ -71,6 +71,8 @@ function GetProvincias({ id, markers, setMarkers, stationsData }) {
 
   }
 
+  console.log(markers)
+
   return (
     <>
       <h3 id={id}>

@@ -10,7 +10,6 @@
   height: 65vh;
   min-width: 40rem;
   min-height: 25rem;
-  /*background-color: var(--light);*/
   border-radius: 15px 15px;
   z-index: 200;
 }
@@ -47,6 +46,12 @@ h3 {
   color: white;
   font-size: 20px;
   cursor: pointer;
+}
+
+section.section-getStations > * {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Header de la x para cerrar el modal */
@@ -116,8 +121,12 @@ section.obtener-estaciones {
   margin-bottom: 2rem;
 }
 
+
+
 h2.obtener-estaciones {
-  font-size: 18px;
+  font-size: 14px;
+  margin: 5% 7%;
+  line-height: 2em;
 }
 
 h3.obtener-estaciones-confirm {

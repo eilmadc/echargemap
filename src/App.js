@@ -58,6 +58,7 @@ function App() {
   const [isModalSettingsOpen, setModalSettings] = useState(false);
   const [isModalStationsOpen, setModalStations] = useState(false);
   const [isMenuOpen, setMenu] = useState(false);
+  const [isMenuBuscarOpen, setMenuBuscar] = useState(false);
   const [isModalShareOpen, setModalShare ] = useState(false);
 
   const [markers, setMarkers] = useState([]);
@@ -90,6 +91,10 @@ function App() {
     setModalStations((prevState) => !prevState); 
   }
 
+  const handleClickMenuBuscar = () => {
+    setMenuBuscar((prevState) => !prevState);
+  }
+
   return (
     <>
       <div className='App' id={mode}>
@@ -102,7 +107,6 @@ function App() {
           </div>
           <div className='buttons'>
             <button className='login buttons-nav' id={mode} onClick={handleClickLogin} hidden={userLogged ? true : false}>Entrar </button>
-            {/* <button className='language buttons-nav' id={mode} onClick={handleClick}>Idioma </button> */}
             <button className='share buttons-nav' id={mode} onClick={handleClickShare}>Compartir </button>
           </div>
           <ReactSwitch id='switch'
@@ -169,11 +173,14 @@ function App() {
 
         {isModalSettingsOpen ? <ModalSettings id={mode} closeModal={setModalSettings} /> : null}
 
-        {isModalStationsOpen ? <ModalStations id={mode} setMarkers={setMarkers} markers={markers} stationsData={stationsData} setStationsData={setStationsData} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
+        {isModalStationsOpen ? <ModalStations id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} setMarkers={setMarkers} markers={markers} stationsData={stationsData} setStationsData={setStationsData} closeModal={setModalStations} setUserLogged={setUserLogged} /> : null}
+
+        {/* {isMenuBuscarOpen ? <MenuBuscar id={mode} closeModal={setMenuBuscar} stationsData={stationsData} /> : null} */}
 
         {isModalShareOpen ? <Share id={mode} closeModal={setModalShare} /> : null}
 
-        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openModalStations={handleClickStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} setMarkers={setMarkers} />
+        <Menu id={mode} isMenuOpen={isMenuOpen} setMenu={setMenu} activa={setPaginaActiva} openModalContact={handleClickContact} openModalSettings={handleClickSettings} openMenuBuscar={handleClickMenuBuscar} setModalStations={setModalStations} userLogged={userLogged} setUserLogged={setUserLogged} closeModal={setModalLogout} markers={markers} setMarkers={setMarkers} stationsData={stationsData} setStationsData={setStationsData} />
+        
 
         {/*isModalContactOpen ? <Modal closeModal={setModal} /> : null*/}
         {isModalContactOpen ? <ModalContact id={mode} closeModal={setModalContact} /> : null}
@@ -186,8 +193,6 @@ function App() {
             <div className='container-main'>
               <div className='container-map'>
                 <ECMap id={mode} markers={markers} stationsData={stationsData} />
-
-                {/*  <img className='map-photo' id={mode} src={mode === 'lightMode' ? Map : MapDark} alt='mapa' /> */}
               </div>
             </div>
           </div>
@@ -227,7 +232,8 @@ function App() {
         isOpen={isMenuOpen}
         exitDimmer={setMenu}
         zIndex={100}
-        blur={1.5}
+        opacity={0}
+        blur={0}
       />
 
       <ReactDimmer
@@ -243,6 +249,7 @@ function App() {
         zIndex={100}
         blur={1.5}
       />
+
     </>
   );
 }
