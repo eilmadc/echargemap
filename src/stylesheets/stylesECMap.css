@@ -29,6 +29,15 @@
   }
 
   .line{
-    color:--violet;
+    color: --violet;
     
+  }
+
+  .marker-icon{
+    fillColor: blue;
+  }
+
+  .map-icon{
+    size: 15px;
+    color: --blue;
   }

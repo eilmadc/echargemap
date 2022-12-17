@@ -3,10 +3,14 @@ import "../../stylesheets/stylesECMap.css";
 import { useEffect, useRef, useMemo, useState } from 'react';
 import darkStyle from '../../mapStyles.js';
 import { GoogleMap, useLoadScript, MarkerF, InfoWindowF, InfoWindow } from "@react-google-maps/api";
+
 import { isAccordionItemSelected } from 'react-bootstrap/esm/AccordionContext';
+
 import { GiRoundStar } from 'react-icons/gi';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { AiOutlineMinus } from 'react-icons/ai';
+
+import  map_marker_2_multi_size  from '../../images/map_marker_2_multi_size.ico';
 
 const ECMap = ({ id, markers, stationsData }) => {
   /*Carga inicial de la API*/
@@ -33,7 +37,7 @@ export function Map({ markers, stationsData, id, darkStyle }) {
 
   const marker = '';
   const google = window.google;
-
+  const icon={map_marker_2_multi_size,  scaledSize: {width: 32, height: 32} } ;
 
   const handleActiveMarker = (index) => {
     //Si el marcador, es el marcador seleccionado
@@ -68,10 +72,11 @@ export function Map({ markers, stationsData, id, darkStyle }) {
                     (markers.map((elem, index) => {
                       return (
                         <MarkerF
-                          position={elem}
-                          key={index}
-                          onClick={() => handleActiveMarker(index)}
 
+                        position={elem}
+                        key={index}
+                        onClick={() => handleActiveMarker(index)}
+                        icon={map_marker_2_multi_size} 
                         >
                           {activeMarker === index ?
                             (
@@ -80,7 +85,7 @@ export function Map({ markers, stationsData, id, darkStyle }) {
                               >
                                 <section className="section-map-marker">
                                   <div className='marker-head'>
-                                    <h2><BsFillBookmarkFill className='star-icon' size={30} />&nbsp;&nbsp;{!stationsData[index].promotor_gestor ?  ' ' : stationsData[index].promotor_gestor }</h2>
+                                    <h2><BsFillBookmarkFill className='star-icon' size={30} />&nbsp;&nbsp;{!stationsData[index].promotor_gestor ? ' ' : stationsData[index].promotor_gestor}</h2>
                                     <h3>{stationsData[index].adre_a}<br></br>  {stationsData[index].municipi}<br></br>  {stationsData[index].provincia}</h3>
                                     <div className>
                                       <GiRoundStar className='star-icon' size={20} />
@@ -115,7 +120,7 @@ export function Map({ markers, stationsData, id, darkStyle }) {
                                       <li><h4>Descripción:   {stationsData[index].designaci_descriptiva} </h4></li>
                                       <li><h4>Tipo de Corriente:   {stationsData[index].ac_dc} </h4></li>
                                       <li><h4>Potencia:   {stationsData[index].kw} kw</h4></li>
-                                      <li><h4>Tipo Conexión:   {(stationsData[index].tipus_connexi).replace ('+', '  -  ')} </h4></li>
+                                      <li><h4>Tipo Conexión:   {(stationsData[index].tipus_connexi).replace('+', '  -  ')} </h4></li>
                                       <li><h4>Tipo Velocitat:   {stationsData[index].tipus_velocitat}</h4></li>
                                     </ul>
                                   </div>
