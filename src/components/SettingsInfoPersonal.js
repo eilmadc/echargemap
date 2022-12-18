@@ -30,7 +30,7 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
     nombre: stg.get('name'),
     apellidos: stg.get('lastname'),
     usuario: stg.get('username'),
-    correo: stg.get('correo'),
+    correo: stg.get('email'),
     ubicacion: stg.get('location'),
   });
 
@@ -203,13 +203,13 @@ export const SettingsInfoPersonal = ({ id, clickedButton, setNewData, newData, c
                   <form className='ubicacion'>
                     <div className='wrap-ubicacion'>
                       <label id={id} className='ubicacion-label'>Ubicación</label>
-                      <input className='ubicacion-input' type='text' name='ubicacion' onChange={handleOnChange} value={location}>{/*rellenar con la información del usuario*/}</input>
+                      <input className='ubicacion-input' type='text' name='ubicacion' onChange={handleOnChange} value={state.ubicacion}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                   <form className='correo'>
                     <div className='wrap-correo'>
                       <label id={id} className='correo-label'>Correo electrónico</label>
-                      <input className='correo-input' type='text' name='correo' onChange={handleOnChange} value={mail}>{/*rellenar con la información del usuario*/}</input>
+                      <input className='correo-input' type='text' name='correo' onChange={handleOnChange} value={state.correo}>{/*rellenar con la información del usuario*/}</input>
                     </div>
                   </form>
                 </div>
