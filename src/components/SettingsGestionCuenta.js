@@ -150,9 +150,9 @@ export const SettingsGestionCuenta = ({ id, clickedButton, setUserLogged, setRes
       );
       if (response.data.deluser) {
         setMessage('Usuario elimninado:' + stg.get('username'));
+        setSuccess(true);
         stg.clear();
         setUserLogged('false');
-        setSuccess(true);
         //window.location.reload(true);
       } else {
         setMessage('Ha habido un error');

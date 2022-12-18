@@ -106,7 +106,7 @@ function App() {
             <h1 id={mode} onClick={() => setPaginaActiva('paginaInicio')} className='title'>eChargeMap</h1>
           </div>
           <div className='buttons'>
-            <button className='login buttons-nav' id={mode} onClick={handleClickLogin} hidden={userLogged ? true : false}>Entrar </button>
+            <button className='login buttons-nav' id={mode} onClick={handleClickLogin} style={{visibility: !stg.get('userLogged') ? 'visible' : 'hidden'}}>Entrar </button>
             <button className='share buttons-nav' id={mode} onClick={handleClickShare}>Compartir </button>
           </div>
           <ReactSwitch id='switch'
@@ -159,7 +159,7 @@ function App() {
             boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
             activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)" />
           <div className='logout-nav'>
-            <icon hidden={userLogged ? false : true}><BiUser className='user-icon' id={mode} color={mode === 'lightMode' ? '#4B5C6B' : '#d8d8d9'} size={20} /></icon>
+            <icon style={{visibility: stg.get('userLogged') ? 'visible' : 'hidden'}}><BiUser className='user-icon' id={mode} color={mode === 'lightMode' ? '#4B5C6B' : '#d8d8d9'} size={20} /></icon>
             <h3 className='user-login' id={mode} onClick={handleClickSettings} hidden={userLogged ? false : true}> {stg.get('username')}</h3>
           </div>
         </div>

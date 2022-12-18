@@ -28,7 +28,7 @@ export const Menu = ({ id, isMenuOpen, setMenu, activa, openModalContact, openMo
             <a role="button" onClick={() => activa('Nosotros')} >Nosotros</a>
             <a role="button" onClick={() => { openModalContact(true); setMenu(false) }} >Contacto</a>
             <a role="button" onClick={() => { openModalSettings(true); setMenu(false) } } style={{visibility: stg.get('userLogged') ? 'visible' : 'hidden'}}  >Ajustes</a>
-            <button className='btn-signout' id={id} onClick={handleClickLogout} hidden={userLogged ? false : true}>Cerrar Sesión</button>
+            <button className='btn-signout' id={id} onClick={handleClickLogout} style={{visibility: stg.get('userLogged') ? 'visible' : 'hidden'}}>Cerrar Sesión</button>
           </ul>
           }
         </div>
