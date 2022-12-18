@@ -412,7 +412,7 @@ console.log(id);
                               >
                                 <section className="section-map-marker">
                                   <div className='marker-head'>
-                                    <h2><BsFillBookmarkFill className='star-icon' size={30} />&nbsp;&nbsp;{!stationsData[index].promotor_gestor ? ' ' : stationsData[index].promotor_gestor}</h2>
+                                    <h2><BsFillBookmarkFill className='star-icon' size={30} />&nbsp;&nbsp;{(stationsData[index].promotor_gestor) === 'null' ? ' ' : stationsData[index].promotor_gestor}</h2>
                                     <h3>{stationsData[index].adre_a}<br></br>  {stationsData[index].municipi}<br></br>  {stationsData[index].provincia}</h3>
                                     <div className>
                                       <GiRoundStar className='star-icon' size={20} />
@@ -444,11 +444,11 @@ console.log(id);
                                       <AiOutlineMinus className='line' size={15} />
                                     </div>
                                     <ul>
-                                      <li><h4>Descripción:   {stationsData[index].designaci_descriptiva} </h4></li>
-                                      <li><h4>Tipo de Corriente:   {stationsData[index].ac_dc} </h4></li>
-                                      <li><h4>Potencia:   {stationsData[index].kw} kw</h4></li>
+                                      <li><h4>Descripción:   {stationsData[index].designaci_descriptiva === 'null' ? ' ' : stationsData[index].designaci_descriptiva }</h4></li>
+                                      <li><h4>Tipo de Corriente:   {stationsData[index].ac_dc === 'null' ? 'Sin datos' : stationsData[index].ac_dc} </h4></li>
+                                      <li><h4>Potencia:   {stationsData[index].kw === 'null' ? 'Sin datos' : stationsData[index].kw} kw</h4></li>
                                       <li><h4>Tipo Conexión:   {(stationsData[index].tipus_connexi).replace('+', '  -  ')} </h4></li>
-                                      <li><h4>Tipo Velocitat:   {stationsData[index].tipus_velocitat}</h4></li>
+                                      <li><h4>Tipo Velocitat:   { stationsData[index].tipus_velocitat === 'null' ? 'Sin datos' : stationsData[index].tipus_velocitat}</h4></li>
                                     </ul>
                                   </div>
                                 </section>
