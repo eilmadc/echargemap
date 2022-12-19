@@ -1,7 +1,7 @@
 import React from 'react';
-import "../../stylesheets/stylesECMap.css";
+
 import { useEffect, useRef, useMemo, useState } from 'react';
-import darkStyle from '../../mapStyles.js';
+
 import { GoogleMap, useLoadScript, MarkerF, InfoWindowF, InfoWindow } from "@react-google-maps/api";
 
 import { isAccordionItemSelected } from 'react-bootstrap/esm/AccordionContext';
@@ -14,14 +14,14 @@ import map_marker_2_multi_size from '../../images/map_marker_2_multi_size.ico';
 
 const ECMap = ({ id, markers, stationsData }) => {
   /*Carga inicial de la API*/
+
   const { isLoaded } = useLoadScript({
-    //env.local-- NEXT_PUBLIC_GOOGLE_MAPS_API_KEY = "AIzaSyC7XftCh0NCOkAUkX81wcuUaVTpmuFew8k"(mielena)
-    googleMapsApiKey: "AIzaSyC7XftCh0NCOkAUkX81wcuUaVTpmuFew8k",
+    googleMapsApiKey: `${process.env.REACT_APP_MAP_API_KEY}`,
   });
 
 
   if (!isLoaded) return <div><h1>Loading...</h1></div>
-  return <Map markers={markers} id={id} stationsData={stationsData} options={darkStyle} ></Map>
+  return <Map markers={markers} id={id} stationsData={stationsData} ></Map>
 }
 
 /*FUNCION DE CARGA DEL MAPA*/
